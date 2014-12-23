@@ -1,0 +1,12 @@
+.DS_Store
+.vagrant
+app/vendor
+composer.lock
+app/tests/_output
+node_modules
+app/web/dist
+app/web/css
+app/web/js
+app/web/fonts
+tests/_output/*
+c3.php

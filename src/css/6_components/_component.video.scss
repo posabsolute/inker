@@ -1,0 +1,12 @@
+  @media screen and (max-width:800px) {
+    div[class=video_holder] {display:none;}
+    div[class=android] {display:block !important;width:320px !important;height:176px !important;}
+  }
+
+  @media screen and (width:320px), screen and (width:703px){
+    div[class=android] {display:none !important;}  
+    div[class=video_holder] {display:block !important;}
+  }
+
+  .ExternalClass div.video_holder {display:none !important;}
+  .ExternalClass div.android {display:block !important;width:100% !important;height:200px !important;}
