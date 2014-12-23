@@ -1,4 +1,4 @@
-# Inker - a sass & modular approach to email creation heavily based from Zurb Ink framework.
+# Inker - Email creation that does not suck
 
 *Not ready*
 
