@@ -1,12 +1,16 @@
-<div class="video_holder">
-    <video width="320" height="176" controls>
-        <source src="{{video_src}}.mp4" type="video/mp4">
-        <source src="{{video_src}}.ogg" type="video/ogg">
-          <a href="{{video_link}}" ><img height="176" 
-            src="{{video_image_placeholder}}" width="320" /></a>
-    </video>
-</div>
-<div class="android" style="display:none; width:0px; height:0px; overflow:hidden;">
-  <a href="{{video_link}}" ><img height="176" 
-    src="{{video_image_placeholder}}" width="320" /></a>
-</div>
+{% macro video(class='', width='320', height='176',  video_src='', video_link='', video_image_placeholder='') %}
+  <div class="video_holder {{class}}">
+      <video width="{{width}}" height="{{height}}" controls>
+          <source src="{{video_src}}.mp4" type="video/mp4">
+          <source src="{{video_src}}.ogg" type="video/ogg">
+            <a href="{{video_link}}" ><img height="{{height}}" 
+              src="{{video_image_placeholder}}" width="{{width}}" /></a>
+      </video>
+  </div>
+  <!--
+  <div class="android" style="display:none; width:0px; height:0px; overflow:hidden;">
+    <a href="{{video_link}}" ><img height="{{height}}" 
+      src="{{video_image_placeholder}}" width="{{width}}" /></a>
+  </div>
+  -->
+{% endmacro %}

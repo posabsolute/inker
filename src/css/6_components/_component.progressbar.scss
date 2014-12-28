@@ -1,0 +1,21 @@
+.progressbar{
+	td{
+		padding:10px;
+		color:#fff;
+	}
+	.foreground{background-color:#27a9e3;}
+	.background{background-color:#eeeeee;}
+	// sizes
+	&.small{
+		td{padding:5px;}
+	}
+	&.large{
+		td{padding:15px;}
+	}
+
+	//colors
+	&.orange {
+		.foreground{background-color: #f7931d;}
+	}
+}
+

@@ -1,7 +1,9 @@
-<table class="button {{class}}" align="{{align}}">
-	<tr>
-	  <td>
-	    <a href="{{link}}">label</a>
-	  </td>
-	</tr>
-</table>
+{% macro field(class='', align='left', link='#', label='default') %}
+	<table class="button {{class}}" align="{{align}}">
+		<tr>
+		  <td>
+		    <a href="{{link}}">{{label}}</a>
+		  </td>
+		</tr>
+	</table>
+{% endmacro %}

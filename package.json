@@ -1,0 +1,29 @@
+{
+  "name": "inker",
+  "version": "1.0.0",
+  "description": "*Not ready*",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/posabsolute/inker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/posabsolute/inker/issues"
+  },
+  "homepage": "https://github.com/posabsolute/inker",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-email-builder": "^2.0.11",
+    "grunt-nunjucks": "^0.1.4",
+    "grunt-sass": "^0.17.0",
+    "nunjucks": "^1.1.0"
+  }
+}
