@@ -23,12 +23,12 @@ git clone https://github.com/posabsolute/inker.git
 cd inker && npm install
 ```
 
-You have now everything you need to get started. There is template examples in src/templates to help you get started.
+You have now everything you need to use inker. There is template examples in src/templates to help you get started.
 
 
 ## Available grunt commands
 
-* grunt watch *- Watch source folder for changes*
+* grunt watch *- Watch source folder for changes & generate dist files*
 * grunt css *- Build CSS* 
 * grunt html *- Build HTML templates*
 * grunt build *- Build css & html*
@@ -36,16 +36,16 @@ You have now everything you need to get started. There is template examples in s
 
 ## CSS with Inker
 
-Inker use ink as it base css framework, everything in ink is available in inker, please refer to there documentations. Inker also use the meta framework ITCSS as the base folder structure. Better explain by this image. The css is situated in *src/css*
+Inker use ink as it base css framework, everything in ink is available in inker, please refer to there documentations. Inker also use the meta framework ITCSS as the base folder structure. Better explained by this image. The css is situated in **src/css**
 
 It is important to follow ITCSS if you want to keep a sane CSS structure with inker, I may also reject contributions not following this.
 
-base.scss is your base CSS file importing all needed files for inker, for example if you add components you must add the import to base.scss. *It is important to note that since we inline style to html node it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end (like you would do in bootstrap to save css kilobytes)*
+**base.scss** is your base CSS file importing all needed css files for inker. For example, if you add css components you must add the import to base.scss. *It is important to note that since we inline style to html nodes it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end (like you would do in bootstrap to save kilobytes)*
 
 
 ### Responsive
 
-Responsive rules are situated in the folder *8_trumps*, please note that these rules are added to head instead of inlined using data-ignore="ignore" in html templates.
+Responsive rules are situated in the folder **8_trumps**, please note that these rules are added to head instead of inlined using data-ignore="ignore" in html templates.
 
 ### Adding css to head
 
@@ -62,7 +62,7 @@ You can add css to head using the data-ignore rule in your template:
 
 ## HTML with inker
 
-As it's core, inker use nunjucks to build html templates, please see nunjucks documentation for more information on what you can achieve with it.
+At its core, inker use nunjucks to build html templates, please see nunjucks documentation for more information on what you can achieve with it.
 
 Inker as an html components stucture that use nunjucks macros. an example of component:
 
@@ -83,7 +83,7 @@ Usage in html template:
 button('button-green', 'left', 'http://www.google.com', 'Go to google');
 ```
 
-**When creating new components remember to add them to the base.html file situates in *src/html-components* **
+**When creating new components remember to add them to the base.html file situates in _src/html-components_**
 
 ## Contributions
 
@@ -91,7 +91,7 @@ I am always happy to accept contributions, but please follow ITCSS guidelines & 
 
 ## Licence
 
-* All tools used in the project are bound by their own licence.*
+*All tools used in the project are bound by their own licence.*
 
 The MIT License (MIT)
 
