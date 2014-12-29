@@ -28,11 +28,11 @@ You have now everything you need to get started. There is template examples in s
 
 ## Available grunt commands
 
-* grunt watch *watch all source folders for changes*
-* grunt css *Build CSS* 
-* grunt html *Build HTML templates*
-* grunt build *Build css & html*
-* grunt litmus *send a test email to litmus*
+* grunt watch *- Watch source folder for changes*
+* grunt css *- Build CSS* 
+* grunt html *- Build HTML templates*
+* grunt build *- Build css & html*
+* grunt litmus *- Send a test email to litmus*
 
 ## CSS with Inker
 
