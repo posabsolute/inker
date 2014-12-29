@@ -14,11 +14,11 @@ Inker is a new way to build email templates, take back control over your templat
 
 ## Getting started
 
-Inker require npm & grunt to be already installed.
+Inker require **npm** & **grunt** to be already installed.
 
 
 
-```javascript
+```bash
 git clone https://github.com/posabsolute/inker.git
 cd inker && npm install
 ```
@@ -45,7 +45,7 @@ base.scss is your base CSS file importing all needed files for inker, for exampl
 
 ### Responsive
 
-Responsive rules are situated in 8_trumps, please note that these rules are added to head instead of inlined using data-ignore="ignore" in html templates.
+Responsive rules are situated in the folder *8_trumps*, please note that these rules are added to head instead of inlined using data-ignore="ignore" in html templates.
 
 ### Adding css to head
 
@@ -62,8 +62,56 @@ You can add css to head using the data-ignore rule in your template:
 
 ## HTML with inker
 
+As it's core, inker use nunjucks to build html templates, please see nunjucks documentation for more information on what you can achieve with it.
 
+Inker as an html components stucture that use nunjucks macros. an example of component:
 
+```html
+{% macro button(class='', align='left', link='#', label='default') %}
+	<table class="button {{class}}" align="{{align}}">
+		<tr>
+		  <td>
+		    <a href="{{link}}">{{label}}</a>
+		  </td>
+		</tr>
+	</table>
+{% endmacro %}
+```
 
+Usage in html template:
+```javascript
+button('button-green', 'left', 'http://www.google.com', 'Go to google');
+```
 
+**When creating new components remember to add them to the base.html file situates in *src/html-components* **
+
+## Contributions
+
+I am always happy to accept contributions, but please follow ITCSS guidelines & please test your new components or fixes in most used email clients.
+
+## Licence
+
+* All tools used in the project are bound by their own licence.*
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Cedric Dugas
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
