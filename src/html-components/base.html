@@ -1,14 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <title>{% block meta_title %}{% endblock %}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
-  <link href="../css/main.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />
+  {% block main_css %}<link href="../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
+  {% block responsive_css %}<link href="../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />{% endblock %}
+  
   {% from "/html-components/template.button.html" import button %}
-  {% import "/html-components/template.caption.html" as caption %}
-  {% import "/html-components/template.progressbar.html" as progressbar %}
-  {% import "/html-components/template.video.html" as video %}
+  {% from "/html-components/template.caption.html" import caption %}
+  {% from "/html-components/template.progressbar.html" import progressbar %}
+  {% from "/html-components/template.video.html" import video %}
 </head>
 <body>
   <table class="body">

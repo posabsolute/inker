@@ -55,6 +55,38 @@ module.exports = function(grunt) {
             }]
           }
         },
+        litmus: {
+            test: {
+              src: ['dist/output/example.html'],
+              options: {
+                username: 'username',
+                password: 'password',
+                url: 'https://yourcompany.litmus.com',
+                clients: ['gmailnew', 'ffgmailnew', 'chromegmailnew']
+              }
+            }
+        },
+        nodemailer: {
+            options: {
+              transport: {
+                type: 'SMTP',
+                options: {
+                  service: 'Gmail',
+                  auth: {
+                    user: 'cedric.dugas@gmail.com',
+                    pass: 'tamere123!'
+                  }
+                }
+              },
+              recipients: [
+                {
+                  email: 'cedric.dugas@gmail.com',
+                  name: 'Jane Doe'
+                }
+              ]
+            },
+            src: ['dist/output/*.html']
+        },
         watch: {
             options: {
                 livereload: true
@@ -75,9 +107,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-email-builder');
     grunt.loadNpmTasks('grunt-nunjucks-2-html');
     grunt.loadNpmTasks('grunt-email-builder');
+    grunt.loadNpmTasks('grunt-litmus');
+    grunt.loadNpmTasks('grunt-nodemailer');
 
     grunt.registerTask('default',['watch']);
-    grunt.registerTask('buildcss',['sass']);
-    grunt.registerTask('buildhtml',['nunjucks','emailBuilder']);
+    grunt.registerTask('css',['sass']);
+    grunt.registerTask('html',['nunjucks','emailBuilder:inline']);
+    grunt.registerTask('build',['sass','nunjucks','emailBuilder:inline']);
+    grunt.registerTask('sendlitmus',['litmus:test']);
+    grunt.registerTask('email',['nodemailer']);
 
 };

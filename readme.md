@@ -34,6 +34,7 @@ You have now everything you need to use inker. There is template examples in src
 * grunt css *- Build CSS* 
 * grunt html *- Build HTML templates*
 * grunt build *- Build css & html*
+* grunt email *- Send a test email to any email inbox*
 * grunt litmus *- Send a test email to litmus*
 
 ## CSS with Inker
@@ -86,6 +87,52 @@ button('button-green', 'left', 'http://www.google.com', 'Go to google');
 ```
 
 **When creating new components remember to add them to the base.html file situates in _src/html-components_**
+
+### Inker with your back-end templating engine & application
+
+Inker is specially thought so it integrate with your back-end application, Inker templating engine use <# #> so it does not interfere with others templating engine making it possible to test your templates with inker & then use your back-end to place data & send your email.
+
+### Inker with dynamic custom data
+
+Inker can use json files as a source of dynamic data, an use example would be to test product loops. Of course this means that if you get that data from a back-end api you will need to replace the loop system to match your templating engine after.
+
+This is a built-in feature of grunt-nunjucks-2-html, please see their documentation for more information about customization.
+
+
+
+## Sending test email to your inbox
+
+Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. However a better way touse it would be to change the path directly from the grunt command.
+
+```bash
+// Override default src provided in gruntfile
+grunt email --fileSrc=dist/output/example.html
+```
+
+Config example:
+```javascript
+nodemailer: {
+    options: {
+      transport: {
+        type: 'SMTP',
+        options: {
+          service: 'Gmail',
+          auth: {
+            user: 'your.email@gmail.com',
+            pass: 'BLAH'
+          }
+        }
+      },
+      recipients: [
+        {
+          email: 'your.email@gmail.com',
+          name: 'Jane Doe'
+        }
+      ]
+    },
+    src: ['dist/output/*.html']
+},
+```
 
 ## Contributions
 
