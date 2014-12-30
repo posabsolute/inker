@@ -4,7 +4,9 @@
 
 ## Basics
 
-Inker is a new way to build email templates, take back control over your templates, never have again this big mess of tables you can't understand. Inker is:
+Inker one of the best way to build email templates, take back control over your html, never have again this big mess of tables you can't understand. 
+
+Inker is:
 
 * Built on top of Zurb Ink
 * Sane CSS components structure with sass
@@ -91,7 +93,7 @@ I am always happy to accept contributions, but please follow ITCSS guidelines & 
 
 ## Licence
 
-*All tools used in the project are bound by their own licence.*
+*All tools used in this project are bound by their own licence.*
 
 The MIT License (MIT)
 
