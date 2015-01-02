@@ -87,23 +87,35 @@ module.exports = function(grunt) {
             },
             src: ['dist/output/*.html']
         },
+        connect: {
+          server: {
+            options: {
+              port: 8555,
+              keepalive : true,
+              livereload: true,
+              base : "dist",
+              hostname: '*'
+            }
+          }
+        },
         watch: {
             options: {
                 livereload: true
             },
             css: {
-                files: ['**/*.scss'],
-                tasks: ['compass']
-            },
-            responsive:{
-                files: ['**/*.scss'],
+                files: ['src/css/*.scss','src/css/**/*.scss'],
                 tasks: ['sass']
+            },
+            html:{
+                files: ['src/*.html','src/**/*.html'],
+                tasks: ['nunjucks','emailBuilder:inline']
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-email-builder');
     grunt.loadNpmTasks('grunt-nunjucks-2-html');
     grunt.loadNpmTasks('grunt-email-builder');

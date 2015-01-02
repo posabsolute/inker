@@ -34,25 +34,28 @@ You have now everything you need to use inker. There is template examples in src
 * grunt css *- Build CSS* 
 * grunt html *- Build HTML templates*
 * grunt build *- Build css & html*
+* grunt connect *- test emails in your browser from the root folder (http://0.0.0.0:8555/)
 * grunt email *- Send a test email to any email inbox*
 * grunt litmus *- Send a test email to litmus*
 
 ## CSS with Inker
 
-Inker use ink as it base css framework, everything in ink is available in inker, please refer to there documentations. Inker also use the meta framework ITCSS as the base folder structure. Better explained by this image. The css is situated in **src/css**
+Inker use [Zurb Ink](http://zurb.com/ink/) as its base responsive css framework, everything in ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also use the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files & folders structure. Better explained by this image. The css is situated in **src/css**
 
-It is important to follow ITCSS if you want to keep a sane CSS structure with inker, I may also reject contributions not following this.
+It is important to follow ITCSS rules if you want to keep a sane CSS structure with inker.
 
-**base.scss** is your base CSS file importing all needed css files for inker. For example, if you add css components you must add the import to base.scss. *It is important to note that since we inline style to html nodes it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end (like you would do in bootstrap to save kilobytes)*
+**base.scss** is your base CSS file importing all needed files for inker. For example, if you add  a css component you must add import it in base.scss. 
+
+*It is important to note that since we inline style to html nodes it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end*
 
 
 ### Responsive
 
-Responsive rules are situated in the folder **8_trumps**, please note that these rules are added to head instead of inlined using data-ignore="ignore" in html templates.
+Responsive rules are in the folder **8_trumps**, please note that these rules are added to the document head instead of inlined using data-ignore="ignore" in html templates.
 
-### Adding css to head
+### Adding css to the head
 
-You can add css to head using the data-ignore rule in your template:
+You can add css to head the using the data-ignore rule in your template:
 ```html
 <!-- external styles -->
 <link rel="stylesheet" data-ignore="ignore"  href="../css/style.css" />
@@ -65,26 +68,34 @@ You can add css to head using the data-ignore rule in your template:
 
 ## HTML with inker
 
-At its core, inker use nunjucks to build html templates, please see nunjucks documentation for more information on what you can achieve with it.
+At its core, inker use [Mozilla Nunjucks](http://mozilla.github.io/nunjucks/) to build html templates, please see nunjucks [documentation](http://mozilla.github.io/nunjucks/templating.html) for more information on how you can take inker even farther.
 
 Inker as an html components stucture that use nunjucks macros. an example of component:
 
 ```html
-{% macro button(class='', align='left', link='#', label='default') %}
-	<table class="button {{class}}" align="{{align}}">
-		<tr>
-		  <td>
-		    <a href="{{link}}">{{label}}</a>
-		  </td>
-		</tr>
-	</table>
+{% macro button(label='default', link='#', class='', align='left') %}
+  <table class="button {{class}}" align="{{align}}">
+    <tr>
+      <td>
+        <a href="{{link}}">{{label}}</a>
+      </td>
+    </tr>
+  </table>
 {% endmacro %}
 ```
 
+```html
+// Import the component in the base.html file in html-components folder.
+{% from "/html-components/component.button.html" import button %}
+```
+
+
 Usage in html template:
 ```javascript
-button('button-green', 'left', 'http://www.google.com', 'Go to google');
+button('Go to google', 'http://www.google.com', 'button-green', 'left');
 ```
+
+
 
 **When creating new components remember to add them to the base.html file situates in _src/html-components_**
 
@@ -96,13 +107,51 @@ Inker is specially thought so it integrate with your back-end application, Inker
 
 Inker can use json files as a source of dynamic data, an use example would be to test product loops. Of course this means that if you get that data from a back-end api you will need to replace the loop system to match your templating engine after.
 
-This is a built-in feature of grunt-nunjucks-2-html, please see their documentation for more information about customization.
+This is a built-in feature of [grunt-nunjucks-2-html](https://www.npmjs.com/package/grunt-nunjucks-2-html).
+```javascript
+nunjucks: {
+  options: {
+    data: grunt.file.readJSON('data.json')
+  }
+}
+```
+
+## Included components
+
+Here is the current list of implemented component. I am always looking to add more components to inker.
+
+### Buttons
+
+*Options:*
+* Label
+* Link
+* Class to add
+* Alignement
+
+Usage: 
+```javascript
+button('Go to google', 'http://www.google.com', 'button-green', 'left');
+```
+
+Render:
+```html
+  <table class="button button-green" align="left">
+    <tr>
+      <td>
+        <a href="http://www.google.com">Go to google</a>
+      </td>
+    </tr>
+  </table>
+```
+
+
+
 
 
 
 ## Sending test email to your inbox
 
-Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. However a better way touse it would be to change the path directly from the grunt command.
+Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. However a better way to use it would be to change the path directly from the grunt command.
 
 ```bash
 // Override default src provided in gruntfile
@@ -136,7 +185,7 @@ nodemailer: {
 
 ## Contributions
 
-I am always happy to accept contributions, but please follow ITCSS guidelines & please test your new components or fixes in most used email clients.
+I am always happy to accept contributions, but please follow ITCSS guidelines & please test your new components of bug fices in most used email clients.
 
 ## Licence
 
