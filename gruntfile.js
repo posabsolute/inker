@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                   service: 'Gmail',
                   auth: {
                     user: 'cedric.dugas@gmail.com',
-                    pass: 'tamere123!'
+                    pass: 'test12'
                   }
                 }
               },

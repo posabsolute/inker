@@ -183,6 +183,12 @@ nodemailer: {
 },
 ```
 
+## Special thanks
+
+Thanks to Litmus for providing free email client testing for this project.
+
+
+
 ## Contributions
 
 I am always happy to accept contributions, but please follow ITCSS guidelines & please test your new components of bug fices in most used email clients.
