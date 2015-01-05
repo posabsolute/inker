@@ -1,0 +1,12 @@
+{% macro panel(label='', size='twelve', class='') %}
+	<table class="{{size}} {{class}} columns">
+	  <tr>
+	    <td class="panel">
+
+	      {{label}}
+
+	    </td>
+	    <td class="expander"></td>
+	  </tr>
+	</table>
+{% endmacro %}

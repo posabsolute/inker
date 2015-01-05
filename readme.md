@@ -144,8 +144,114 @@ Render:
   </table>
 ```
 
+### Progress Bar
+
+*Options:*
+* width of bars
+* progress
+* label
+* Class to add
 
 
+Usage: 
+```javascript
+progressbar('100%', 70, 'Your progress so far', 'progressbar-green');
+```
+
+Render:
+```html
+  <table class='progressbar progressbar-green' cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+          <td class='foreground' style='' width="70%">
+              Your progress so far
+          </td>
+          <td class="background" width="30%">
+              &nbsp;
+          </td>
+      </tr>
+  </table>
+```
+
+### Video
+
+Please refer to campaign monitor chart to see what email client support video, fall back to an image.
+
+*Options:*
+* width
+* height
+* video_src
+* video_link
+* video_image_placeholder
+* class
+
+Usage: 
+```javascript
+video(320, 176, 'http://www.google.com', 'http://www.google.com', 'http://www.google.com', 'video-big');
+```
+
+Render:
+```html
+  <div class="video_holder video-big">
+      <video width="320" height="176" controls>
+          <source src="{{video_src}}.mp4" type="video/mp4">
+          <source src="{{video_src}}.ogg" type="video/ogg">
+            <a href="{{video_link}}" ><img height="176" 
+              src="{{video_image_placeholder}}" width="320" /></a>
+      </video>
+  </div>
+```
+
+### Image Caption
+
+*Options:*
+* Label
+* Width
+* Class
+* Align
+
+Usage: 
+```javascript
+caption('This is a cat', '320px', 'caption-red', 'left');
+```
+
+Render:
+```html
+  <table class="caption caption-red" cellpadding="0" cellspacing="0" width="320px" border="0", align='left'>
+      <tr>
+          <td align="center">
+              <img src="http://placekitten.com/g/300/300" alt="" />
+              <div>This is a cat</div>
+          </td>
+      </tr>
+  </table>
+```
+
+
+### Panel
+
+*Options:*
+* Label
+* size (default: twelve)
+* Class
+
+Usage: 
+```javascript
+panel('This is a panel', 'twelve', 'panel-red');
+```
+
+Render:
+```html
+  <table class="twelve panel-red columns">
+    <tr>
+      <td class="panel">
+
+        This is a panel
+
+      </td>
+      <td class="expander"></td>
+    </tr>
+  </table>
+```
 
 
 
