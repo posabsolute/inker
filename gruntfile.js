@@ -17,6 +17,15 @@ module.exports = function(grunt) {
                     'dist/css/main.css': 'src/css/base.scss',
                     'dist/css/responsive.css': 'src/css/responsive.scss'
                 }
+            },
+            themes: {
+              files: [{
+                expand: true,
+                cwd: 'src/css/7_themes',
+                src: ['**/*.scss','*.scss'],
+                dest: 'dist/css/',
+                ext: '.css'
+              }]
             }
         },
         nunjucks: {
@@ -35,7 +44,7 @@ module.exports = function(grunt) {
                    {
                       expand: true,
                       cwd: "src/",
-                      src: "templates/*.html",
+                      src: "templates/**/index.html",
                       dest: "dist/",
                       ext: ".html"
                    }
@@ -50,14 +59,14 @@ module.exports = function(grunt) {
             files : [{
               expand: true,
               cwd: "dist/templates",
-              src: ['*.html'],
+              src: ['*.html','**/*.html'],
               dest: 'dist/output'
             }]
           }
         },
         litmus: {
             test: {
-              src: ['dist/output/example.html'],
+              src: ['dist/output/*.html', 'dist/output/**/*.html'],
               options: {
                 username: 'username',
                 password: 'password',

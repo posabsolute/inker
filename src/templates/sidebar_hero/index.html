@@ -1,12 +1,16 @@
 {% extends "/html-components/base.html" %}
+  {% block main_css %}<link href="../../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
+  {% block theme_css %}<link href="../../css/sidebarhero/sidebarhero.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
 
+  {% block responsive_css %}<link href="../../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />{% endblock %}
+  
+{% block meta_title %}Email title in document head{% endblock %}
 {% block mainContent %}
 	{% block header %}
-		{% include "/templates/example1/header.html" %}
+		{% include "/templates/sidebar_hero/header.html" %}
 	{% endblock %}
 
 	{% block content %}
-		{% include "/templates/example1/content.html" %}
+		{% include "/templates/sidebar_hero/content.html" %}
 	{% endblock %}
-
 {% endblock %}

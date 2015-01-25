@@ -1,6 +1,13 @@
-# Inker - an email marketing creation workflow for keeping sane email templates
+# Inker - a workflow for keeping sane email templates
 
 *Not ready*
+
+## Todo
+
+* Integrate premailer
+* Doc Premailer
+* Doc Litmus
+* Fix example css
 
 ## Basics
 
@@ -14,11 +21,10 @@ Inker is:
 * Auto generate template to HTML documents with inlined CSS
 * Auto deployment on litmus for testing
 
+
 ## Getting started
 
 Inker require **npm** & **grunt** to be already installed.
-
-
 
 ```bash
 git clone https://github.com/posabsolute/inker.git
@@ -38,6 +44,7 @@ You have now everything you need to use inker. There is template examples in src
 * grunt email *- Send a test email to any email inbox*
 * grunt litmus *- Send a test email to litmus*
 
+
 ## CSS with Inker
 
 Inker use [Zurb Ink](http://zurb.com/ink/) as its base responsive css framework, everything in ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also use the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files & folders structure. Better explained by this image. The css is situated in **src/css**
@@ -47,7 +54,6 @@ It is important to follow ITCSS rules if you want to keep a sane CSS structure w
 **base.scss** is your base CSS file importing all needed files for inker. For example, if you add  a css component you must add import it in base.scss. 
 
 *It is important to note that since we inline style to html nodes it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end*
-
 
 ### Responsive
 
@@ -66,9 +72,18 @@ You can add css to head the using the data-ignore rule in your template:
 </style>
 ```
 
+### Adding new templates
+
+Open 7_themes, you will see there is already a folder called sidebarhero used for the sidebar hero template. Add a new folder in 7_themes for your template, your main css will be automatically generated in dist/css/[your folder].
+
+The in your tempplate use:
+```html
+  {% block theme_css %}<link href="../../css/sidebarhero/sidebarhero.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
+```
+
 ## HTML with inker
 
-At its core, inker use [Mozilla Nunjucks](http://mozilla.github.io/nunjucks/) to build html templates, please see nunjucks [documentation](http://mozilla.github.io/nunjucks/templating.html) for more information on how you can take inker even farther.
+Inker use [Mozilla Nunjucks](http://mozilla.github.io/nunjucks/) to build html templates, please see nunjucks [documentation](http://mozilla.github.io/nunjucks/templating.html) for more information on how you can take inker even farther.
 
 Inker as an html components stucture that use nunjucks macros. an example of component:
 
@@ -92,12 +107,37 @@ Inker as an html components stucture that use nunjucks macros. an example of com
 
 Usage in html template:
 ```javascript
-button('Go to google', 'http://www.google.com', 'button-green', 'left');
+{{ button('Go to google', 'http://www.google.com', 'button-green', 'left'); }}
 ```
 
-
-
 **When creating new components remember to add them to the base.html file situates in _src/html-components_**
+
+
+### Creating new html templates
+
+Open the templates folder, you should see a folder sidebar_hero, add your own folder here. Please refer to  sidebar_hero for a complete example.
+
+#### Example of base template
+
+```html
+{% extends "/html-components/base.html" %}
+  {% block main_css %}<link href="../../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
+  {% block theme_css %}<link href="../../css/sidebarhero/sidebarhero.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
+
+  {% block responsive_css %}<link href="../../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />{% endblock %}
+  
+{% block meta_title %}Email title in document head{% endblock %}
+{% block mainContent %}
+  {% block header %}
+    {% include "/templates/sidebar_hero/header.html" %}
+  {% endblock %}
+
+  {% block content %}
+    {% include "/templates/sidebar_hero/content.html" %}
+  {% endblock %}
+{% endblock %}
+```
+
 
 ### Inker with your back-end templating engine & application
 
@@ -116,9 +156,9 @@ nunjucks: {
 }
 ```
 
-## Included components
 
-Here is the current list of implemented component. I am always looking to add more components to inker.
+## Included components
+Current list of implemented component. I am always looking to add more components to inker.
 
 ### Buttons
 
@@ -226,7 +266,6 @@ Render:
   </table>
 ```
 
-
 ### Panel
 
 *Options:*
@@ -252,7 +291,6 @@ Render:
     </tr>
   </table>
 ```
-
 
 
 ## Sending test email to your inbox
@@ -289,15 +327,16 @@ nodemailer: {
 },
 ```
 
+
 ## Special thanks
 
 Thanks to Litmus for providing free email client testing for this project.
 
 
-
 ## Contributions
 
-I am always happy to accept contributions, but please follow ITCSS guidelines & please test your new components of bug fices in most used email clients.
+I am always happy to accept contributions, i"m currently looking for more components & example, but please follow ITCSS guidelines & please test your new components in the most used email clients.
+
 
 ## Licence
 

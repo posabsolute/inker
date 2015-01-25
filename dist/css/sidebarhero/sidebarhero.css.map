@@ -1,0 +1,11 @@
+{
+	"version": 3,
+	"file": "sidebarhero.css",
+	"sources": [
+		"../../../src/css/7_themes/sidebarhero/sidebarhero.scss",
+		"../../../src/css/7_themes/sidebarhero/_component.topbar.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "ACAA,KAAK;EACJ,YAAY;EAAb,KAAK,QAAQ;IAEX,OAAO;IACP,aAAa;IACb,WAAW;EACb,KAAK,QAAQ,GAAG,QAAQ;IACN,gBAAe",
+	"names": []
+}
