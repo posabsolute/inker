@@ -1,71 +1,379 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Inker by posabsolute</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Inker</h1>
-        <p>A sass &amp; modular responsive email framework based on Zurb Ink</p>
-
-        <p class="view"><a href="https://github.com/posabsolute/inker">View the Project on GitHub <small>posabsolute/inker</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/posabsolute/inker/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/posabsolute/inker/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/posabsolute/inker">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/posabsolute">posabsolute</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inker</title>
     
-  </body>
+    <link rel="stylesheet" type="text/css" href="//documentup.com/stylesheets/themes/v1.css">
+    
+    
+
+    
+
+    <!-- Typekit -->
+    
+      <script type="text/javascript">
+        (function() {
+          var config = {
+            kitId: 'hjp0pft',
+            scriptTimeout: 3000
+          };
+          var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/( |^)wf-loading( |$)/g,"");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script");tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(a&&a!="complete"&&a!="loaded")return;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+        })();
+      </script>
+    
+  </head>
+  <body><div id="container">
+  <div id="nav">
+    
+      <div id="header">
+        <a href="#" id="logo">inker</a>
+      </div>
+    
+    <ul id="sections">
+      
+        <li>
+          <a href="#basics">Basics</a>
+          
+        </li>
+      
+        <li>
+          <a href="#getting-started">Getting started</a>
+          
+        </li>
+      
+        <li>
+          <a href="#available-grunt-commands">Available grunt commands</a>
+          
+        </li>
+      
+        <li>
+          <a href="#css-with-inker">CSS with Inker</a>
+          
+            <ul>
+              
+                <li>
+                  <a href="#css-with-inker/responsive">Responsive</a>
+                </li>
+              
+                <li>
+                  <a href="#css-with-inker/adding-css-to-the-head">Adding css to the head</a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a href="#html-with-inker">HTML with inker</a>
+          
+            <ul>
+              
+                <li>
+                  <a href="#html-with-inker/inker-with-your-back-end-templating-engine-application">Inker with your back-end templating engine &amp; application</a>
+                </li>
+              
+                <li>
+                  <a href="#html-with-inker/inker-with-dynamic-custom-data">Inker with dynamic custom data</a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a href="#included-components">Included components</a>
+          
+            <ul>
+              
+                <li>
+                  <a href="#included-components/buttons">Buttons</a>
+                </li>
+              
+                <li>
+                  <a href="#included-components/progress-bar">Progress Bar</a>
+                </li>
+              
+                <li>
+                  <a href="#included-components/video">Video</a>
+                </li>
+              
+                <li>
+                  <a href="#included-components/image-caption">Image Caption</a>
+                </li>
+              
+                <li>
+                  <a href="#included-components/panel">Panel</a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a href="#sending-test-email-to-your-inbox">Sending test email to your inbox</a>
+          
+        </li>
+      
+        <li>
+          <a href="#special-thanks">Special thanks</a>
+          
+        </li>
+      
+        <li>
+          <a href="#contributions">Contributions</a>
+          
+        </li>
+      
+        <li>
+          <a href="#licence">Licence</a>
+          
+        </li>
+      
+    </ul>
+    
+      <div class="extra" id="github">
+        <a href="https://github.com/posabsolute/inker">Source on GitHub</a>
+      </div>
+      
+        <div class="extra" id="github-issues">
+          <a href="https://github.com/posabsolute/inker/issues">Issues</a>
+        </div>
+      
+      
+    
+    
+  </div>
+  <div id="content">
+    
+      <a href="https://github.com/posabsolute/inker" id="github-ribbon"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    
+    <h1 id="inker-an-email-marketing-creation-workflow-for-keeping-sane-email-templates">Inker - an email marketing creation workflow for keeping sane email templates</h1>
+<p><em>Not ready</em></p>
+<h2 id='basics' id="basics">Basics</h2 id='basics'>
+<p>Inker one of the best way to build email templates, take back control over your html, never have again this big mess of tables you can&#39;t understand. </p>
+<p>Inker is:</p>
+<ul>
+<li>Built on top of Zurb Ink</li>
+<li>Sane CSS components structure with sass</li>
+<li>Sane HTML components structure with nunjuck</li>
+<li>Auto generate template to HTML documents with inlined CSS</li>
+<li>Auto deployment on litmus for testing</li>
+</ul>
+<h2 id='getting-started' id="getting-started">Getting started</h2 id='getting-started'>
+<p>Inker require <strong>npm</strong> &amp; <strong>grunt</strong> to be already installed.</p>
+<pre><code class="lang-bash">git clone https://github.com/posabsolute/inker.git
+cd inker &amp;&amp; npm install</code></pre>
+<p>You have now everything you need to use inker. There is template examples in src/templates to help you get started.</p>
+<h2 id='available-grunt-commands' id="available-grunt-commands">Available grunt commands</h2 id='available-grunt-commands'>
+<ul>
+<li>grunt watch <em>- Watch source folder for changes &amp; generate dist files</em></li>
+<li>grunt css <em>- Build CSS</em> </li>
+<li>grunt html <em>- Build HTML templates</em></li>
+<li>grunt build <em>- Build css &amp; html</em></li>
+<li>grunt connect *- test emails in your browser from the root folder (<a href="http://0.0.0.0:8555/">http://0.0.0.0:8555/</a>)</li>
+<li>grunt email <em>- Send a test email to any email inbox</em></li>
+<li>grunt litmus <em>- Send a test email to litmus</em></li>
+</ul>
+<h2 id='css-with-inker' id="css-with-inker">CSS with Inker</h2 id='css-with-inker'>
+<p>Inker use <a href="http://zurb.com/ink/">Zurb Ink</a> as its base responsive css framework, everything in ink is available in inker, please refer to their <a href="http://zurb.com/ink/docs.php">documentation</a>. Inker also use the meta framework <a href="http://csswizardry.net/talks/2014/11/itcss-dafed.pdf">ITCSS</a> for the files &amp; folders structure. Better explained by this image. The css is situated in <strong>src/css</strong></p>
+<p>It is important to follow ITCSS rules if you want to keep a sane CSS structure with inker.</p>
+<p><strong>base.scss</strong> is your base CSS file importing all needed files for inker. For example, if you add  a css component you must add import it in base.scss. </p>
+<p><em>It is important to note that since we inline style to html nodes it make no sense to pick &amp; choose components you want to use as it will make no difference on the file size in the end</em></p>
+<h3 id='css-with-inker/responsive' id="responsive">Responsive</h3 id='css-with-inker/responsive'>
+<p>Responsive rules are in the folder <strong>8_trumps</strong>, please note that these rules are added to the document head instead of inlined using data-ignore=&quot;ignore&quot; in html templates.</p>
+<h3 id='css-with-inker/adding-css-to-the-head' id="adding-css-to-the-head">Adding css to the head</h3 id='css-with-inker/adding-css-to-the-head'>
+<p>You can add css to head the using the data-ignore rule in your template:</p>
+<pre><code class="lang-html"><span class="comment">&lt;!-- external styles --&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">data-ignore</span>=<span class="value">"ignore"</span>  <span class="attribute">href</span>=<span class="value">"../css/style.css"</span> /&gt;</span>
+
+<span class="comment">&lt;!-- embedded styles --&gt;</span>
+<span class="tag">&lt;<span class="title">style</span> <span class="attribute">data-ignore</span>=<span class="value">"ignore"</span>&gt;</span><span class="css">
+ <span class="comment">/* styles here will not be inlined */</span>
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></pre>
+<h2 id='html-with-inker' id="html-with-inker">HTML with inker</h2 id='html-with-inker'>
+<p>At its core, inker use <a href="http://mozilla.github.io/nunjucks/">Mozilla Nunjucks</a> to build html templates, please see nunjucks <a href="http://mozilla.github.io/nunjucks/templating.html">documentation</a> for more information on how you can take inker even farther.</p>
+<p>Inker as an html components stucture that use nunjucks macros. an example of component:</p>
+<pre><code class="lang-html"><span class="template_tag">{% macro button(label='default', link='#', class='', align='left') %}</span>
+  <span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"button <span class="variable">{{class}}</span>"</span> <span class="attribute">align</span>=<span class="value">"<span class="variable">{{align}}</span>"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"<span class="variable">{{link}}</span>"</span>&gt;</span><span class="variable">{{label}}</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">table</span>&gt;</span>
+<span class="template_tag">{% endmacro %}</span></code></pre>
+<pre><code class="lang-html">// Import <span class="keyword">the</span> component <span class="keyword">in</span> <span class="keyword">the</span> base.html <span class="type">file</span> <span class="keyword">in</span> html-components folder.
+{% <span class="keyword">from</span> <span class="string">"/html-components/component.button.html"</span> import button %}</code></pre>
+<p>Usage in html template:</p>
+<pre><code class="lang-javascript">button(<span class="string">'Go to google'</span>, <span class="string">'http://www.google.com'</span>, <span class="string">'button-green'</span>, <span class="string">'left'</span>);</code></pre>
+<p><strong>When creating new components remember to add them to the base.html file situates in <em>src/html-components</em></strong></p>
+<h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application' id="inker-with-your-back-end-templating-engine-application">Inker with your back-end templating engine &amp; application</h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application'>
+<p>Inker is specially thought so it integrate with your back-end application, Inker templating engine use &lt;# #&gt; so it does not interfere with others templating engine making it possible to test your templates with inker &amp; then use your back-end to place data &amp; send your email.</p>
+<h3 id='html-with-inker/inker-with-dynamic-custom-data' id="inker-with-dynamic-custom-data">Inker with dynamic custom data</h3 id='html-with-inker/inker-with-dynamic-custom-data'>
+<p>Inker can use json files as a source of dynamic data, an use example would be to test product loops. Of course this means that if you get that data from a back-end api you will need to replace the loop system to match your templating engine after.</p>
+<p>This is a built-in feature of <a href="https://www.npmjs.com/package/grunt-nunjucks-2-html">grunt-nunjucks-2-html</a>.</p>
+<pre><code class="lang-javascript">nunjucks: {
+  options: {
+    data: grunt.file.readJSON(<span class="string">'data.json'</span>)
+  }
+}</code></pre>
+<h2 id='included-components' id="included-components">Included components</h2 id='included-components'>
+<p>Here is the current list of implemented component. I am always looking to add more components to inker.</p>
+<h3 id='included-components/buttons' id="buttons">Buttons</h3 id='included-components/buttons'>
+<p><em>Options:</em></p>
+<ul>
+<li>Label</li>
+<li>Link</li>
+<li>Class to add</li>
+<li>Alignement</li>
+</ul>
+<p>Usage: </p>
+<pre><code class="lang-javascript">button(<span class="string">'Go to google'</span>, <span class="string">'http://www.google.com'</span>, <span class="string">'button-green'</span>, <span class="string">'left'</span>);</code></pre>
+<p>Render:</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"button button-green"</span> <span class="attribute">align</span>=<span class="value">"left"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.google.com"</span>&gt;</span>Go to google<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">table</span>&gt;</span></code></pre>
+<h3 id='included-components/progress-bar' id="progress-bar">Progress Bar</h3 id='included-components/progress-bar'>
+<p><em>Options:</em></p>
+<ul>
+<li>width of bars</li>
+<li>progress</li>
+<li>label</li>
+<li>Class to add</li>
+</ul>
+<p>Usage: </p>
+<pre><code class="lang-javascript">progressbar(<span class="string">'100%'</span>, <span class="number">70</span>, <span class="string">'Your progress so far'</span>, <span class="string">'progressbar-green'</span>);</code></pre>
+<p>Render:</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">'progressbar progressbar-green'</span> <span class="attribute">cellpadding</span>=<span class="value">"0"</span> <span class="attribute">cellspacing</span>=<span class="value">"0"</span> <span class="attribute">width</span>=<span class="value">"100%"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+          <span class="tag">&lt;<span class="title">td</span> <span class="attribute">class</span>=<span class="value">'foreground'</span> <span class="attribute">style</span>=<span class="value">''</span> <span class="attribute">width</span>=<span class="value">"70%"</span>&gt;</span>
+              Your progress so far
+          <span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+          <span class="tag">&lt;<span class="title">td</span> <span class="attribute">class</span>=<span class="value">"background"</span> <span class="attribute">width</span>=<span class="value">"30%"</span>&gt;</span>
+              &amp;nbsp;
+          <span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">table</span>&gt;</span></code></pre>
+<h3 id='included-components/video' id="video">Video</h3 id='included-components/video'>
+<p>Please refer to campaign monitor chart to see what email client support video, fall back to an image.</p>
+<p><em>Options:</em></p>
+<ul>
+<li>width</li>
+<li>height</li>
+<li>video_src</li>
+<li>video_link</li>
+<li>video_image_placeholder</li>
+<li>class</li>
+</ul>
+<p>Usage: </p>
+<pre><code class="lang-javascript">video(<span class="number">320</span>, <span class="number">176</span>, <span class="string">'http://www.google.com'</span>, <span class="string">'http://www.google.com'</span>, <span class="string">'http://www.google.com'</span>, <span class="string">'video-big'</span>);</code></pre>
+<p>Render:</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"video_holder video-big"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">video</span> <span class="attribute">width</span>=<span class="value">"320"</span> <span class="attribute">height</span>=<span class="value">"176"</span> <span class="attribute">controls</span>&gt;</span>
+          <span class="tag">&lt;<span class="title">source</span> <span class="attribute">src</span>=<span class="value">"<span class="variable">{{video_src}}</span>.mp4"</span> <span class="attribute">type</span>=<span class="value">"video/mp4"</span>&gt;</span>
+          <span class="tag">&lt;<span class="title">source</span> <span class="attribute">src</span>=<span class="value">"<span class="variable">{{video_src}}</span>.ogg"</span> <span class="attribute">type</span>=<span class="value">"video/ogg"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"<span class="variable">{{video_link}}</span>"</span> &gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">height</span>=<span class="value">"176"</span> 
+              <span class="attribute">src</span>=<span class="value">"<span class="variable">{{video_image_placeholder}}</span>"</span> <span class="attribute">width</span>=<span class="value">"320"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">video</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<h3 id='included-components/image-caption' id="image-caption">Image Caption</h3 id='included-components/image-caption'>
+<p><em>Options:</em></p>
+<ul>
+<li>Label</li>
+<li>Width</li>
+<li>Class</li>
+<li>Align</li>
+</ul>
+<p>Usage: </p>
+<pre><code class="lang-javascript">caption(<span class="string">'This is a cat'</span>, <span class="string">'320px'</span>, <span class="string">'caption-red'</span>, <span class="string">'left'</span>);</code></pre>
+<p>Render:</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"caption caption-red"</span> <span class="attribute">cellpadding</span>=<span class="value">"0"</span> <span class="attribute">cellspacing</span>=<span class="value">"0"</span> <span class="attribute">width</span>=<span class="value">"320px"</span> <span class="attribute">border</span>=<span class="value">"0"</span>, <span class="attribute">align</span>=<span class="value">'left'</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+          <span class="tag">&lt;<span class="title">td</span> <span class="attribute">align</span>=<span class="value">"center"</span>&gt;</span>
+              <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://placekitten.com/g/300/300"</span> <span class="attribute">alt</span>=<span class="value">""</span> /&gt;</span>
+              <span class="tag">&lt;<span class="title">div</span>&gt;</span>This is a cat<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+          <span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">table</span>&gt;</span></code></pre>
+<h3 id='included-components/panel' id="panel">Panel</h3 id='included-components/panel'>
+<p><em>Options:</em></p>
+<ul>
+<li>Label</li>
+<li>size (default: twelve)</li>
+<li>Class</li>
+</ul>
+<p>Usage: </p>
+<pre><code class="lang-javascript">panel(<span class="string">'This is a panel'</span>, <span class="string">'twelve'</span>, <span class="string">'panel-red'</span>);</code></pre>
+<p>Render:</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"twelve panel-red columns"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span> <span class="attribute">class</span>=<span class="value">"panel"</span>&gt;</span>
+
+        This is a panel
+
+      <span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span> <span class="attribute">class</span>=<span class="value">"expander"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">table</span>&gt;</span></code></pre>
+<h2 id='sending-test-email-to-your-inbox' id="sending-test-email-to-your-inbox">Sending test email to your inbox</h2 id='sending-test-email-to-your-inbox'>
+<p>Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in <strong>gruntfile.js</strong>. However a better way to use it would be to change the path directly from the grunt command.</p>
+<pre><code class="lang-bash">// Override default src provided <span class="keyword">in</span> gruntfile
+grunt email --fileSrc=dist/output/example.html</code></pre>
+<p>Config example:</p>
+<pre><code class="lang-javascript">nodemailer: {
+    options: {
+      transport: {
+        type: <span class="string">'SMTP'</span>,
+        options: {
+          service: <span class="string">'Gmail'</span>,
+          auth: {
+            user: <span class="string">'your.email@gmail.com'</span>,
+            pass: <span class="string">'BLAH'</span>
+          }
+        }
+      },
+      recipients: [
+        {
+          email: <span class="string">'your.email@gmail.com'</span>,
+          name: <span class="string">'Jane Doe'</span>
+        }
+      ]
+    },
+    src: [<span class="string">'dist/output/*.html'</span>]
+},</code></pre>
+<h2 id='special-thanks' id="special-thanks">Special thanks</h2 id='special-thanks'>
+<p>Thanks to Litmus for providing free email client testing for this project.</p>
+<h2 id='contributions' id="contributions">Contributions</h2 id='contributions'>
+<p>I am always happy to accept contributions, but please follow ITCSS guidelines &amp; please test your new components of bug fices in most used email clients.</p>
+<h2 id='licence' id="licence">Licence</h2 id='licence'>
+<p><em>All tools used in this project are bound by their own licence.</em></p>
+<p>The MIT License (MIT)</p>
+<p>Copyright (c) 2014 Cedric Dugas</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+
+  </div>
+</div>
+</body>
 </html>
