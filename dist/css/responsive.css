@@ -82,4 +82,12 @@
     display: inherit !important; }
  }
 
+@media only screen and (max-width: 600px) {
+  video {
+    width: 100% !important; }
+    video img {
+      width: 100% !important;
+      height: auto !important; }
+ }
+
 /*# sourceMappingURL=responsive.css.map */
