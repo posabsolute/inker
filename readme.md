@@ -1,17 +1,10 @@
 # Inker - a workflow for keeping sane email templates
 
-*Not ready*
-
-## Todo
-
-* Integrate premailer
-* Doc Premailer
-* Doc Litmus
-* Fix example css
-
 ## Basics
 
 Inker one of the best way to build email templates, take back control over your html, never have again this big mess of tables you can't understand. 
+
+Documentation [http://posabsolute.github.io/inker/](http://posabsolute.github.io/inker/)
 
 Inker is:
 
@@ -31,7 +24,7 @@ git clone https://github.com/posabsolute/inker.git
 cd inker && npm install
 ```
 
-You have now everything you need to use inker. There is template examples in src/templates to help you get started.
+You have now everything you need to use inker. Your first stop would be the example in src/templates to help you get started.
 
 
 ## Available grunt commands
@@ -47,21 +40,18 @@ You have now everything you need to use inker. There is template examples in src
 
 ## CSS with Inker
 
-Inker use [Zurb Ink](http://zurb.com/ink/) as its base responsive css framework, everything in ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also use the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files & folders structure. Better explained by this image. The css is situated in **src/css**
+Inker use [Zurb Ink](http://zurb.com/ink/) responsive css framework, everything in Ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also use the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files & folders structure. Better explained by this image. The css can be found in **src/css**
 
-It is important to follow ITCSS rules if you want to keep a sane CSS structure with inker.
-
-**base.scss** is your base CSS file importing all needed files for inker. For example, if you add  a css component you must add import it in base.scss. 
+**base.scss** is your base CSS file importing all needed files for inker, if you add  a css component you must import it in base.scss. 
 
 *It is important to note that since we inline style to html nodes it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end*
 
 ### Responsive
 
-Responsive rules are in the folder **8_trumps**, please note that these rules are added to the document head instead of inlined using data-ignore="ignore" in html templates.
+Responsive rules are in the folder **8_trumps**, please note that these rules are added to the document head instead of inlined using data-ignore="ignore" in the html templates.
 
-### Adding css to the head
-
-You can add css to head the using the data-ignore rule in your template:
+### Ignore css inlining
+ 
 ```html
 <!-- external styles -->
 <link rel="stylesheet" data-ignore="ignore"  href="../css/style.css" />
@@ -72,11 +62,11 @@ You can add css to head the using the data-ignore rule in your template:
 </style>
 ```
 
-### Adding new templates
+### Adding new themes
 
-Open 7_themes, you will see there is already a folder called sidebarhero used for the sidebar hero template. Add a new folder in 7_themes for your template, your main css will be automatically generated in dist/css/[your folder].
+Open 7_themes, you will see there is already a folder called sidebarhero used for the sidebar hero template. Add a new folder in 7_themes for your template, your main css file will be automatically generated in dist/css/[your folder].
 
-The in your tempplate use:
+Them in your html use:
 ```html
   {% block theme_css %}<link href="../../css/sidebarhero/sidebarhero.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
 ```
@@ -85,7 +75,7 @@ The in your tempplate use:
 
 Inker use [Mozilla Nunjucks](http://mozilla.github.io/nunjucks/) to build html templates, please see nunjucks [documentation](http://mozilla.github.io/nunjucks/templating.html) for more information on how you can take inker even farther.
 
-Inker as an html components stucture that use nunjucks macros. an example of component:
+Inker as an html components stucture that use nunjucks macros. Example of component:
 
 ```html
 {% macro button(label='default', link='#', class='', align='left') %}
@@ -126,15 +116,13 @@ Open the templates folder, you should see a folder sidebar_hero, add your own fo
 
   {% block responsive_css %}<link href="../../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />{% endblock %}
   
-{% block meta_title %}Email title in document head{% endblock %}
-{% block mainContent %}
-  {% block header %}
-    {% include "/templates/sidebar_hero/header.html" %}
-  {% endblock %}
+  {% block meta_title %}Email title in document head{% endblock %}
 
-  {% block content %}
-    {% include "/templates/sidebar_hero/content.html" %}
-  {% endblock %}
+{% block mainContent %}
+
+  {% block header %} {% include "/templates/sidebar_hero/header.html" %} {% endblock %}
+  {% block content %} {% include "/templates/sidebar_hero/content.html" %} {% endblock %}
+
 {% endblock %}
 ```
 
@@ -158,7 +146,7 @@ nunjucks: {
 
 
 ## Included components
-Current list of implemented component. I am always looking to add more components to inker.
+Current list of implemented component. (I am always looking to add more components to inker.)
 
 ### Buttons
 
@@ -295,7 +283,9 @@ Render:
 
 ## Sending test email to your inbox
 
-Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. However a better way to use it would be to change the path directly from the grunt command.
+Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. 
+
+However a better way to use it would be to change the path directly from the grunt command. This make it possible to test really fast different templates.
 
 ```bash
 // Override default src provided in gruntfile
@@ -326,8 +316,29 @@ nodemailer: {
     src: ['dist/output/*.html']
 },
 ```
+## Using litmus.
+
+Grunt litmus [documentation](https://github.com/jeremypeter/grunt-litmus).
 
 
+### Overriding default files sent to litmus
+
+grunt litmus:dist/output/sidebar_hero/index.html
+
+### Default config
+```javascript
+litmus: {
+  test: {
+    src: ['email.html'],
+    options: {
+      username: 'username',
+      password: 'password',
+      url: 'https://yourcompany.litmus.com',
+      clients: ['gmailnew', 'ffgmailnew', 'chromegmailnew']
+    }
+  }
+},
+```
 ## Special thanks
 
 Thanks to Litmus for providing free email client testing for this project.
