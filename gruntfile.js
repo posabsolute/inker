@@ -51,10 +51,10 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        emailBuilder: {
+        premailer: {
           inline :{
             options: {
-              encodeSpecialChars: true
+              
             },
             files : [{
               expand: true,
@@ -68,10 +68,25 @@ module.exports = function(grunt) {
             test: {
               src: ['dist/output/*.html', 'dist/output/**/*.html'],
               options: {
-                username: 'username',
-                password: 'password',
-                url: 'https://yourcompany.litmus.com',
-                clients: ['gmailnew', 'ffgmailnew', 'chromegmailnew']
+                username: 'email@gmail.com',
+                password: 'pass',
+                url: 'https://cedricdugas.litmus.com',
+                clients: [
+                  //gmail
+                  'gmailnew', 'ffgmailnew', 'chromegmailnew',
+                  // outlook
+                  'ol2002', 'ol2003', 'ol2007', 'ol2010', 'ol2011', 'ol2013',
+                  // hotmail
+                  'outlookcom', 'ffoutlookcom', 'chromeoutlookcom', 
+                  //Yahoo
+                  'chromeyahoo',
+                  //applemail
+                  'appmail6',
+                  //mobile
+                  'iphone6plus', 'iphone6', 'iphone5s', 'androidgmailapp', 'android4', 'ipad',
+                  // spam check
+                  'messagelabs'
+                ]
               }
             }
         },
@@ -82,14 +97,14 @@ module.exports = function(grunt) {
                 options: {
                   service: 'Gmail',
                   auth: {
-                    user: 'cedric.dugas@gmail.com',
+                    user: 'email@gmail.com',
                     pass: 'test12'
                   }
                 }
               },
               recipients: [
                 {
-                  email: 'cedric.dugas@gmail.com',
+                  email: 'email@gmail.com',
                   name: 'Jane Doe'
                 }
               ]
@@ -130,6 +145,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-email-builder');
     grunt.loadNpmTasks('grunt-litmus');
     grunt.loadNpmTasks('grunt-nodemailer');
+    grunt.loadNpmTasks('grunt-premailer');
 
     grunt.registerTask('default',['watch']);
     grunt.registerTask('css',['sass']);

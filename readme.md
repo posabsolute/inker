@@ -35,7 +35,7 @@ You have now everything you need to use inker. Your first stop would be the exam
 * grunt build *- Build css & html*
 * grunt connect *- test emails in your browser from the root folder (http://0.0.0.0:8555/)
 * grunt email *- Send a test email to any email inbox*
-* grunt litmus *- Send a test email to litmus*
+* grunt sendlitmus *- Send a test email to litmus*
 
 
 ## CSS with Inker
@@ -283,9 +283,9 @@ Render:
 
 ## Sending test email to your inbox
 
-Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. 
+Inker use [grunt-nodemailer](https://github.com/posabsolute/grunt-nodemailer) to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. 
 
-However a better way to use it would be to change the path directly from the grunt command. This make it possible to test really fast different templates.
+However a better way to use it would be to change the path directly from the grunt command. This make it possible to send tests really fast with different templates.
 
 ```bash
 // Override default src provided in gruntfile
@@ -316,7 +316,8 @@ nodemailer: {
     src: ['dist/output/*.html']
 },
 ```
-## Using litmus.
+
+## Using litmus
 
 Grunt litmus [documentation](https://github.com/jeremypeter/grunt-litmus).
 
@@ -326,6 +327,8 @@ Grunt litmus [documentation](https://github.com/jeremypeter/grunt-litmus).
 grunt litmus:dist/output/sidebar_hero/index.html
 
 ### Default config
+The most used email clients are already set in the config file.
+
 ```javascript
 litmus: {
   test: {
@@ -334,14 +337,29 @@ litmus: {
       username: 'username',
       password: 'password',
       url: 'https://yourcompany.litmus.com',
-      clients: ['gmailnew', 'ffgmailnew', 'chromegmailnew']
+      clients: [
+        //gmail
+        'gmailnew', 'ffgmailnew', 'chromegmailnew',
+        // outlook
+        'ol2002', 'ol2003', 'ol2007', 'ol2010', 'ol2011', 'ol2013',
+        // hotmail
+        'outlookcom', 'ffoutlookcom', 'chromeoutlookcom', 
+        //Yahoo
+        'chromeyahoo',
+        //applemail
+        'appmail6',
+        //mobile
+        'iphone6plus', 'iphone6', 'iphone5s', 'androidgmailapp', 'android4', 'ipad',
+        // spam check
+        'messagelabs'
+      ]
     }
   }
 },
 ```
 ## Special thanks
 
-Thanks to Litmus for providing free email client testing for this project.
+Thanks to [Litmus](http://www.litmus.com) for providing free email client testing for this project.
 
 
 ## Contributions
@@ -355,7 +373,7 @@ I am always happy to accept contributions, i"m currently looking for more compon
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Cedric Dugas
+Copyright (c) 2014 Cedric Dugas [http://www.position-absolute.com](http://www.position-absolute.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

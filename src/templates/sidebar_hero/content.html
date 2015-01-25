@@ -44,74 +44,7 @@
           </tr>
         </tbody></table>
 
-        <table class="row footer">
-          <tbody><tr>
-            <td class="wrapper">
-              <table class="six columns">
-                <tbody><tr>
-                  <td class="left-text-pad">
-
-                    <h6>We still miss some information from your account:</h6>
-
-                    {{ progressbar(width='100%',  progress='70', label='Completed', class='') }}
-                  </td>
-                  <td class="expander"></td>
-                </tr>
-              </tbody></table>
-
-              <table class="six columns">
-                <tbody><tr>
-                  <td class="left-text-pad">
-
-                    <h5>Connect With Us:</h5>
-                    {{ button('Facebook', '#', 'tiny-button', 'left') }}
-                    <br> <br>
-                    {{ button('Twitter', '#', 'tiny-button', 'left') }}
-                    <br> <br>
-                    {{ button('Google +', '#', 'tiny-button', 'left') }}
-                  </td>
-                  <td class="expander"></td>
-                </tr>
-              </tbody></table>
-
-            </td>
-            <td class="wrapper last">
-
-              <table class="six columns">
-                <tbody><tr>
-                  <td class="last right-text-pad">
-                    <h5>Contact Info:</h5>
-                    <p>Phone: 408.341.0600</p>
-                    <p>Email: <a href="mailto:hseldon@trantor.com">hseldon@trantor.com</a></p>
-                  </td>
-                  <td class="expander"></td>
-                </tr>
-              </tbody></table>
-
-            </td>
-          </tr>
-        </tbody></table>
-
-
-        <table class="row">
-          <tbody><tr>
-            <td class="wrapper last">
-
-              <table class="twelve columns">
-                <tbody><tr>
-                  <td align="center">
-                    <center>
-                      <p style="text-align:center;"><a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Unsubscribe</a></p>
-                    </center>
-                  </td>
-                  <td class="expander"></td>
-                </tr>
-              </tbody></table>
-
-            </td>
-          </tr>
-        </tbody></table>
-
+      {% block content %} {% include "/templates/sidebar_hero/footer.html" %} {% endblock %}
       <!-- container end below -->
       </td>
     </tr>
