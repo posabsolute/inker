@@ -1,5 +1,10 @@
 # Inker - a workflow for keeping sane email templates
 
+## todo
+* Test Data
+* Change nunjucks default template tags
+* better email template
+
 ## Basics
 
 Inker one of the best way to build email templates, take back control over your html, never have again this big mess of tables you can't understand. 
