@@ -36,6 +36,11 @@
     <ul id="sections">
       
         <li>
+          <a href="#todo">todo</a>
+          
+        </li>
+      
+        <li>
           <a href="#basics">Basics</a>
           
         </li>
@@ -60,7 +65,11 @@
                 </li>
               
                 <li>
-                  <a href="#css-with-inker/adding-css-to-the-head">Adding css to the head</a>
+                  <a href="#css-with-inker/ignore-css-inlining">Ignore css inlining</a>
+                </li>
+              
+                <li>
+                  <a href="#css-with-inker/adding-new-themes">Adding new themes</a>
                 </li>
               
             </ul>
@@ -71,6 +80,10 @@
           <a href="#html-with-inker">HTML with inker</a>
           
             <ul>
+              
+                <li>
+                  <a href="#html-with-inker/creating-new-html-templates">Creating new html templates</a>
+                </li>
               
                 <li>
                   <a href="#html-with-inker/inker-with-your-back-end-templating-engine-application">Inker with your back-end templating engine &amp; application</a>
@@ -119,6 +132,23 @@
         </li>
       
         <li>
+          <a href="#using-litmus">Using litmus</a>
+          
+            <ul>
+              
+                <li>
+                  <a href="#using-litmus/overriding-default-files-sent-to-litmus">Overriding default files sent to litmus</a>
+                </li>
+              
+                <li>
+                  <a href="#using-litmus/default-config">Default config</a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
           <a href="#special-thanks">Special thanks</a>
           
         </li>
@@ -151,10 +181,16 @@
     
       <a href="https://github.com/posabsolute/inker" id="github-ribbon"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     
-    <h1 id="inker-an-email-marketing-creation-workflow-for-keeping-sane-email-templates">Inker - an email marketing creation workflow for keeping sane email templates</h1>
-<p><em>Not ready</em></p>
+    <h1 id="inker-a-workflow-for-keeping-sane-email-templates">Inker - a workflow for keeping sane email templates</h1>
+<h2 id='todo' id="todo">todo</h2 id='todo'>
+<ul>
+<li>Test Data</li>
+<li>Change nunjucks default template tags</li>
+<li>better email template</li>
+</ul>
 <h2 id='basics' id="basics">Basics</h2 id='basics'>
 <p>Inker one of the best way to build email templates, take back control over your html, never have again this big mess of tables you can&#39;t understand. </p>
+<p>Documentation <a href="http://posabsolute.github.io/inker/"><a href="http://posabsolute.github.io/inker/">http://posabsolute.github.io/inker/</a></a></p>
 <p>Inker is:</p>
 <ul>
 <li>Built on top of Zurb Ink</li>
@@ -167,7 +203,7 @@
 <p>Inker require <strong>npm</strong> &amp; <strong>grunt</strong> to be already installed.</p>
 <pre><code class="lang-bash">git clone https://github.com/posabsolute/inker.git
 cd inker &amp;&amp; npm install</code></pre>
-<p>You have now everything you need to use inker. There is template examples in src/templates to help you get started.</p>
+<p>You have now everything you need to use inker. Your first stop would be the example in src/templates to help you get started.</p>
 <h2 id='available-grunt-commands' id="available-grunt-commands">Available grunt commands</h2 id='available-grunt-commands'>
 <ul>
 <li>grunt watch <em>- Watch source folder for changes &amp; generate dist files</em></li>
@@ -176,17 +212,15 @@ cd inker &amp;&amp; npm install</code></pre>
 <li>grunt build <em>- Build css &amp; html</em></li>
 <li>grunt connect *- test emails in your browser from the root folder (<a href="http://0.0.0.0:8555/">http://0.0.0.0:8555/</a>)</li>
 <li>grunt email <em>- Send a test email to any email inbox</em></li>
-<li>grunt litmus <em>- Send a test email to litmus</em></li>
+<li>grunt sendlitmus <em>- Send a test email to litmus</em></li>
 </ul>
 <h2 id='css-with-inker' id="css-with-inker">CSS with Inker</h2 id='css-with-inker'>
-<p>Inker use <a href="http://zurb.com/ink/">Zurb Ink</a> as its base responsive css framework, everything in ink is available in inker, please refer to their <a href="http://zurb.com/ink/docs.php">documentation</a>. Inker also use the meta framework <a href="http://csswizardry.net/talks/2014/11/itcss-dafed.pdf">ITCSS</a> for the files &amp; folders structure. Better explained by this image. The css is situated in <strong>src/css</strong></p>
-<p>It is important to follow ITCSS rules if you want to keep a sane CSS structure with inker.</p>
-<p><strong>base.scss</strong> is your base CSS file importing all needed files for inker. For example, if you add  a css component you must add import it in base.scss. </p>
+<p>Inker use <a href="http://zurb.com/ink/">Zurb Ink</a> responsive css framework, everything in Ink is available in inker, please refer to their <a href="http://zurb.com/ink/docs.php">documentation</a>. Inker also use the meta framework <a href="http://csswizardry.net/talks/2014/11/itcss-dafed.pdf">ITCSS</a> for the files &amp; folders structure. Better explained by this image. The css can be found in <strong>src/css</strong></p>
+<p><strong>base.scss</strong> is your base CSS file importing all needed files for inker, if you add  a css component you must import it in base.scss. </p>
 <p><em>It is important to note that since we inline style to html nodes it make no sense to pick &amp; choose components you want to use as it will make no difference on the file size in the end</em></p>
 <h3 id='css-with-inker/responsive' id="responsive">Responsive</h3 id='css-with-inker/responsive'>
-<p>Responsive rules are in the folder <strong>8_trumps</strong>, please note that these rules are added to the document head instead of inlined using data-ignore=&quot;ignore&quot; in html templates.</p>
-<h3 id='css-with-inker/adding-css-to-the-head' id="adding-css-to-the-head">Adding css to the head</h3 id='css-with-inker/adding-css-to-the-head'>
-<p>You can add css to head the using the data-ignore rule in your template:</p>
+<p>Responsive rules are in the folder <strong>8_trumps</strong>, please note that these rules are added to the document head instead of inlined using data-ignore=&quot;ignore&quot; in the html templates.</p>
+<h3 id='css-with-inker/ignore-css-inlining' id="ignore-css-inlining">Ignore css inlining</h3 id='css-with-inker/ignore-css-inlining'>
 <pre><code class="lang-html"><span class="comment">&lt;!-- external styles --&gt;</span>
 <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">data-ignore</span>=<span class="value">"ignore"</span>  <span class="attribute">href</span>=<span class="value">"../css/style.css"</span> /&gt;</span>
 
@@ -194,9 +228,13 @@ cd inker &amp;&amp; npm install</code></pre>
 <span class="tag">&lt;<span class="title">style</span> <span class="attribute">data-ignore</span>=<span class="value">"ignore"</span>&gt;</span><span class="css">
  <span class="comment">/* styles here will not be inlined */</span>
 </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></pre>
+<h3 id='css-with-inker/adding-new-themes' id="adding-new-themes">Adding new themes</h3 id='css-with-inker/adding-new-themes'>
+<p>Open 7_themes, you will see there is already a folder called sidebarhero used for the sidebar hero template. Add a new folder in 7_themes for your template, your main css file will be automatically generated in dist/css/[your folder].</p>
+<p>Them in your html use:</p>
+<pre><code class="lang-html">  <span class="template_tag">{% <span class="keyword">block</span> theme_css %}</span><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/sidebarhero/sidebarhero.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span><span class="template_tag">{% <span class="keyword">endblock</span> %}</span></code></pre>
 <h2 id='html-with-inker' id="html-with-inker">HTML with inker</h2 id='html-with-inker'>
-<p>At its core, inker use <a href="http://mozilla.github.io/nunjucks/">Mozilla Nunjucks</a> to build html templates, please see nunjucks <a href="http://mozilla.github.io/nunjucks/templating.html">documentation</a> for more information on how you can take inker even farther.</p>
-<p>Inker as an html components stucture that use nunjucks macros. an example of component:</p>
+<p>Inker use <a href="http://mozilla.github.io/nunjucks/">Mozilla Nunjucks</a> to build html templates, please see nunjucks <a href="http://mozilla.github.io/nunjucks/templating.html">documentation</a> for more information on how you can take inker even farther.</p>
+<p>Inker as an html components stucture that use nunjucks macros. Example of component:</p>
 <pre><code class="lang-html"><span class="template_tag">{% macro button(label='default', link='#', class='', align='left') %}</span>
   <span class="tag">&lt;<span class="title">table</span> <span class="attribute">class</span>=<span class="value">"button <span class="variable">{{class}}</span>"</span> <span class="attribute">align</span>=<span class="value">"<span class="variable">{{align}}</span>"</span>&gt;</span>
     <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
@@ -209,8 +247,25 @@ cd inker &amp;&amp; npm install</code></pre>
 <pre><code class="lang-html">// Import <span class="keyword">the</span> component <span class="keyword">in</span> <span class="keyword">the</span> base.html <span class="type">file</span> <span class="keyword">in</span> html-components folder.
 {% <span class="keyword">from</span> <span class="string">"/html-components/component.button.html"</span> import button %}</code></pre>
 <p>Usage in html template:</p>
-<pre><code class="lang-javascript">button(<span class="string">'Go to google'</span>, <span class="string">'http://www.google.com'</span>, <span class="string">'button-green'</span>, <span class="string">'left'</span>);</code></pre>
+<pre><code class="lang-javascript">{{ button(<span class="string">'Go to google'</span>, <span class="string">'http://www.google.com'</span>, <span class="string">'button-green'</span>, <span class="string">'left'</span>); }}</code></pre>
 <p><strong>When creating new components remember to add them to the base.html file situates in <em>src/html-components</em></strong></p>
+<h3 id='html-with-inker/creating-new-html-templates' id="creating-new-html-templates">Creating new html templates</h3 id='html-with-inker/creating-new-html-templates'>
+<p>Open the templates folder, you should see a folder sidebar_hero, add your own folder here. Please refer to  sidebar_hero for a complete example.</p>
+<h4 id="example-of-base-template">Example of base template</h4>
+<pre><code class="lang-html"><span class="template_tag">{% <span class="keyword">extends</span> "/html-components/base.html" %}</span>
+  <span class="template_tag">{% <span class="keyword">block</span> main_css %}</span><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/main.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span><span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+  <span class="template_tag">{% <span class="keyword">block</span> theme_css %}</span><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/sidebarhero/sidebarhero.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span><span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+
+  <span class="template_tag">{% <span class="keyword">block</span> responsive_css %}</span><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/responsive.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">data-ignore</span>=<span class="value">"ignore"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span><span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+
+  <span class="template_tag">{% <span class="keyword">block</span> meta_title %}</span>Email title in document head<span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+
+<span class="template_tag">{% <span class="keyword">block</span> mainContent %}</span>
+
+  <span class="template_tag">{% <span class="keyword">block</span> header %}</span> <span class="template_tag">{% <span class="keyword">include</span> "/templates/sidebar_hero/header.html" %}</span> <span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+  <span class="template_tag">{% <span class="keyword">block</span> content %}</span> <span class="template_tag">{% <span class="keyword">include</span> "/templates/sidebar_hero/content.html" %}</span> <span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+
+<span class="template_tag">{% <span class="keyword">endblock</span> %}</span></code></pre>
 <h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application' id="inker-with-your-back-end-templating-engine-application">Inker with your back-end templating engine &amp; application</h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application'>
 <p>Inker is specially thought so it integrate with your back-end application, Inker templating engine use &lt;# #&gt; so it does not interfere with others templating engine making it possible to test your templates with inker &amp; then use your back-end to place data &amp; send your email.</p>
 <h3 id='html-with-inker/inker-with-dynamic-custom-data' id="inker-with-dynamic-custom-data">Inker with dynamic custom data</h3 id='html-with-inker/inker-with-dynamic-custom-data'>
@@ -222,7 +277,7 @@ cd inker &amp;&amp; npm install</code></pre>
   }
 }</code></pre>
 <h2 id='included-components' id="included-components">Included components</h2 id='included-components'>
-<p>Here is the current list of implemented component. I am always looking to add more components to inker.</p>
+<p>Current list of implemented component. (I am always looking to add more components to inker.)</p>
 <h3 id='included-components/buttons' id="buttons">Buttons</h3 id='included-components/buttons'>
 <p><em>Options:</em></p>
 <ul>
@@ -324,7 +379,8 @@ cd inker &amp;&amp; npm install</code></pre>
     <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">table</span>&gt;</span></code></pre>
 <h2 id='sending-test-email-to-your-inbox' id="sending-test-email-to-your-inbox">Sending test email to your inbox</h2 id='sending-test-email-to-your-inbox'>
-<p>Inker use grunt-nodemailer to send test. By default it send a test for all files that are in the output folders, you can easily change that in <strong>gruntfile.js</strong>. However a better way to use it would be to change the path directly from the grunt command.</p>
+<p>Inker use <a href="https://github.com/posabsolute/grunt-nodemailer">grunt-nodemailer</a> to send test. By default it send a test for all files that are in the output folders, you can easily change that in <strong>gruntfile.js</strong>. </p>
+<p>However a better way to use it would be to change the path directly from the grunt command. This make it possible to send tests really fast with different templates.</p>
 <pre><code class="lang-bash">// Override default src provided <span class="keyword">in</span> gruntfile
 grunt email --fileSrc=dist/output/example.html</code></pre>
 <p>Config example:</p>
@@ -349,14 +405,46 @@ grunt email --fileSrc=dist/output/example.html</code></pre>
     },
     src: [<span class="string">'dist/output/*.html'</span>]
 },</code></pre>
+<h2 id='using-litmus' id="using-litmus">Using litmus</h2 id='using-litmus'>
+<p>Grunt litmus <a href="https://github.com/jeremypeter/grunt-litmus">documentation</a>.</p>
+<h3 id='using-litmus/overriding-default-files-sent-to-litmus' id="overriding-default-files-sent-to-litmus">Overriding default files sent to litmus</h3 id='using-litmus/overriding-default-files-sent-to-litmus'>
+<p>grunt litmus:dist/output/sidebar_hero/index.html</p>
+<h3 id='using-litmus/default-config' id="default-config">Default config</h3 id='using-litmus/default-config'>
+<p>The most used email clients are already set in the config file.</p>
+<pre><code class="lang-javascript">litmus: {
+  test: {
+    src: [<span class="string">'email.html'</span>],
+    options: {
+      username: <span class="string">'username'</span>,
+      password: <span class="string">'password'</span>,
+      url: <span class="string">'https://yourcompany.litmus.com'</span>,
+      clients: [
+        <span class="comment">//gmail</span>
+        <span class="string">'gmailnew'</span>, <span class="string">'ffgmailnew'</span>, <span class="string">'chromegmailnew'</span>,
+        <span class="comment">// outlook</span>
+        <span class="string">'ol2002'</span>, <span class="string">'ol2003'</span>, <span class="string">'ol2007'</span>, <span class="string">'ol2010'</span>, <span class="string">'ol2011'</span>, <span class="string">'ol2013'</span>,
+        <span class="comment">// hotmail</span>
+        <span class="string">'outlookcom'</span>, <span class="string">'ffoutlookcom'</span>, <span class="string">'chromeoutlookcom'</span>, 
+        <span class="comment">//Yahoo</span>
+        <span class="string">'chromeyahoo'</span>,
+        <span class="comment">//applemail</span>
+        <span class="string">'appmail6'</span>,
+        <span class="comment">//mobile</span>
+        <span class="string">'iphone6plus'</span>, <span class="string">'iphone6'</span>, <span class="string">'iphone5s'</span>, <span class="string">'androidgmailapp'</span>, <span class="string">'android4'</span>, <span class="string">'ipad'</span>,
+        <span class="comment">// spam check</span>
+        <span class="string">'messagelabs'</span>
+      ]
+    }
+  }
+},</code></pre>
 <h2 id='special-thanks' id="special-thanks">Special thanks</h2 id='special-thanks'>
-<p>Thanks to Litmus for providing free email client testing for this project.</p>
+<p>Thanks to <a href="http://www.litmus.com">Litmus</a> for providing free email client testing for this project.</p>
 <h2 id='contributions' id="contributions">Contributions</h2 id='contributions'>
-<p>I am always happy to accept contributions, but please follow ITCSS guidelines &amp; please test your new components of bug fices in most used email clients.</p>
+<p>I am always happy to accept contributions, i&quot;m currently looking for more components &amp; example, but please follow ITCSS guidelines &amp; please test your new components in the most used email clients.</p>
 <h2 id='licence' id="licence">Licence</h2 id='licence'>
 <p><em>All tools used in this project are bound by their own licence.</em></p>
 <p>The MIT License (MIT)</p>
-<p>Copyright (c) 2014 Cedric Dugas</p>
+<p>Copyright (c) 2014 Cedric Dugas <a href="http://www.position-absolute.com"><a href="http://www.position-absolute.com">http://www.position-absolute.com</a></a></p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the &quot;Software&quot;), to deal
 in the Software without restriction, including without limitation the rights
