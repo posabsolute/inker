@@ -1,13 +1,6 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        /*sass: {
-            dist: {
-                files: {
-                    'css/main.css' : 'css/sass/main.scss'
-                }
-            }
-        },*/
         sass: {
             options: {
                 sourceMap: true
@@ -29,15 +22,21 @@ module.exports = function(grunt) {
             }
         },
         nunjucks: {
-            /*
-            precompile: {
-                baseDir: 'src/',
-                src: 'src/templates/*',
-                dest: 'dist/nunjucks/templates.js'
-            }
-            */
             options:{
                 paths : "src"
+                // Use custom tag syntax to not interfer with your own templating engine
+                /*
+                tags : {
+                  blockStart: '<%',
+                  blockEnd: '%>',
+                  variableStart: '<$',
+                  variableEnd: '$>',
+                  commentStart: '<#',
+                  commentEnd: '#>'
+                }
+                */
+                // Data to be used in template
+                // data: grunt.file.readJSON('data.json'),
             },
             render: {
                 files: [
@@ -68,9 +67,9 @@ module.exports = function(grunt) {
             test: {
               src: ['dist/output/*.html', 'dist/output/**/*.html'],
               options: {
-                username: 'email@gmail.com',
-                password: 'pass',
-                url: 'https://cedricdugas.litmus.com',
+                username: 'test@gmail.com',
+                password: 'test',
+                url: 'https://test.litmus.com',
                 clients: [
                   //gmail
                   'gmailnew', 'ffgmailnew', 'chromegmailnew',
@@ -132,7 +131,7 @@ module.exports = function(grunt) {
             },
             html:{
                 files: ['src/*.html','src/**/*.html'],
-                tasks: ['nunjucks','emailBuilder:inline']
+                tasks: ['nunjucks','premailer:inline']
             }
         }
     });
@@ -140,18 +139,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-email-builder');
     grunt.loadNpmTasks('grunt-nunjucks-2-html');
-    grunt.loadNpmTasks('grunt-email-builder');
     grunt.loadNpmTasks('grunt-litmus');
     grunt.loadNpmTasks('grunt-nodemailer');
     grunt.loadNpmTasks('grunt-premailer');
 
     grunt.registerTask('default',['watch']);
     grunt.registerTask('css',['sass']);
-    grunt.registerTask('html',['nunjucks','emailBuilder:inline']);
-    grunt.registerTask('build',['sass','nunjucks','emailBuilder:inline']);
-    grunt.registerTask('sendlitmus',['litmus:test']);
+    grunt.registerTask('html',['nunjucks','premailer:inline']);
+    grunt.registerTask('build',['sass','nunjucks','premailer:inline']);
     grunt.registerTask('email',['nodemailer']);
 
 };

@@ -1,10 +1,5 @@
 # Inker - a workflow for keeping sane email templates
 
-## todo
-* Test Data
-* Change nunjucks default template tags
-* better email template
-
 ## Basics
 
 Inker one of the best way to build email templates, take back control over your html, never have again this big mess of tables you can't understand. 
@@ -40,7 +35,7 @@ You have now everything you need to use inker. Your first stop would be the exam
 * grunt build *- Build css & html*
 * grunt connect *- test emails in your browser from the root folder (http://0.0.0.0:8555/)
 * grunt email *- Send a test email to any email inbox*
-* grunt sendlitmus *- Send a test email to litmus*
+* grunt litmus *- Send a test email to litmus*
 
 
 ## CSS with Inker
@@ -138,7 +133,7 @@ Inker is specially thought so it integrate with your back-end application, Inker
 
 ### Inker with dynamic custom data
 
-Inker can use json files as a source of dynamic data, an use example would be to test product loops. Of course this means that if you get that data from a back-end api you will need to replace the loop system to match your templating engine after.
+Inker can use json files as a source of dynamic data, example wout want to test a product loop.
 
 This is a built-in feature of [grunt-nunjucks-2-html](https://www.npmjs.com/package/grunt-nunjucks-2-html).
 ```javascript
@@ -286,7 +281,7 @@ Render:
 ```
 
 
-## Sending test email to your inbox
+## Sending a test email to your inbox
 
 Inker use [grunt-nodemailer](https://github.com/posabsolute/grunt-nodemailer) to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. 
 
@@ -369,12 +364,10 @@ Thanks to [Litmus](http://www.litmus.com) for providing free email client testin
 
 ## Contributions
 
-I am always happy to accept contributions, i"m currently looking for more components & example, but please follow ITCSS guidelines & please test your new components in the most used email clients.
+I'm always happy to accept contributions, i'm currently looking for more components & example, but please follow ITCSS guidelines & please test your new components in the most used email clients.
 
 
 ## Licence
-
-*All tools used in this project are bound by their own licence.*
 
 The MIT License (MIT)
 
