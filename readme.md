@@ -1,4 +1,4 @@
-# Inker - an evolved email creation workflow
+# Inker - transaction & marketing email development workflow
 
 ## Basics
 
