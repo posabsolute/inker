@@ -1,7 +1,7 @@
 {
   "name": "inker",
   "version": "1.0.0",
-  "description": "*Not ready*",
+  "description": "",
   "main": "index.js",
   "directories": {
     "example": "examples"
