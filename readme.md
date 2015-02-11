@@ -23,6 +23,7 @@ Inker require **npm** & **grunt** to be already installed.
 
 ```bash
 git clone https://github.com/posabsolute/inker.git
+gem install premailer
 cd inker && npm install
 ```
 
