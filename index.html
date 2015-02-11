@@ -36,11 +36,6 @@
     <ul id="sections">
       
         <li>
-          <a href="#todo">todo</a>
-          
-        </li>
-      
-        <li>
           <a href="#basics">Basics</a>
           
         </li>
@@ -127,7 +122,7 @@
         </li>
       
         <li>
-          <a href="#sending-test-email-to-your-inbox">Sending test email to your inbox</a>
+          <a href="#sending-a-test-email-to-your-inbox">Sending a test email to your inbox</a>
           
         </li>
       
@@ -142,6 +137,35 @@
               
                 <li>
                   <a href="#using-litmus/default-config">Default config</a>
+                </li>
+              
+            </ul>
+          
+        </li>
+      
+        <li>
+          <a href="#rest-api">REST API</a>
+          
+            <ul>
+              
+                <li>
+                  <a href="#rest-api/starting-the-server">Starting the server</a>
+                </li>
+              
+                <li>
+                  <a href="#rest-api/authentification">Authentification</a>
+                </li>
+              
+                <li>
+                  <a href="#rest-api/api-templates-rendering">API Templates rendering</a>
+                </li>
+              
+                <li>
+                  <a href="#rest-api/api-email-sending">API Email sending</a>
+                </li>
+              
+                <li>
+                  <a href="#rest-api/email-delivery-service-authentification">Email delivery service authentification</a>
                 </li>
               
             </ul>
@@ -181,15 +205,9 @@
     
       <a href="https://github.com/posabsolute/inker" id="github-ribbon"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     
-    <h1 id="inker-a-workflow-for-keeping-sane-email-templates">Inker - a workflow for keeping sane email templates</h1>
-<h2 id='todo' id="todo">todo</h2 id='todo'>
-<ul>
-<li>Test Data</li>
-<li>Change nunjucks default template tags</li>
-<li>better email template</li>
-</ul>
+    <h1 id="inker-an-evolved-email-creation-workflow">Inker - an evolved email creation workflow</h1>
 <h2 id='basics' id="basics">Basics</h2 id='basics'>
-<p>Inker one of the best way to build email templates, take back control over your html, never have again this big mess of tables you can&#39;t understand. </p>
+<p>Big tables mess no more. Inker provide all the mechanics for creating sane email templates &amp; keeping a clean workflow.</p>
 <p>Documentation <a href="http://posabsolute.github.io/inker/"><a href="http://posabsolute.github.io/inker/">http://posabsolute.github.io/inker/</a></a></p>
 <p>Inker is:</p>
 <ul>
@@ -198,6 +216,8 @@
 <li>Sane HTML components structure with nunjuck</li>
 <li>Auto generate template to HTML documents with inlined CSS</li>
 <li>Auto deployment on litmus for testing</li>
+<li>Auto deployment to any email address for testing</li>
+<li>Basic REST mail sender server.</li>
 </ul>
 <h2 id='getting-started' id="getting-started">Getting started</h2 id='getting-started'>
 <p>Inker require <strong>npm</strong> &amp; <strong>grunt</strong> to be already installed.</p>
@@ -212,7 +232,7 @@ cd inker &amp;&amp; npm install</code></pre>
 <li>grunt build <em>- Build css &amp; html</em></li>
 <li>grunt connect *- test emails in your browser from the root folder (<a href="http://0.0.0.0:8555/">http://0.0.0.0:8555/</a>)</li>
 <li>grunt email <em>- Send a test email to any email inbox</em></li>
-<li>grunt sendlitmus <em>- Send a test email to litmus</em></li>
+<li>grunt litmus <em>- Send a test email to litmus</em></li>
 </ul>
 <h2 id='css-with-inker' id="css-with-inker">CSS with Inker</h2 id='css-with-inker'>
 <p>Inker use <a href="http://zurb.com/ink/">Zurb Ink</a> responsive css framework, everything in Ink is available in inker, please refer to their <a href="http://zurb.com/ink/docs.php">documentation</a>. Inker also use the meta framework <a href="http://csswizardry.net/talks/2014/11/itcss-dafed.pdf">ITCSS</a> for the files &amp; folders structure. Better explained by this image. The css can be found in <strong>src/css</strong></p>
@@ -267,9 +287,16 @@ cd inker &amp;&amp; npm install</code></pre>
 
 <span class="template_tag">{% <span class="keyword">endblock</span> %}</span></code></pre>
 <h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application' id="inker-with-your-back-end-templating-engine-application">Inker with your back-end templating engine &amp; application</h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application'>
-<p>Inker is specially thought so it integrate with your back-end application, Inker templating engine use &lt;# #&gt; so it does not interfere with others templating engine making it possible to test your templates with inker &amp; then use your back-end to place data &amp; send your email.</p>
+<p>There is a bit of a duality with Inker, it use a templating engine to generate template but must not use it with personalized data so that it can be generated by another templating engine.</p>
+<h4 id="using-a-custom-syntax">Using a custom syntax</h4>
+<p>Inker enable you to use a custom syntax so to not interfer with your templating engine of choice. If you do use a custom syntax you will have to replace the current implementation with the new syntax, but that should be pretty easy.</p>
+<pre><code class="lang-javascript">nunjucks: {
+  options: {
+    data: grunt.file.readJSON(<span class="string">'data.json'</span>)
+  }
+}</code></pre>
 <h3 id='html-with-inker/inker-with-dynamic-custom-data' id="inker-with-dynamic-custom-data">Inker with dynamic custom data</h3 id='html-with-inker/inker-with-dynamic-custom-data'>
-<p>Inker can use json files as a source of dynamic data, an use example would be to test product loops. Of course this means that if you get that data from a back-end api you will need to replace the loop system to match your templating engine after.</p>
+<p>Inker can use json files as a source of dynamic data, example wout want to test a product loop.</p>
 <p>This is a built-in feature of <a href="https://www.npmjs.com/package/grunt-nunjucks-2-html">grunt-nunjucks-2-html</a>.</p>
 <pre><code class="lang-javascript">nunjucks: {
   options: {
@@ -378,7 +405,7 @@ cd inker &amp;&amp; npm install</code></pre>
       <span class="tag">&lt;<span class="title">td</span> <span class="attribute">class</span>=<span class="value">"expander"</span>&gt;</span><span class="tag">&lt;/<span class="title">td</span>&gt;</span>
     <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">table</span>&gt;</span></code></pre>
-<h2 id='sending-test-email-to-your-inbox' id="sending-test-email-to-your-inbox">Sending test email to your inbox</h2 id='sending-test-email-to-your-inbox'>
+<h2 id='sending-a-test-email-to-your-inbox' id="sending-a-test-email-to-your-inbox">Sending a test email to your inbox</h2 id='sending-a-test-email-to-your-inbox'>
 <p>Inker use <a href="https://github.com/posabsolute/grunt-nodemailer">grunt-nodemailer</a> to send test. By default it send a test for all files that are in the output folders, you can easily change that in <strong>gruntfile.js</strong>. </p>
 <p>However a better way to use it would be to change the path directly from the grunt command. This make it possible to send tests really fast with different templates.</p>
 <pre><code class="lang-bash">// Override default src provided <span class="keyword">in</span> gruntfile
@@ -437,12 +464,60 @@ grunt email --fileSrc=dist/output/example.html</code></pre>
     }
   }
 },</code></pre>
+<h2 id='rest-api' id="rest-api">REST API</h2 id='rest-api'>
+<p>Inker comes with a basic nodejs rest api that can handle outputting templates with custom variables &amp; sending emails throught SMTP to any email provider. In it&#39;s current state I would recommend keeping it internal &amp; not opening it completely to the web. </p>
+<p>Their is a public <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman</a> collection for your convenience for testing the api. 
+<a href="https://www.getpostman.com/collections/5e0cbbb46d8e9fff3c8d">https://www.getpostman.com/collections/5e0cbbb46d8e9fff3c8d</a></p>
+<h3 id='rest-api/starting-the-server' id="starting-the-server">Starting the server</h3 id='rest-api/starting-the-server'>
+<p>Install all dependencies</p>
+<pre><code class="lang-javascript">npm install</code></pre>
+<p>Start the server</p>
+<pre><code class="lang-javascript">node src/server/server.js</code></pre>
+<h3 id='rest-api/authentification' id="authentification">Authentification</h3 id='rest-api/authentification'>
+<p>The server has a basic auth system. It expect a token for each request. This token is set in <em>/src/server/config.js</em></p>
+<p>Default:</p>
+<pre><code class="lang-javascript">X-Authorization-Token : asd98a7s9898asdaSDA(asd987asda*(&amp;*&amp;%))</code></pre>
+<h3 id='rest-api/api-templates-rendering' id="api-templates-rendering">API Templates rendering</h3 id='rest-api/api-templates-rendering'>
+<p>The API also use nunjucks to render custom variables, but since it is a 2 step process (grunt build &amp; then applying personalized data), the syntax has been changed to avoid conflicts. This is configurable in <em>/src/server/config.js</em>.</p>
+<p>&quot;POST /templates/[path &amp; name to template]&quot;</p>
+<p>Base path is dist/output</p>
+<p>Example:</p>
+<pre><code class="lang-javascript"><span class="string">"POST /templates/sunday/index"</span>
+<span class="comment">// Post data</span>
+{
+  <span class="string">"name"</span>:<span class="string">"Cedric"</span>,
+  <span class="string">"loop"</span>: [<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>]
+}</code></pre>
+<h3 id='rest-api/api-email-sending' id="api-email-sending">API Email sending</h3 id='rest-api/api-email-sending'>
+<p>The api can send email to a variety of smtp service, notably MailGun, Mandrill, SendGrig, Gmail, etc. You can see the full list in <em>/src/server/serviceAuth.js</em></p>
+<p>Example:</p>
+<pre><code class="lang-javascript"><span class="string">"POST /email/send"</span>
+<span class="comment">// Post data</span>
+{
+  <span class="string">"template"</span> : {
+    <span class="string">"src"</span>:<span class="string">"data_example/index.html"</span>,
+    <span class="string">"data"</span>: {
+      <span class="string">"name"</span>:<span class="string">"Cedric"</span>,
+      <span class="string">"loop"</span>: [<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>]      
+    }
+  },
+  <span class="string">"options"</span> : {
+    <span class="string">"from"</span>: <span class="string">"sender@address"</span>,
+    <span class="string">"to"</span>: <span class="string">"cedric.dugas@gmail.com"</span>,
+    <span class="string">"subject"</span>: <span class="string">"hello"</span>,
+    <span class="string">"text"</span>: <span class="string">"hello world!"</span>
+  },
+  <span class="string">"service"</span> : {
+    <span class="string">"name"</span>:<span class="string">"MailGun"</span>
+  }
+}</code></pre>
+<h3 id='rest-api/email-delivery-service-authentification' id="email-delivery-service-authentification">Email delivery service authentification</h3 id='rest-api/email-delivery-service-authentification'>
+<p>You must add your credentials in <em>/src/server/serviceAuth.js</em></p>
 <h2 id='special-thanks' id="special-thanks">Special thanks</h2 id='special-thanks'>
 <p>Thanks to <a href="http://www.litmus.com">Litmus</a> for providing free email client testing for this project.</p>
 <h2 id='contributions' id="contributions">Contributions</h2 id='contributions'>
-<p>I am always happy to accept contributions, i&quot;m currently looking for more components &amp; example, but please follow ITCSS guidelines &amp; please test your new components in the most used email clients.</p>
+<p>I&#39;m always happy to accept contributions, i&#39;m currently looking for more components &amp; example, but please follow ITCSS guidelines &amp; please test your new components in the most used email clients.</p>
 <h2 id='licence' id="licence">Licence</h2 id='licence'>
-<p><em>All tools used in this project are bound by their own licence.</em></p>
 <p>The MIT License (MIT)</p>
 <p>Copyright (c) 2014 Cedric Dugas <a href="http://www.position-absolute.com"><a href="http://www.position-absolute.com">http://www.position-absolute.com</a></a></p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
