@@ -30,5 +30,10 @@
     "grunt-sass": "^0.17.0",
     "nunjucks": "^1.1.0",
     "posabsolute/grunt-nodemailer": "^0.2.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "nodemailer-sendgrid-transport": "^0.1.0",
+    "nodemailer-wellknown": "^0.1.5"
   }
 }
