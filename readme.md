@@ -443,12 +443,13 @@ Example:
     "name":"MailGun"
   }
 }
+```
 
 ### Email delivery service authentification
 
 You must add your credentials in */src/server/serviceAuth.js*
 
-```
+
 
 ## Special thanks
 
