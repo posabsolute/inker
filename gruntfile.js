@@ -108,7 +108,7 @@ module.exports = function(grunt) {
                 }
               ]
             },
-            src: ['dist/output/*.html']
+            src: ['dist/output/*.html','dist/output/**/*.html']
         },
         connect: {
           server: {
