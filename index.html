@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inker, transactional & marketing email development workflow evolved</title>
+    <title>inker</title>
     
     <link rel="stylesheet" type="text/css" href="//documentup.com/stylesheets/themes/v1.css">
     
@@ -153,7 +153,7 @@
                 </li>
               
                 <li>
-                  <a href="#rest-api/authentification">Authentification</a>
+                  <a href="#rest-api/authentication">Authentication</a>
                 </li>
               
                 <li>
@@ -165,7 +165,7 @@
                 </li>
               
                 <li>
-                  <a href="#rest-api/email-delivery-service-authentification">Email delivery service authentification</a>
+                  <a href="#rest-api/email-delivery-service-authentication">Email delivery service Authentication</a>
                 </li>
               
             </ul>
@@ -205,7 +205,7 @@
     
       <a href="https://github.com/posabsolute/inker" id="github-ribbon"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     
-    <h1 id="inker-an-evolved-email-creation-workflow">Inker - transactional & marketing email development workflow evolved</h1>
+    <h1 id="inker-transaction-marketing-email-development-workflow">Inker - transaction &amp; marketing email development workflow</h1>
 <h2 id='basics' id="basics">Basics</h2 id='basics'>
 <p>Big tables mess no more. Inker provide all the mechanics for creating sane email templates &amp; keeping a clean workflow.</p>
 <p>Documentation <a href="http://posabsolute.github.io/inker/"><a href="http://posabsolute.github.io/inker/">http://posabsolute.github.io/inker/</a></a></p>
@@ -222,6 +222,7 @@
 <h2 id='getting-started' id="getting-started">Getting started</h2 id='getting-started'>
 <p>Inker require <strong>npm</strong> &amp; <strong>grunt</strong> to be already installed.</p>
 <pre><code class="lang-bash">git clone https://github.com/posabsolute/inker.git
+gem install premailer
 cd inker &amp;&amp; npm install</code></pre>
 <p>You have now everything you need to use inker. Your first stop would be the example in src/templates to help you get started.</p>
 <h2 id='available-grunt-commands' id="available-grunt-commands">Available grunt commands</h2 id='available-grunt-commands'>
@@ -273,12 +274,20 @@ cd inker &amp;&amp; npm install</code></pre>
 <p>Open the templates folder, you should see a folder sidebar_hero, add your own folder here. Please refer to  sidebar_hero for a complete example.</p>
 <h4 id="example-of-base-template">Example of base template</h4>
 <pre><code class="lang-html"><span class="template_tag">{% <span class="keyword">extends</span> "/html-components/base.html" %}</span>
-  <span class="template_tag">{% <span class="keyword">block</span> main_css %}</span><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/main.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span><span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
-  <span class="template_tag">{% <span class="keyword">block</span> theme_css %}</span><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/sidebarhero/sidebarhero.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span><span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+  <span class="template_tag">{% <span class="keyword">block</span> main_css %}</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/main.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span>
+  <span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+  <span class="template_tag">{% <span class="keyword">block</span> theme_css %}</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/sidebarhero/sidebarhero.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span>
+  <span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
 
-  <span class="template_tag">{% <span class="keyword">block</span> responsive_css %}</span><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/responsive.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">data-ignore</span>=<span class="value">"ignore"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span><span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+  <span class="template_tag">{% <span class="keyword">block</span> responsive_css %}</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"../../css/responsive.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span> <span class="attribute">data-ignore</span>=<span class="value">"ignore"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> /&gt;</span>
+  <span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
 
-  <span class="template_tag">{% <span class="keyword">block</span> meta_title %}</span>Email title in document head<span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
+  <span class="template_tag">{% <span class="keyword">block</span> meta_title %}</span>
+    Email title in document head
+  <span class="template_tag">{% <span class="keyword">endblock</span> %}</span>
 
 <span class="template_tag">{% <span class="keyword">block</span> mainContent %}</span>
 
@@ -287,16 +296,40 @@ cd inker &amp;&amp; npm install</code></pre>
 
 <span class="template_tag">{% <span class="keyword">endblock</span> %}</span></code></pre>
 <h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application' id="inker-with-your-back-end-templating-engine-application">Inker with your back-end templating engine &amp; application</h3 id='html-with-inker/inker-with-your-back-end-templating-engine-application'>
-<p>There is a bit of a duality with Inker, it use a templating engine to generate template but must not use it with personalized data so that it can be generated by another templating engine.</p>
+<p>There is a bit of a duality with Inker, it use a templating engine to generate template but must not use it to render personalized data on first pass so that it can be generated by another templating engine or by the server.</p>
+<h4 id="passing-data-custom-template-logic-by-string">Passing data &amp; custom template logic by string</h4>
+<p>If you have a conflict with nunjucks template syntax, you can pass your variables &amp; custom logic as strings like this:</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">h4</span>&gt;</span><span class="variable">{{ '{{ name }}</span>' }} last step and you're done!<span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+    <span class="variable">{{ '{% for item in loop %}' }}</span>
+    <span class="variable">{{ '{{ item }}</span>' }} &amp;nbsp;
+    <span class="variable">{{ '{% endfor %}' }}</span>
+  <span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></pre>
+<p>In the final email template, this will look like:</p>
+<pre><code class="lang-html">  <span class="tag">&lt;<span class="title">h4</span>&gt;</span><span class="variable">{{ name }}</span> last step and you're done!<span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+    <span class="template_tag">{% <span class="keyword">for</span> item <span class="keyword">in</span> loop %}</span>
+      <span class="variable">{{ item }}</span>
+    <span class="template_tag">{% <span class="keyword">endfor</span> %}</span>
+  <span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></pre>
 <h4 id="using-a-custom-syntax">Using a custom syntax</h4>
-<p>Inker enable you to use a custom syntax so to not interfer with your templating engine of choice. If you do use a custom syntax you will have to replace the current implementation with the new syntax, but that should be pretty easy.</p>
+<p>Inker enable you to use a custom syntax so to not interfer with your templating engine of choice. If you do use a custom syntax you will have to replace the current implementation with the new syntax.</p>
 <pre><code class="lang-javascript">nunjucks: {
   options: {
-    data: grunt.file.readJSON(<span class="string">'data.json'</span>)
+    tags : {
+      blockStart: <span class="string">'&lt;%'</span>,
+      blockEnd: <span class="string">'%&gt;'</span>,
+      variableStart: <span class="string">'&lt;$'</span>,
+      variableEnd: <span class="string">'$&gt;'</span>,
+      commentStart: <span class="string">'&lt;#'</span>,
+      commentEnd: <span class="string">'#&gt;'</span>
+    }         
   }
 }</code></pre>
 <h3 id='html-with-inker/inker-with-dynamic-custom-data' id="inker-with-dynamic-custom-data">Inker with dynamic custom data</h3 id='html-with-inker/inker-with-dynamic-custom-data'>
-<p>Inker can use json files as a source of dynamic data, example wout want to test a product loop.</p>
+<p>Inker can use json files as a source of dynamic data. Please note that you can also use the provided rest api to test custom data.</p>
 <p>This is a built-in feature of <a href="https://www.npmjs.com/package/grunt-nunjucks-2-html">grunt-nunjucks-2-html</a>.</p>
 <pre><code class="lang-javascript">nunjucks: {
   options: {
@@ -465,20 +498,30 @@ grunt email --fileSrc=dist/output/example.html</code></pre>
   }
 },</code></pre>
 <h2 id='rest-api' id="rest-api">REST API</h2 id='rest-api'>
-<p>Inker comes with a basic nodejs rest api that can handle outputting templates with custom variables &amp; sending emails throught SMTP to any email provider. In it&#39;s current state I would recommend keeping it internal &amp; not opening it completely to the web. </p>
-<p>Their is a public <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman</a> collection for your convenience for testing the api. 
+<p>Inker comes with a basic nodejs rest api that can handle rendering templates with custom variables &amp; sending emails throught SMTP to any email provider. In it&#39;s current state I would recommend keeping it internal &amp; not opening it completely on the web. </p>
+<p>There is a public <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman</a> collection for your convenience for testing the api locally. 
 <a href="https://www.getpostman.com/collections/5e0cbbb46d8e9fff3c8d">https://www.getpostman.com/collections/5e0cbbb46d8e9fff3c8d</a></p>
 <h3 id='rest-api/starting-the-server' id="starting-the-server">Starting the server</h3 id='rest-api/starting-the-server'>
 <p>Install all dependencies</p>
 <pre><code class="lang-javascript">npm install</code></pre>
 <p>Start the server</p>
 <pre><code class="lang-javascript">node src/server/server.js</code></pre>
-<h3 id='rest-api/authentification' id="authentification">Authentification</h3 id='rest-api/authentification'>
+<h3 id='rest-api/authentication' id="authentication">Authentication</h3 id='rest-api/authentication'>
 <p>The server has a basic auth system. It expect a token for each request. This token is set in <em>/src/server/config.js</em></p>
 <p>Default:</p>
 <pre><code class="lang-javascript">X-Authorization-Token : asd98a7s9898asdaSDA(asd987asda*(&amp;*&amp;%))</code></pre>
 <h3 id='rest-api/api-templates-rendering' id="api-templates-rendering">API Templates rendering</h3 id='rest-api/api-templates-rendering'>
-<p>The API also use nunjucks to render custom variables, but since it is a 2 step process (grunt build &amp; then applying personalized data), the syntax has been changed to avoid conflicts. This is configurable in <em>/src/server/config.js</em>.</p>
+<p>The API also use nunjucks to render custom variables. Remember that since we use the same rendering engine (nunjucks) for both front-end &amp; server side, you must use strings in your template to add variables &amp; custom template logic.</p>
+<p>Example:</p>
+<pre><code class="lang-html">
+  <span class="tag">&lt;<span class="title">h4</span>&gt;</span><span class="variable">{{ '{{ name }}</span>' }} last step and you're done!<span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+    <span class="variable">{{ '{% for item in loop %}' }}</span>
+    <span class="variable">{{ '{{ item }}</span>' }} &amp;nbsp;
+    <span class="variable">{{ '{% endfor %}' }}</span>
+  <span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></pre>
+<p>You can configure the template syntax in <em>/src/server/config.js</em>.</p>
 <p>&quot;POST /templates/[path &amp; name to template]&quot;</p>
 <p>Base path is dist/output</p>
 <p>Example:</p>
@@ -489,7 +532,7 @@ grunt email --fileSrc=dist/output/example.html</code></pre>
   <span class="string">"loop"</span>: [<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>]
 }</code></pre>
 <h3 id='rest-api/api-email-sending' id="api-email-sending">API Email sending</h3 id='rest-api/api-email-sending'>
-<p>The api can send email to a variety of smtp service, notably MailGun, Mandrill, SendGrig, Gmail, etc. You can see the full list in <em>/src/server/serviceAuth.js</em></p>
+<p>The api can send emails to a variety of smtp services, MailGun, Mandrill, SendGrig, Gmail, etc. You can see the full list in <em>/src/server/serviceAuth.js</em></p>
 <p>Example:</p>
 <pre><code class="lang-javascript"><span class="string">"POST /email/send"</span>
 <span class="comment">// Post data</span>
@@ -511,12 +554,12 @@ grunt email --fileSrc=dist/output/example.html</code></pre>
     <span class="string">"name"</span>:<span class="string">"MailGun"</span>
   }
 }</code></pre>
-<h3 id='rest-api/email-delivery-service-authentification' id="email-delivery-service-authentification">Email delivery service authentification</h3 id='rest-api/email-delivery-service-authentification'>
+<h3 id='rest-api/email-delivery-service-authentication' id="email-delivery-service-authentication">Email delivery service Authentication</h3 id='rest-api/email-delivery-service-authentication'>
 <p>You must add your credentials in <em>/src/server/serviceAuth.js</em></p>
 <h2 id='special-thanks' id="special-thanks">Special thanks</h2 id='special-thanks'>
 <p>Thanks to <a href="http://www.litmus.com">Litmus</a> for providing free email client testing for this project.</p>
 <h2 id='contributions' id="contributions">Contributions</h2 id='contributions'>
-<p>I&#39;m always happy to accept contributions, i&#39;m currently looking for more components &amp; example, but please follow ITCSS guidelines &amp; please test your new components in the most used email clients.</p>
+<p>I&#39;m always happy to accept contributions, i&#39;m currently looking for more components &amp; examplea, but please follow ITCSS guidelines &amp; please test your new components in the most used email clients.</p>
 <h2 id='licence' id="licence">Licence</h2 id='licence'>
 <p>The MIT License (MIT)</p>
 <p>Copyright (c) 2014 Cedric Dugas <a href="http://www.position-absolute.com"><a href="http://www.position-absolute.com">http://www.position-absolute.com</a></a></p>
