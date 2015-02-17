@@ -439,7 +439,7 @@ cd inker &amp;&amp; npm install</code></pre>
     <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">table</span>&gt;</span></code></pre>
 <h2 id='sending-a-test-email-to-your-inbox' id="sending-a-test-email-to-your-inbox">Sending a test email to your inbox</h2 id='sending-a-test-email-to-your-inbox'>
-<p>Inker use <a href="https://github.com/posabsolute/grunt-nodemailer">grunt-nodemailer</a> to send test. By default it send a test for all files that are in the output folders, you can easily change that in <strong>gruntfile.js</strong>. </p>
+<p>Inker use <a href="https://github.com/dwightjack/grunt-nodemailer">grunt-nodemailer</a> to send test. By default it send a test for all files that are in the output folders, you can easily change that in <strong>gruntfile.js</strong>. </p>
 <p>However a better way to use it would be to change the path directly from the grunt command. This make it possible to send tests really fast with different templates.</p>
 <pre><code class="lang-bash">// Override default src provided <span class="keyword">in</span> gruntfile
 grunt email --fileSrc=dist/output/example.html</code></pre>
