@@ -130,10 +130,12 @@ Open the templates folder, you should see a folder sidebar_hero, add your own fo
   {% endblock %}
 
 {% block mainContent %}
-
-  {% block header %} {% include "/templates/sidebar_hero/header.html" %} {% endblock %}
-  {% block content %} {% include "/templates/sidebar_hero/content.html" %} {% endblock %}
-
+  {% block header %}
+    {% include "/templates/sidebar_hero/header.html" %}
+  {% endblock %}
+  {% block content %}
+    {% include "/templates/sidebar_hero/content.html" %}
+  {% endblock %}
 {% endblock %}
 ```
 
@@ -339,7 +341,7 @@ Render:
 
 ## Sending a test email to your inbox
 
-Inker use [grunt-nodemailer](https://github.com/posabsolute/grunt-nodemailer) to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. 
+Inker use [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. 
 
 However a better way to use it would be to change the path directly from the grunt command. This make it possible to send tests really fast with different templates.
 
