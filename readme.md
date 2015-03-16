@@ -33,7 +33,7 @@ You have now everything you need to use inker. Your first stop would be the exam
 ## Available grunt commands
 
 * grunt watch *- Watch source folder for changes & generate dist files*
-* grunt css *- Build CSS* 
+* grunt css *- Build CSS*
 * grunt html *- Build HTML templates*
 * grunt build *- Build css & html*
 * grunt connect *- test emails in your browser from the root folder (http://0.0.0.0:8555/)
@@ -45,7 +45,7 @@ You have now everything you need to use inker. Your first stop would be the exam
 
 Inker use [Zurb Ink](http://zurb.com/ink/) responsive css framework, everything in Ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also use the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files & folders structure. Better explained by this image. The css can be found in **src/css**
 
-**base.scss** is your base CSS file importing all needed files for inker, if you add  a css component you must import it in base.scss. 
+**base.scss** is your base CSS file importing all needed files for inker, if you add  a css component you must import it in base.scss.
 
 *It is important to note that since we inline style to html nodes it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end*
 
@@ -54,7 +54,7 @@ Inker use [Zurb Ink](http://zurb.com/ink/) responsive css framework, everything 
 Responsive rules are in the folder **8_trumps**, please note that these rules are added to the document head instead of inlined using data-ignore="ignore" in the html templates.
 
 ### Ignore css inlining
- 
+
 ```html
 <!-- external styles -->
 <link rel="stylesheet" data-ignore="ignore"  href="../css/style.css" />
@@ -124,7 +124,7 @@ Open the templates folder, you should see a folder sidebar_hero, add your own fo
   {% block responsive_css %}
     <link href="../../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />
   {% endblock %}
-  
+
   {% block meta_title %}
     Email title in document head
   {% endblock %}
@@ -184,7 +184,7 @@ nunjucks: {
       variableEnd: '$>',
       commentStart: '<#',
       commentEnd: '#>'
-    }         
+    }
   }
 }
 ```
@@ -212,9 +212,9 @@ Current list of implemented component. (I am always looking to add more componen
 * Label
 * Link
 * Class to add
-* Alignement
+* Alignment
 
-Usage: 
+Usage:
 ```javascript
 button('Go to google', 'http://www.google.com', 'button-green', 'left');
 ```
@@ -239,7 +239,7 @@ Render:
 * Class to add
 
 
-Usage: 
+Usage:
 ```javascript
 progressbar('100%', 70, 'Your progress so far', 'progressbar-green');
 ```
@@ -270,7 +270,7 @@ Please refer to campaign monitor chart to see what email client support video, f
 * video_image_placeholder
 * class
 
-Usage: 
+Usage:
 ```javascript
 video(320, 176, 'http://www.google.com', 'http://www.google.com', 'http://www.google.com', 'video-big');
 ```
@@ -281,7 +281,7 @@ Render:
       <video width="320" height="176" controls>
           <source src="{{video_src}}.mp4" type="video/mp4">
           <source src="{{video_src}}.ogg" type="video/ogg">
-            <a href="{{video_link}}" ><img height="176" 
+            <a href="{{video_link}}" ><img height="176"
               src="{{video_image_placeholder}}" width="320" /></a>
       </video>
   </div>
@@ -295,7 +295,7 @@ Render:
 * Class
 * Align
 
-Usage: 
+Usage:
 ```javascript
 caption('This is a cat', '320px', 'caption-red', 'left');
 ```
@@ -319,7 +319,7 @@ Render:
 * size (default: twelve)
 * Class
 
-Usage: 
+Usage:
 ```javascript
 panel('This is a panel', 'twelve', 'panel-red');
 ```
@@ -341,7 +341,7 @@ Render:
 
 ## Sending a test email to your inbox
 
-Inker use [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**. 
+Inker use [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**.
 
 However a better way to use it would be to change the path directly from the grunt command. This make it possible to send tests really fast with different templates.
 
@@ -401,7 +401,7 @@ litmus: {
         // outlook
         'ol2002', 'ol2003', 'ol2007', 'ol2010', 'ol2011', 'ol2013',
         // hotmail
-        'outlookcom', 'ffoutlookcom', 'chromeoutlookcom', 
+        'outlookcom', 'ffoutlookcom', 'chromeoutlookcom',
         //Yahoo
         'chromeyahoo',
         //applemail
@@ -417,9 +417,9 @@ litmus: {
 ```
 ## REST API
 
-Inker comes with a basic nodejs rest api that can handle rendering templates with custom variables & sending emails throught SMTP to any email provider. In it's current state I would recommend keeping it internal & not opening it completely on the web. 
+Inker comes with a basic nodejs rest api that can handle rendering templates with custom variables & sending emails throught SMTP to any email provider. In it's current state I would recommend keeping it internal & not opening it completely on the web.
 
-There is a public [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) collection for your convenience for testing the api locally. 
+There is a public [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) collection for your convenience for testing the api locally.
 https://www.getpostman.com/collections/5e0cbbb46d8e9fff3c8d
 
 ### Starting the server
@@ -470,7 +470,7 @@ Example:
 "POST /templates/sunday/index"
 // Post data
 {
-  "name":"Cedric",
+  "name": "Cedric",
   "loop": ["1","2","3"]
 }
 ```
@@ -485,10 +485,10 @@ Example:
 // Post data
 {
   "template" : {
-    "src":"data_example/index.html",
+    "src": "data_example/index.html",
     "data": {
-      "name":"Cedric",
-      "loop": ["1","2","3"]      
+      "name": "Cedric",
+      "loop": ["1","2","3"]
     }
   },
   "options" : {
@@ -498,7 +498,7 @@ Example:
     "text": "hello world!"
   },
   "service" : {
-    "name":"MailGun"
+    "name": "MailGun"
   }
 }
 ```
