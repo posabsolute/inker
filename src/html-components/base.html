@@ -3,7 +3,7 @@
 <head>
   <title>{% block meta_title %}{% endblock %}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width"/>
+  <meta name="viewport" content="width=device-width" />
   {% block main_css %}<link href="/css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
   {% block responsive_css %}<link href="/css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />{% endblock %}
   {% block theme_css %}{% endblock %}
@@ -12,14 +12,14 @@
   {% from "/html-components/component.progressbar.html" import progressbar %}
   {% from "/html-components/component.video.html" import video %}
   {% from "/html-components/component.panel.html" import panel %}
-  
+
 </head>
 <body>
   <table class="body">
     <tr>
       <td class="center" align="center" valign="top">
         <center>
-        
+
           {% block mainContent %}{% endblock %}
 
         </center>
