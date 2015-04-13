@@ -38,12 +38,13 @@ var emails_controller = {
 	  	// send mail with defined transport object
 	  	transporter.sendMail(mailOptions, function(error, info){
 	      	if(error){
-	      		res.statusCode = error.responseCode;
-	        	res.send(error);
+	      		console.log(error);
 	      	}else{
-	        	res.send(info);
+	      		console.log(info);
 	      	}
 	  	});
+
+	  	res.send("success");
 	}
 };
 module.exports = emails_controller;
