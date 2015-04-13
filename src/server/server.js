@@ -3,7 +3,8 @@ var fs = require('fs');
 
 var nunjucks = require('nunjucks');
 var bodyParser = require('body-parser');
-var mail_controller = require('./controller.mail');
+var emails_controller = require('./controller.emails');
+var templates_controller = require('./controller.templates');
 var configs = require('./configs');
 
 var app = express();
@@ -18,15 +19,15 @@ nunjucks.configure(__dirname +"/../../dist/output/", {
 /**
  * Accept post data
  */
-app.use( bodyParser.json() );   // to support JSON-encoded bodies
+app.use(bodyParser.json());   // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
   extended: true
 })); 
 /**
  * Routes
  */
-app.post('/templates/*', mail_controller.getTemplate);
-app.post('/mail/send', mail_controller.send);
+app.get('/collections/*/templates/*', templates_controller.getOne);
+app.post('/emails', emails_controller.create);
 /**
  * Start server
  */

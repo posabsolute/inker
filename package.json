@@ -20,16 +20,18 @@
   },
   "homepage": "http://posabsolute.github.io/inker/",
   "devDependencies": {
+    "express": "^4.12.3",
     "grunt": "^0.4.5",
     "grunt-contrib-connect": "^0.9.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-litmus": "^0.1.8",
+    "grunt-nodemailer": "^0.3.0",
     "grunt-nunjucks": "^0.1.4",
     "grunt-nunjucks-2-html": "^0.2.3",
     "grunt-premailer": "^0.2.11",
     "grunt-sass": "^0.18.0",
-    "nunjucks": "^1.1.0",
-    "grunt-nodemailer": "^0.3.0"
+    "nodemailer": "^1.3.2",
+    "nunjucks": "^1.1.0"
   },
   "dependencies": {
     "body-parser": "^1.11.0",
