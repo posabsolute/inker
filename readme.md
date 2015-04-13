@@ -2,24 +2,24 @@
 
 ## Basics
 
-Big tables mess no more. Inker provide all the mechanics for creating sane email templates & keeping a clean workflow.
+Big tables mess no more. Inker provides all the mechanics for creating sane email templates and keeping a clean workflow.
 
 Documentation [http://posabsolute.github.io/inker/](http://posabsolute.github.io/inker/)
 
-Inker is:
+Inker is :
 
 * Built on top of Zurb Ink
-* Sane CSS components structure with sass
-* Sane HTML components structure with nunjuck
+* Sane CSS components structure with [sass](http://sass-lang.com/)
+* Sane HTML components structure with [nunjucks](http://mozilla.github.io/nunjucks)
 * Auto generate template to HTML documents with inlined CSS
-* Auto deployment on litmus for testing
+* Auto deployment on [litmus](https://litmus.com/) for testing
 * Auto deployment to any email address for testing
 * Basic REST mail sender server.
 
 
 ## Getting started
 
-Inker require **npm** & **grunt** to be already installed.
+Inker requires **npm** & **grunt** to be already installed.
 
 ```bash
 git clone https://github.com/posabsolute/inker.git
@@ -43,15 +43,15 @@ You have now everything you need to use inker. Your first stop would be the exam
 
 ## CSS with Inker
 
-Inker use [Zurb Ink](http://zurb.com/ink/) responsive css framework, everything in Ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also use the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files & folders structure. Better explained by this image. The css can be found in **src/css**
+Inker use [Zurb Ink](http://zurb.com/ink/) responsive css framework, everything in Ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also uses the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files and folders' structure. Better explained by this image. The css can be found in **src/css**
 
-**base.scss** is your base CSS file importing all needed files for inker, if you add  a css component you must import it in base.scss.
+**base.scss** is your base CSS file importing all needed files for inker, if you add a css component you must import it in base.scss.
 
-*It is important to note that since we inline style to html nodes it make no sense to pick & choose components you want to use as it will make no difference on the file size in the end*
+*It is important to note that since we inline style to html nodes it makes no sense to pick and choose components you want to use as it will make no differences on the file size in the end*
 
 ### Responsive
 
-Responsive rules are in the folder **8_trumps**, please note that these rules are added to the document head instead of inlined using data-ignore="ignore" in the html templates.
+Responsive rules are in the folder **8_trumps**, please note that these rules are added to the document's head instead of inlined using data-ignore="ignore" in the html templates.
 
 ### Ignore css inlining
 
@@ -69,16 +69,16 @@ Responsive rules are in the folder **8_trumps**, please note that these rules ar
 
 Open 7_themes, you will see there is already a folder called sidebarhero used for the sidebar hero template. Add a new folder in 7_themes for your template, your main css file will be automatically generated in dist/css/[your folder].
 
-Them in your html use:
+Then in your html, use:
 ```html
   {% block theme_css %}<link href="../../css/sidebarhero/sidebarhero.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
 ```
 
 ## HTML with inker
 
-Inker use [Mozilla Nunjucks](http://mozilla.github.io/nunjucks/) to build html templates, please see nunjucks [documentation](http://mozilla.github.io/nunjucks/templating.html) for more information on how you can take inker even farther.
+Inker uses [Mozilla Nunjucks](http://mozilla.github.io/nunjucks/) to build html templates, please see nunjucks' [documentation](http://mozilla.github.io/nunjucks/templating.html) for more information on how you can take inker even further.
 
-Inker as an html components stucture that use nunjucks macros. Example of component:
+Inker as an html component stucture that uses nunjucks macros. Example of component:
 
 ```html
 {% macro button(label='default', link='#', class='', align='left') %}
@@ -98,17 +98,17 @@ Inker as an html components stucture that use nunjucks macros. Example of compon
 ```
 
 
-Usage in html template:
+Usage in html template :
 ```javascript
 {{ button('Go to google', 'http://www.google.com', 'button-green', 'left'); }}
 ```
 
-**When creating new components remember to add them to the base.html file situates in _src/html-components_**
+**When creating new components, remember to add them to the base.html file situated in _src/html-components_**
 
 
 ### Creating new html templates
 
-Open the templates folder, you should see a folder sidebar_hero, add your own folder here. Please refer to  sidebar_hero for a complete example.
+Open the template's folder, you should see a folder sidebar_hero, add your own folder here. Please refer to  sidebar_hero for a complete example.
 
 #### Example of base template
 
@@ -142,11 +142,11 @@ Open the templates folder, you should see a folder sidebar_hero, add your own fo
 
 ### Inker with your back-end templating engine & application
 
-There is a bit of a duality with Inker, it use a templating engine to generate template but must not use it to render personalized data on first pass so that it can be generated by another templating engine or by the server.
+There is a bit of a duality with Inker, it uses a templating engine to generate templates but must not use it to render personalized data on first pass so that it can be generated by another templating engine or by the server.
 
-#### Passing data & custom template logic by string
+#### Passing data and custom template logic by string
 
-If you have a conflict with nunjucks template syntax, you can pass your variables & custom logic as strings like this:
+If you have a conflict with nunjucks' template syntax, you can pass your variables and custom logics as strings likewise :
 
 ```html
   <h4>{{ '{{ name }}' }} last step and you're done!</h4>
@@ -158,7 +158,7 @@ If you have a conflict with nunjucks template syntax, you can pass your variable
   </p>
 ```
 
-In the final email template, this will look like:
+In the final email template, this will look like :
 
 ```html
   <h4>{{ name }} last step and you're done!</h4>
@@ -172,7 +172,7 @@ In the final email template, this will look like:
 
 #### Using a custom syntax
 
-Inker enable you to use a custom syntax so to not interfer with your templating engine of choice. If you do use a custom syntax you will have to replace the current implementation with the new syntax.
+Inker enables you to use a custom syntax to not interfere with your templating engine of choice. If you do use a custom syntax, you will have to replace the current implementation with the new syntax.
 
 ```javascript
 nunjucks: {
@@ -204,22 +204,22 @@ nunjucks: {
 
 
 ## Included components
-Current list of implemented component. (I am always looking to add more components to inker.)
+Current list of implemented components. (I am always looking to add more components to inker.)
 
 ### Buttons
 
-*Options:*
+*Options :*
 * Label
 * Link
 * Class to add
 * Alignment
 
-Usage:
+Usage :
 ```javascript
 button('Go to google', 'http://www.google.com', 'button-green', 'left');
 ```
 
-Render:
+Render :
 ```html
   <table class="button button-green" align="left">
     <tr>
@@ -239,12 +239,12 @@ Render:
 * Class to add
 
 
-Usage:
+Usage :
 ```javascript
 progressbar('100%', 70, 'Your progress so far', 'progressbar-green');
 ```
 
-Render:
+Render :
 ```html
   <table class='progressbar progressbar-green' cellpadding="0" cellspacing="0" width="100%">
       <tr>
@@ -260,9 +260,9 @@ Render:
 
 ### Video
 
-Please refer to campaign monitor chart to see what email client support video, fall back to an image.
+Please refer to campaign monitor chart to see which email client supports video, fallback to an image.
 
-*Options:*
+*Options :*
 * width
 * height
 * video_src
@@ -270,12 +270,12 @@ Please refer to campaign monitor chart to see what email client support video, f
 * video_image_placeholder
 * class
 
-Usage:
+Usage :
 ```javascript
 video(320, 176, 'http://www.google.com', 'http://www.google.com', 'http://www.google.com', 'video-big');
 ```
 
-Render:
+Render :
 ```html
   <div class="video_holder video-big">
       <video width="320" height="176" controls>
@@ -289,18 +289,18 @@ Render:
 
 ### Image Caption
 
-*Options:*
+*Options :*
 * Label
 * Width
 * Class
 * Align
 
-Usage:
+Usage :
 ```javascript
 caption('This is a cat', '320px', 'caption-red', 'left');
 ```
 
-Render:
+Render :
 ```html
   <table class="caption caption-red" cellpadding="0" cellspacing="0" width="320px" border="0", align='left'>
       <tr>
@@ -314,17 +314,17 @@ Render:
 
 ### Panel
 
-*Options:*
+*Options :*
 * Label
 * size (default: twelve)
 * Class
 
-Usage:
+Usage :
 ```javascript
 panel('This is a panel', 'twelve', 'panel-red');
 ```
 
-Render:
+Render :
 ```html
   <table class="twelve panel-red columns">
     <tr>
@@ -341,16 +341,16 @@ Render:
 
 ## Sending a test email to your inbox
 
-Inker use [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send test. By default it send a test for all files that are in the output folders, you can easily change that in **gruntfile.js**.
+Inker uses [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send tests. By default, it sends a test for all files that are in the output folders, you can easily change that in **gruntfile.js**.
 
-However a better way to use it would be to change the path directly from the grunt command. This make it possible to send tests really fast with different templates.
+However a better way to use it would be to change the path directly from the grunt command. This makes it possible to send tests really fast with different templates.
 
 ```bash
 // Override default src provided in gruntfile
 grunt email --fileSrc=dist/output/example.html
 ```
 
-Config example:
+Config example :
 ```javascript
 nodemailer: {
     options: {
@@ -417,7 +417,7 @@ litmus: {
 ```
 ## REST API
 
-Inker comes with a basic nodejs rest api that can handle rendering templates with custom variables & sending emails throught SMTP to any email provider. In it's current state I would recommend keeping it internal & not opening it completely on the web.
+Inker comes with a basic nodejs rest api that can handle rendering templates with custom variables and send emails throught SMTP to any email provider. In it's current state I would recommend keeping it internal and not opening it completely on the web.
 
 There is a public [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) collection for your convenience for testing the api locally.
 https://www.getpostman.com/collections/5e0cbbb46d8e9fff3c8d
@@ -435,16 +435,16 @@ node src/server/server.js
 
 ### Authentication
 
-The server has a basic auth system. It expect a token for each request. This token is set in */src/server/config.js*
+The server has a basic auth system. It expects a token for each request. This token is set in */src/server/config.js*
 
-Default:
+Default :
 ```javascript
 X-Authorization-Token : asd98a7s9898asdaSDA(asd987asda*(&*&%))
 ```
 
 ### API Templates rendering
 
-The API also use nunjucks to render custom variables. Remember that since we use the same rendering engine (nunjucks) for both front-end & server side, you must use strings in your template to add variables & custom template logic.
+The API also uses nunjucks to render custom variables. Remember that since we use the same rendering engine (nunjucks) for both front-end & server side, you must use strings in your template to add variables and custom template logics.
 
 Example:
 ```html
@@ -477,9 +477,9 @@ Example:
 
 ### API Email sending
 
-The api can send emails to a variety of smtp services, MailGun, Mandrill, SendGrig, Gmail, etc. You can see the full list in */src/server/serviceAuth.js*
+The api can send emails to a variety of SMTP services, MailGun, Mandrill, SendGrig, Gmail, etc. You can see the full list in */src/server/serviceAuth.js*
 
-Example:
+Example :
 ```javascript
 "POST /email/send"
 // Post data
@@ -516,7 +516,7 @@ Thanks to [Litmus](http://www.litmus.com) for providing free email client testin
 
 ## Contributions
 
-I'm always happy to accept contributions, i'm currently looking for more components & examplea, but please follow ITCSS guidelines & please test your new components in the most used email clients.
+I'm always happy to accept contributions, I'm currently looking for more components and examples, but please follow ITCSS guidelines, and please test your new components in the most used email clients.
 
 
 ## Licence
