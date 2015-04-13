@@ -9,7 +9,7 @@ Documentation [http://posabsolute.github.io/inker/](http://posabsolute.github.io
 Inker is :
 
 * Built on top of Zurb Ink
-* Sane CSS components structure with [sass](https://github.com/sass/sass)
+* Sane CSS components structure with [sass](http://sass-lang.com/)
 * Sane HTML components structure with [nunjucks](http://mozilla.github.io/nunjucks)
 * Auto generate template to HTML documents with inlined CSS
 * Auto deployment on [litmus](https://litmus.com/) for testing
