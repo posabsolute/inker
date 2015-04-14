@@ -10,3 +10,5 @@ app/web/js
 app/web/fonts
 tests/_output/*
 c3.php
+src/configs/servicesAuth
+src/configs/configs
