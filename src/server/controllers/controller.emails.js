@@ -104,7 +104,7 @@ var emails_controller = {
 		};
 
 		HC.postMessage(params, function(data) {
-		  console.log(params);
+		  console.log(data);
 		});
 	}
 };
