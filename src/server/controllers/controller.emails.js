@@ -6,7 +6,13 @@ var nodemailer = require('nodemailer');
 var wellknown = require('nodemailer-wellknown');
 var configs = require('../configs/configs');
 var serviceAuthConfigs = require('../configs/servicesAuth');
-var templates_controller = require('.,/controllers/controller.templates');
+var templates_controller = require('../controllers/controller.templates');
+
+if(configs.hipchat){
+	var hipchat = require('node-hipchat');
+	var HC = new hipchat(configs.hipchat.apikey);
+}
+
 var app = express();
 
 var emails_controller = {
@@ -25,10 +31,10 @@ var emails_controller = {
 		// render template with nunjucks
 		var templateHtml = templates_controller.renderTemplate(req.body.data.collection + "/" + req.body.data.template + ".html", data);
 		// get service from post data
-	  	var service = req.body.service.name || 'smtp';
+	  	var service = req.body.service.name || failOver || 'smtp';
 
 	  	var transporter = nodemailer.createTransport({
-	     	service: failOver || service, // <- resolved from the wellknown info
+	     	service: service, // <- resolved from the wellknown info
 	     	auth: serviceAuthConfigs.services[service].auth
 	  	});
 
@@ -41,7 +47,7 @@ var emails_controller = {
 	      	if(error){
 	      		// We can resend the email if we have a failover system
 	      		if(req.body.service.failover && !failOver){
-	      			emails_controller.create();
+	      			emails_controller.create(req, res, req.body.service.failover);
 	      		}
 
 	      		if(configs.logs === true){
@@ -52,7 +58,7 @@ var emails_controller = {
 			  		res.send(error);
 			  	}	      		
 	      		console.log(error);
-	      		
+
 	      	// success
 	      	}else{
 
@@ -68,8 +74,18 @@ var emails_controller = {
 	  	
 	},
 
-	log: function(){
-		
+	log: function(error){
+		var params = {
+		  room: configs.hipchat.room, // Found in the JSON response from the call above
+		  from: 'Email Server',
+		  message: JSON.stringify(error),
+		  color: 'yellow'
+		};
+
+		HC.postMessage(params, function(data) {
+			
+		  console.log(params);
+		});
 	}
 };
 module.exports = emails_controller;
