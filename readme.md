@@ -426,6 +426,8 @@ https://www.getpostman.com/collections/f37b94b5cf18a574e32a
 Install all dependencies
 ```javascript
 npm install
+cp src/server/configs/_serviceAuth.js src/server/configs/serviceAuth.js
+cp src/server/configs/_configs.js src/server/configs/configs.js
 ```
 
 Start the server
@@ -461,7 +463,7 @@ Example:
 You can configure the template syntax in */src/server/config.js*.
 
 
-"POST /templates/[path & name to template]"
+"GET /templates/folder/template"
 
 Base path is dist/output
 
@@ -484,11 +486,12 @@ Example :
 "POST /email/send"
 // Post data
 {
-  "template" : {
-    "src": "data_example/index.html",
-    "data": {
-      "name": "Cedric",
-      "loop": ["1","2","3"]
+  "data" : {
+    "collection": "data_example",
+    "template": "index",
+    "variables": {
+      "name":"Cedric",
+      "loop": ["1","2","3"]      
     }
   },
   "options" : {
@@ -498,7 +501,7 @@ Example :
     "text": "hello world!"
   },
   "service" : {
-    "name": "MailGun"
+    "name":"MailGun"
   }
 }
 ```

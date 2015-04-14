@@ -3,9 +3,9 @@ var fs = require('fs');
 
 var nunjucks = require('nunjucks');
 var bodyParser = require('body-parser');
-var emails_controller = require('./controller.emails');
-var templates_controller = require('./controller.templates');
-var configs = require('./configs');
+var emails_controller = require('./controllers/controller.emails');
+var templates_controller = require('./controllers/controller.templates');
+var configs = require('./configs/configs');
 
 var app = express();
 /**

@@ -3,8 +3,8 @@ var fs = require('fs');
 
 var nunjucks = require('nunjucks');
 var bodyParser = require('body-parser');
-var configs = require('./configs');
-var serviceAuthConfigs = require('./servicesAuth');
+var configs = require('../configs/configs');
+var serviceAuthConfigs = require('../configs/servicesAuth');
 var app = express();
 
 var templates_controller = {
