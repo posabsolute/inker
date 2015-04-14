@@ -55,7 +55,7 @@ var emails_controller = {
 	 * 
 	 */
 	getTransporter : function(service){
-		return transporter = nodemailer.createTransport({
+		return nodemailer.createTransport({
 	     	service: service, // <- resolved from the wellknown info
 	     	auth: serviceAuthConfigs.services[service].auth
 	  	});
