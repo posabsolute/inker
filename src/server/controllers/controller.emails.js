@@ -7,13 +7,7 @@ var wellknown = require('nodemailer-wellknown');
 var configs = require('../configs/configs');
 var serviceAuthConfigs = require('../configs/servicesAuth');
 var templates_controller = require('../controllers/controller.templates');
-var loggers = {};
-
-// Extantiante all the log systems
-configs.logs.forEach(function(logger){
- loggers[logger.name] = require(logger.bundle);
- logger.afterRequire(loggers);
-});
+var logs_service = require('../services/service.logs');
 
 var app = express();
 
@@ -71,27 +65,26 @@ var emails_controller = {
 	      			emails_controller.sendEmail(mailOptions, transporter, true);
 	      		}
 	      		// you can setup logs in configs.js
-	      		if(configs.sendLogs === true){
-	      			emails_controller.log(error, "crit");
+	      		if(configs.sendLogs && configs.sendLogs.length){
+	      			logs_service.log(error, "crit");
 	      		}
+	      		// Inker is async by default sending you back the fastest response possible
+	      		// Errors must be logged elsewhere
+	      		// if we are sync it wait for the  service provider to respond & send back the error directly
 			  	if(configs.sync){
 			  		res.send(error);
 			  	}	      		
 	      		console.log(error);
 	      	// success
 	      	}else{
+	      		// Inker is async by default sending you back the fastest response possible
+	      		// if we are sync it wait for the service provider to respond
 	      		if(configs.sync){
 			  		res.send(info);
 			  	}	   
 	      		console.log(info);
 	      	}
 	  	});
-	},
-	log: function(error, level){
-		var errorTxt = JSON.stringify(error);
-		configs.logs.forEach(function(logger){
-			logger.log(loggers, level, errorTxt, error);
-		});
 	}
 };
 module.exports = emails_controller;
