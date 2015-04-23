@@ -7,12 +7,13 @@ var wellknown = require('nodemailer-wellknown');
 var configs = require('../configs/configs');
 var serviceAuthConfigs = require('../configs/servicesAuth');
 var templates_controller = require('../controllers/controller.templates');
+var loggers = {};
 
-// logging with hipchat
-if(configs.hipchat){
-	var hipchat = require('node-hipchat');
-	var HC = new hipchat(configs.hipchat.apikey);
-}
+// Extantiante all the log systems
+configs.logs.forEach(function(logger){
+ loggers[logger.name] = require(logger.bundle);
+ logger.afterRequire(loggers);
+});
 
 var app = express();
 
@@ -70,15 +71,13 @@ var emails_controller = {
 	      			emails_controller.sendEmail(mailOptions, transporter, true);
 	      		}
 	      		// you can setup logs in configs.js
-	      		if(configs.logs === true){
-	      			emails_controller.log(error);
+	      		if(configs.sendLogs === true){
+	      			emails_controller.log(error, "crit");
 	      		}
-
 			  	if(configs.sync){
 			  		res.send(error);
 			  	}	      		
 	      		console.log(error);
-
 	      	// success
 	      	}else{
 	      		if(configs.sync){
@@ -88,23 +87,10 @@ var emails_controller = {
 	      	}
 	  	});
 	},
-	// You can add logging systems here, 
-	// By default inker only support hipchat
-	log: function(error){
-		if(configs.hipchat){
-			emails_controller.sendLogHipchat(error);
-		}
-	},
-	sendLogHipchat : function(error){
-		var params = {
-		  room: configs.hipchat.room,
-		  from: 'Email Server',
-		  message: JSON.stringify(error),
-		  color: 'yellow'
-		};
-
-		HC.postMessage(params, function(data) {
-		  console.log(data);
+	log: function(error, level){
+		var errorTxt = JSON.stringify(error);
+		configs.logs.forEach(function(logger){
+			logger.log(loggers, level, errorTxt, error);
 		});
 	}
 };

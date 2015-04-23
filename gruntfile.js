@@ -23,7 +23,8 @@ module.exports = function(grunt) {
         },
         nunjucks: {
             options:{
-                paths : "src"
+                paths : "src",
+                langs : ["en_US"]
                 // Use custom tag syntax to not interfer with your own templating engine
                 /*
                 tags : {
@@ -37,18 +38,7 @@ module.exports = function(grunt) {
                 */
                 // Data to be used in template
                 // data: grunt.file.readJSON('data.json'),
-            },
-            render: {
-                files: [
-                   {
-                      expand: true,
-                      cwd: "src/",
-                      src: "templates/**/index.html",
-                      dest: "dist/",
-                      ext: ".html"
-                   }
-                ]
-            }
+            }            
         },
         premailer: {
           inline :{
@@ -135,6 +125,33 @@ module.exports = function(grunt) {
             }
         }
     });
+
+    grunt.registerTask("build-templates", "Build emails html", function(test) {
+        var nunjucks = grunt.config.get('nunjucks') || {};
+        var langs = nunjucks.options.langs;
+        langs.forEach(function(lang){
+          nunjucks[lang] = {
+              options:{
+                lang:lang,
+                paths : "src"
+              },
+              files: [
+                   {
+                      expand: true,
+                      cwd: "src/",
+                      src: ["templates/**/index.html"],
+                      dest: "dist/"+lang+"/",
+                      ext: ".html"
+                   }
+              ]
+          };
+        });
+
+        grunt.config.set('nunjucks', nunjucks);
+        grunt.task.run('nunjucks');
+    });
+
+
 
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
