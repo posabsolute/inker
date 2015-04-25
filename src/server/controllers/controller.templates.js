@@ -33,7 +33,6 @@ var templates_controller = {
 	 * @return {html} return complete template html
 	 */
 	renderTemplate : function(template, data){
-		return nunjucks.render(template, data);
 		try{
       		return nunjucks.render(template, data);
       	}catch(error){
