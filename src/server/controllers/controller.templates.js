@@ -22,7 +22,7 @@ var templates_controller = {
 		// get post data
       	var data = req.query || {},
       		locale = req.params.locale || "en_US",
-      		tplURL = locale + '/' + req.params.folder + '/' + req.params.name + '.html',	
+      		tplURL = locale + '/' + req.params.folder + '/' + req.params.name + '.html',
       		templateHtml = templates_controller.renderTemplate(tplURL, data);
 
   	  	//res.render(templateHtml);
@@ -34,6 +34,12 @@ var templates_controller = {
 	 */
 	renderTemplate : function(template, data){
 		return nunjucks.render(template, data);
+		try{
+      		return nunjucks.render(template, data);
+      	}catch(error){
+      		logs_service.log(error.message, "crit");
+      		throw new Error(error);
+      	}
 	}
 };
 module.exports = templates_controller;
