@@ -1,4 +1,7 @@
+var YAML = require('yamljs');
+
 module.exports = function(grunt) {
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         sass: {
@@ -24,7 +27,24 @@ module.exports = function(grunt) {
         nunjucks: {
             options:{
                 paths : "src",
-                langs : ["en_US"]
+                langs : ["en_US"],
+                filters : function(env, options){
+                  env.addFilter('trans', function(str, obj) {
+                    var lang = options.lang || 'en_US';
+                    var locale = YAML.load('locales/'+lang+'.yml');
+
+                    var string = locale[str],
+                        myObj = obj || {};
+
+                    for (var params in myObj) {
+                      if (myObj.hasOwnProperty(params)) {
+                        string = string.replace('%' + params + '%', myObj[params]);
+                      }
+                    }
+
+                    return string;
+                  });
+                }
                 // Use custom tag syntax to not interfer with your own templating engine
                 /*
                 tags : {
@@ -43,7 +63,7 @@ module.exports = function(grunt) {
         premailer: {
           inline :{
             options: {
-              
+              warnLevel: "none"
             },
             files : [{
               expand: true,
@@ -98,7 +118,7 @@ module.exports = function(grunt) {
                 }
               ]
             },
-            src: ['dist/output/*.html','dist/output/**/*.html']
+            src: ['dist/*.html','dist/**/*.html']
         },
         connect: {
           server: {
@@ -138,9 +158,9 @@ module.exports = function(grunt) {
               files: [
                    {
                       expand: true,
-                      cwd: "src/",
-                      src: ["templates/**/index.html"],
-                      dest: "dist/"+lang+"/",
+                      cwd: "src/templates",
+                      src: ["**/index.html"],
+                      dest: "dist/templates/"+lang+"/",
                       ext: ".html"
                    }
               ]
@@ -163,8 +183,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default',['watch']);
     grunt.registerTask('css',['sass']);
-    grunt.registerTask('html',['nunjucks','premailer:inline']);
-    grunt.registerTask('build',['sass','nunjucks','premailer:inline']);
+    grunt.registerTask('html',['build-templates','premailer:inline']);
+    grunt.registerTask('build',['sass','build-templates','premailer:inline']);
     grunt.registerTask('email',['nodemailer']);
 
 };

@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "body-parser": "^1.11.0",
+    "domain": "0.0.1",
     "le_node": "^0.2.1",
     "nodemailer-sendgrid-transport": "^0.1.0",
     "nodemailer-wellknown": "^0.1.5"

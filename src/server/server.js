@@ -1,13 +1,14 @@
-var express = require('express');
-var fs = require('fs');
+var express = require('express'),
+	fs = require('fs'),
 
-var nunjucks = require('nunjucks');
-var bodyParser = require('body-parser');
-var emails_controller = require('./controllers/controller.emails');
-var templates_controller = require('./controllers/controller.templates');
-var configs = require('./configs/configs');
+	nunjucks = require('nunjucks'),
+	bodyParser = require('body-parser'),
+	emails_controller = require('./controllers/controller.emails'),
+	templates_controller = require('./controllers/controller.templates'),
+	configs = require('./configs/configs'),	
 
-var app = express();
+	app = express();
+	
 /**
  * Setup nunjucks template base path
  * Setup nunjucks custom syntax

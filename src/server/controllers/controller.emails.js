@@ -1,15 +1,16 @@
-var express = require('express');
-var fs = require('fs');
+var express = require('express'),
+	fs = require('fs'),
+	
+	bodyParser = require('body-parser'),
+	nodemailer = require('nodemailer'),
+	wellknown = require('nodemailer-wellknown'),
+	logs_service = require('../services/service.logs'),
+	configs = require('../configs/configs'),
+	serviceAuthConfigs = require('../configs/servicesAuth'),
+	templates_controller = require('../controllers/controller.templates'),
+	
 
-var bodyParser = require('body-parser');
-var nodemailer = require('nodemailer');
-var wellknown = require('nodemailer-wellknown');
-var configs = require('../configs/configs');
-var serviceAuthConfigs = require('../configs/servicesAuth');
-var templates_controller = require('../controllers/controller.templates');
-var logs_service = require('../services/service.logs');
-
-var app = express();
+	app = express();
 
 var emails_controller = {
 	/**
@@ -24,15 +25,17 @@ var emails_controller = {
 		}
 
 		// get post data
-		var data = req.body.data.variables || {};
-		// render template with nunjucks
-		var templateHtml = templates_controller.renderTemplate(req.body.data.collection + "/" + req.body.data.template + ".html", data);
-		// get service from post data
-	  	var service = req.body.service.name || configs.service  || 'smtp';
-	  	// get email service provider
-	  	var transporter = emails_controller.getTransporter(service);
-	  	// setup e-mail data
-	  	var mailOptions = req.body.options || {};
+		var data = req.body.data.variables || {},
+			local = req.body.data.locale || "en_US",
+			// render template with nunjucks
+			tplURL = req.body.data.collection + "/" + req.body.data.template + ".html",
+			templateHtml = templates_controller.renderTemplate(tplURL, data),
+			// get service from post data
+	  		service = req.body.service.name || configs.service  || 'smtp',
+	  		// get email service provider
+	  		transporter = emails_controller.getTransporter(service),
+	  		// setup e-mail data
+	  		mailOptions = req.body.options || {};
 	  	mailOptions.html = templateHtml;
 	  	mailOptions.failOver = req.body.service.failover;
 	  	// send mail with defined transport object

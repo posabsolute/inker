@@ -1,11 +1,12 @@
-var express = require('express');
-var fs = require('fs');
+var express = require('express'),
+	fs = require('fs'),
 
-var nunjucks = require('nunjucks');
-var bodyParser = require('body-parser');
-var configs = require('../configs/configs');
-var serviceAuthConfigs = require('../configs/servicesAuth');
-var app = express();
+	nunjucks = require('nunjucks'),
+	bodyParser = require('body-parser'),
+	configs = require('../configs/configs'),
+	logs_service = require('../services/service.logs'),
+	serviceAuthConfigs = require('../configs/servicesAuth'),
+	app = express();
 
 var templates_controller = {
 	/**
@@ -30,7 +31,13 @@ var templates_controller = {
 	 * @return {html} return complete template html
 	 */
 	renderTemplate : function(template, data){
-		return nunjucks.render(template, data);
+		return nunjucks.render(template, data, function (err, str) {
+			if(err){
+				logs_service.log({"error": err.message}, "crit");	
+	    		throw new Error(err);			
+			}
+
+  		});
 	}
 };
 module.exports = templates_controller;

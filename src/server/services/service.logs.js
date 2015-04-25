@@ -1,5 +1,5 @@
-var configs = require('../configs/configs');
-var loggers = require('../configs/configs.logs');
+var configs = require('../configs/configs'),
+	loggers = require('../configs/configs.logs');
 
 var logSystems = {};
 
@@ -11,7 +11,6 @@ configs.sendLogs.forEach(function(logger){
  	loggers[logger].afterRequire(logSystems);
 });
 
-var app = express();
 
 var logs_service = {
 	/**
@@ -20,8 +19,10 @@ var logs_service = {
 	log : function(message, level){
 		var messageTxt = JSON.stringify(message);
 		configs.sendLogs.forEach(function(logger){
-			logSystems[logger].log(loggers, level, messageTxt, message);
+			loggers[logger].log(logSystems, level, messageTxt, message);
 		});
 	}
 
 };
+
+module.exports = logs_service;
