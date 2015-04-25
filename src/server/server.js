@@ -8,7 +8,7 @@ var express = require('express'),
 	configs = require('./configs/configs'),	
 
 	app = express();
-	
+
 /**
  * Setup nunjucks template base path
  * Setup nunjucks custom syntax
@@ -27,7 +27,8 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 /**
  * Routes
  */
-app.get('/collections/*/templates/*', templates_controller.getOne);
+app.get('/collections/:folder/templates/:name', templates_controller.getOne);
+app.get('/collections/:folder/templates/:name/locale/:locale', templates_controller.getOne);
 app.post('/emails', emails_controller.create);
 /**
  * Start server

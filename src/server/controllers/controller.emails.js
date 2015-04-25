@@ -29,13 +29,14 @@ var emails_controller = {
 			local = req.body.data.locale || "en_US",
 			// render template with nunjucks
 			tplURL = req.body.data.collection + "/" + req.body.data.template + ".html",
-			templateHtml = templates_controller.renderTemplate(tplURL, data),
+			templateHtml = templates_controller.renderTemplate(tplURL, data, res),
 			// get service from post data
 	  		service = req.body.service.name || configs.service  || 'smtp',
 	  		// get email service provider
 	  		transporter = emails_controller.getTransporter(service),
 	  		// setup e-mail data
 	  		mailOptions = req.body.options || {};
+	  		
 	  	mailOptions.html = templateHtml;
 	  	mailOptions.failOver = req.body.service.failover;
 	  	// send mail with defined transport object

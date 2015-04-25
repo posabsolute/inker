@@ -20,8 +20,10 @@ var templates_controller = {
 			return res.sendStatus(401);
 		}
 		// get post data
-      	var data = req.query || {};
-      	var templateHtml = templates_controller.renderTemplate(req.params[0] + '/' + req.params[1] + '.html', data);
+      	var data = req.query || {},
+      		locale = req.params.locale || "en_US",
+      		tplURL = locale + '/' + req.params.folder + '/' + req.params.name + '.html',	
+      		templateHtml = templates_controller.renderTemplate(tplURL, data);
 
   	  	//res.render(templateHtml);
   	  	res.send(templateHtml);
@@ -31,13 +33,7 @@ var templates_controller = {
 	 * @return {html} return complete template html
 	 */
 	renderTemplate : function(template, data){
-		return nunjucks.render(template, data, function (err, str) {
-			if(err){
-				logs_service.log({"error": err.message}, "crit");	
-	    		throw new Error(err);			
-			}
-
-  		});
+		return nunjucks.render(template, data);
 	}
 };
 module.exports = templates_controller;
