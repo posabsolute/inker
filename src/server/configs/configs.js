@@ -7,6 +7,8 @@ module.exports = {
   "failOver" : "SendGrid",
   // active logs
   "sendLogs" : ['hipchat','logentries'],
+
+  "sync" : true,
   // logs configs
   "logs" : {
     "hipchat":{

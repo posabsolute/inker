@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         nunjucks: {
             options:{
                 paths : "src",
-                langs : ["en_US"],
+                langs : ["en_US", "fr_CA"],
                 filters : function(env, options){
                   env.addFilter('trans', function(str, obj) {
                     var lang = options.lang || 'en_US';
@@ -143,6 +143,14 @@ module.exports = function(grunt) {
                 files: ['src/*.html','src/**/*.html'],
                 tasks: ['nunjucks','premailer:inline']
             }
+        },
+        mochaTest: {
+          api: {
+            options: {
+              reporter: 'spec'
+            },
+            src: ['tests/*.js']
+          }
         }
     });
 
@@ -180,6 +188,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-litmus');
     grunt.loadNpmTasks('grunt-nodemailer');
     grunt.loadNpmTasks('grunt-premailer');
+    grunt.loadNpmTasks('grunt-mocha-test');
 
     grunt.registerTask('default',['watch']);
     grunt.registerTask('css',['sass']);

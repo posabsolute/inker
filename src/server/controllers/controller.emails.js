@@ -26,9 +26,9 @@ var emails_controller = {
 		// get post data
 		var data = req.body.data.variables || {},
 			// Get language used
-			local = req.body.data.locale || "en_US",
+			locale = req.body.data.locale || "en_US",
 			// render template with nunjucks
-			tplURL = req.body.data.collection + "/" + req.body.data.template + ".html",
+			tplURL =  templates_controller.getTemplate(locale, req.body.data.collection, req.body.data.template),
 			templateHtml = templates_controller.renderTemplate(tplURL, data, res),
 			// get service from post data
 	  		service = req.body.service.name || configs.service  || 'smtp',
@@ -39,12 +39,18 @@ var emails_controller = {
 
 	  	mailOptions.html = templateHtml;
 	  	mailOptions.failOver = req.body.service.failover;
+	  	mailOptions.service = service;
+	  	mailOptions.template = tplURL;
 	  	// send mail with defined transport object
-	  	emails_controller.sendEmail(mailOptions, transporter);
+	  	emails_controller.sendEmail(mailOptions, transporter, undefined, res);
 
 	  	// You can choose to be sync but your response will be bound by your email service speed.
 	  	if(!configs.sync){
-	  		res.send("Email has been sent to "+service);
+	  		res.status(200).json({
+	  			"service": service,
+	  			"async"  : true,
+	  			template : tplURL
+	  		});
 	  	}
 	  	
 	},
@@ -59,24 +65,31 @@ var emails_controller = {
 	     	auth: serviceAuthConfigs.services[service].auth
 	  	});
 	},
-	sendEmail : function(mailOptions, transporter, failOver){
+	sendEmail : function(mailOptions, transporter, failOver, res){
 		transporter.sendMail(mailOptions, function(error, info){
 	      	if(error){
 	      		// We can resend the email if we have a failover provider
 	      		var failOverService = mailOptions.failOver || configs.failOver || undefined;
 	      		if(failOverService && !failOver){
 	      			var transporter = emails_controller.getTransporter(failOverService);
-	      			emails_controller.sendEmail(mailOptions, transporter, true);
+	      			emails_controller.sendEmail(mailOptions, transporter, true, res);
 	      		}
 	      		// you can setup logs in configs.js
 	      		if(configs.sendLogs && configs.sendLogs.length){
-	      			logs_service.log(error, "crit");
+	      			var level = error.level || "crit";
+	      			logs_service.log(error, level);
 	      		}
 	      		// Inker is async by default sending you back the fastest response possible
 	      		// Errors must be logged elsewhere
 	      		// if we are sync it wait for the  service provider to respond & send back the error directly
 			  	if(configs.sync){
-			  		res.send(error);
+			  		var status = error.responseCode || 400;
+	      			res.status(status).json({
+			  			"provider": mailOptions.service,
+			  			"async"  : false,
+			  			"template" : mailOptions.template,
+			  			"providerInfo" : error
+			  		});			  		
 			  	}	      		
 	      		console.log(error);
 	      	// success
@@ -84,7 +97,12 @@ var emails_controller = {
 	      		// Inker is async by default sending you back the fastest response possible
 	      		// if we are sync it wait for the service provider to respond
 	      		if(configs.sync){
-			  		res.send(info);
+	      			res.status(200).json({
+			  			"provider": mailOptions.service,
+			  			"async"  : false,
+			  			"template" : mailOptions.template,
+			  			"providerInfo" : info
+			  		});
 			  	}	   
 	      		console.log(info);
 	      	}

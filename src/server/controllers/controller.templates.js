@@ -23,23 +23,29 @@ var templates_controller = {
 		// get post data
       	var data = req.query || {},
       		locale = req.params.locale || "en_US",
-      		tplURL = locale + '/' + req.params.folder + '/' + req.params.name + '.html',
-      		templateHtml = templates_controller.renderTemplate(tplURL, data);
+      		tplURL = templates_controller.getTemplate(locale, req.params.folder, req.params.name),
+      		templateHtml = templates_controller.renderTemplate(tplURL, data, res);
 
   	  	//res.render(templateHtml);
   	  	res.send(templateHtml);
 	},
 	/**
+	 * Find template path
+	 * @return {string} return template url
+	 */
+	getTemplate : function(locale, folder, name){
+		return locale + '/' + folder + '/' + name + '.html';
+	},
+	/**
 	 * Render template with custom data using nunjucks
 	 * @return {html} return complete template html
 	 */
-	renderTemplate : function(template, data){
+	renderTemplate : function(template, data, res){
 		try{
       		return nunjucks.render(template, data);
       	}catch(error){
       		logs_service.log(error.message, "crit");
-      		res.status(400);
-      		res.send(error);
+      		res.status(400).json({"error": error.message});
       	}
 	}
 };
