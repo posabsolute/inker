@@ -14,22 +14,76 @@ describe('Email Delivery Service', function() {
 
   it('401 if auth token is undefined', function(done) {
     request(api)
-    .get('/emails')
+    .post('/emails')
     .expect(401, done);
   });
 
   it('400 if template is undefined', function(done) {
+    var data = {
+      "data" : { "collection": "data_examples", "template": "index",
+        "variables": { "name":"Cedric", "loop": ["1","2","3"] }
+      },
+      "options" : { "from": "sender@address", "to": "cedric@gmail.com", "subject": "hello", "text": "hello world!"
+      },
+      "service" : { "name":"MailGun" }
+    };
     request(api)
-    .get('/emails')
+    .post('/emails')
     .set('x-authorization-token', configs.authToken)
+    .send(data)
     .expect(400, done);
   });
 
-  it('200 when auth token is right & template is right', function(done) {
+  it('Should be sent correctly to Mandrill when async', function(done) {
+    var data = {
+      "data" : { "collection": "data_example", "template": "index",
+        "variables": { "name":"Cedric", "loop": ["1","2","3"] }
+      },
+      "options" : { "from": "sender@address", "to": "cedric@gmail.com", "subject": "hello", "text": "hello world!"
+      },
+      "service" : { "name": "Mandrill" }
+    };
     request(api)
-    .get('/collections/data_example/templates/index?name=Cedric&loop[]=1&loop[]=2&loop[]=3')
+    .post('/emails')
     .set('x-authorization-token', configs.authToken)
-    .expect(200, done);
+    .send(data)
+    .expect(function(res){
+      if(res.body.provider !== "Mandrill"){
+        return "Should have used Mandrill";
+      }
+      if(res.statusCode !== 200){
+        return "Call should have been a success";
+      }
+
+
+    })
+    .end(done);
+  });
+
+  it('Should fail sending & use default failover when sync', function(done) {
+    var data = {
+      "data" : { "collection": "data_example", "template": "index",
+        "variables": { "name":"Cedric", "loop": ["1","2","3"] }
+      },
+      "options" : { "failOver": "SendGrid", "sync" : true, "from": "sender@address", "to": "cedric@gmail.com", "subject": "hello", "text": "hello world!" },
+      "service" : { "name": "MailGun" }
+    };
+    request(api)
+    .post('/emails')
+    .set('x-authorization-token', configs.authToken)
+    .send(data)
+    .expect(function(res){
+      console.log(res.body);
+      if(res.body.provider !== "SendGrid"){
+        return "Should have used SendGrid";
+      }
+      if(res.body.statusCode === 200){
+        return "Call should have failed";
+      }
+
+
+    })
+    .end(done);
   });
 
   it('Expect french data to be used', function(done) {
@@ -39,18 +93,6 @@ describe('Email Delivery Service', function() {
     .expect(function(res){
   		if (res.text.indexOf("fr_CA") === -1) {
   			return "Missing french string set in fr_CA";
-  		}
-    })
-    .end(done);
-  });
-
-  it('Expect data to be added to the template', function(done) {
-    request(api)
-    .get('/collections/data_example/templates/index?name=Cedric')
-    .set('x-authorization-token', configs.authToken)
-    .expect(function(res){
-  		if (res.text.indexOf("Cedric") === -1) {
-  			return "missing name from template";
   		}
     })
     .end(done);
