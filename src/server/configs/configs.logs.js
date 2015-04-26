@@ -2,11 +2,17 @@ var configs = require('./configs');
 
 module.exports = {
 	"hipchat": {
+      // not currently used
       "level":2,
+      // Module required for the log provider 
       "module":"node-hipchat",
+      // Executed after the module is loaded in
+      // Generally used to instanciate the provider
       "afterRequire": function(loggers){
         loggers.hipchatLog = new loggers.hipchat(configs.logs.hipchat.token);
       },
+      // Actual log function
+      // loggers is passed bavk & contains all the logs providers.
       log : function(loggers, type, messageText, messageJson){
         var params = {
             room: configs.logs.hipchat.room,

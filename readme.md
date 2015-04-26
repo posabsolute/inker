@@ -8,13 +8,20 @@ Documentation [http://posabsolute.github.io/inker/](http://posabsolute.github.io
 
 Inker is :
 
+Coding
 * Built on top of Zurb Ink
 * Sane CSS components structure with [sass](http://sass-lang.com/)
 * Sane HTML components structure with [nunjucks](http://mozilla.github.io/nunjucks)
+* Localization
 * Auto generate template to HTML documents with inlined CSS
 * Auto deployment on [litmus](https://litmus.com/) for testing
 * Auto deployment to any email address for testing
-* Basic REST mail sender server.
+
+REST API Email Delivery service
+* Generate Emails with custom data on the fly
+* Integrate all major email delivery providers
+* Failover, when one goes down we redirect the request to another provider
+* Logs, hipchat, slack, logtenries are all in but you can easily add your own too
 
 
 ## Getting started
@@ -338,6 +345,19 @@ Render :
   </table>
 ```
 
+## Localization
+
+Inker can generate for the same template multiple language. Strings are defined in the folder *locales* in the Yaml format. Don't forget that inker pre-generate templates, it's not generated on the fly.
+
+You can set default rendering languages in the gruntfile.js in the nunjucks section.
+```javascript
+nunjucks: {
+  options:{
+    langs : ["en_US"],
+```
+
+Follow the same conventions while creating your localization files, in this case, *locales/en_US.yml*.
+
 
 ## Sending a test email to your inbox
 
@@ -415,11 +435,11 @@ litmus: {
   }
 },
 ```
-## REST API
+## Email REST API
 
-Inker comes with a basic nodejs rest api that can handle rendering templates with custom variables and send emails throught SMTP to any email provider. In it's current state I would recommend keeping it internal and not opening it completely on the web.
+Inker comes with a nodejs rest api that can handle rendering templates with custom variables and send emails throught SMTP to any email provider.
 
-There is a public [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) collection for your convenience for testing the api locally.
+There is a public [Postman collection](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) for your convenience for testing the api locally.
 https://www.getpostman.com/collections/f37b94b5cf18a574e32a
 
 ### Starting the server
@@ -443,6 +463,10 @@ Default :
 ```javascript
 X-Authorization-Token : asd98a7s9898asdaSDA(asd987asda*(&*&%))
 ```
+
+### Configs
+
+
 
 ### API Templates rendering
 
@@ -469,12 +493,11 @@ Base path is dist/output
 
 Example:
 ```javascript
-"POST /templates/sunday/index"
-// Post data
-{
-  "name": "Cedric",
-  "loop": ["1","2","3"]
-}
+"GET /collections/:folders/templates/:filename?name=Cedric&loop[]=1&loop[]=2&loop[]=3"
+// with localization
+// Example with french
+"GET /collections/:folders/templates/:filename/locale/fr_CA?name=Cedric&loop[]=1&loop[]=2&loop[]=3"
+
 ```
 
 ### API Email sending
@@ -489,6 +512,7 @@ Example :
   "data" : {
     "collection": "data_example",
     "template": "index",
+    "locale" : "en_US",
     "variables": {
       "name":"Cedric",
       "loop": ["1","2","3"]      
@@ -508,9 +532,71 @@ Example :
 
 ### Email delivery service Authentication
 
-You must add your credentials in */src/server/serviceAuth.js*
+You must add your credentials in */src/server/configs.providers.auth.js*
+
+### Failover Email Delivery Provider
+
+You can set a default failover service provider in */src/server/configs.js*
 
 
+```javascript
+// main mailing service used to send email
+"service" : "MailGun",
+// failover service when main service is down
+"failOver" : "SendGrid",
+```
+
+
+### Logs
+
+By default Inker can log errors hapenning on the service & alert you when one your main email sending provider is down, when an application request an unexistent template or when there is an error in a template.
+
+
+Default Services used is defined in */src/server/configs.js*
+
+```javascript
+// active logs
+"sendLogs" : ['hipchat','logentries'],
+// logs configs
+"logs" : {
+  "hipchat":{
+    "room" : "HIPCHAT_ROOM_ID",
+    "token" : "MY_TOKEN"
+  },
+  "logentries" : {
+    "token" : "MY_TOKEN"
+  }
+}
+```
+
+#### Adding a log provider
+
+You can add a log prodider in */src/server/configs.logs.js*. Implementation example:
+
+```javascript
+"hipchat": {
+    "level":2,
+    // Module required for the log provider 
+    "module":"node-hipchat",
+    // Executed after the module is loaded in
+    // Generally used to instanciate the provider
+    "afterRequire": function(loggers){
+      loggers.hipchatLog = new loggers.hipchat(configs.logs.hipchat.token);
+    },
+    // Actual log function
+    // loggers is passed bavk & contains all the logs providers.
+    log : function(loggers, type, messageText, messageJson){
+      var params = {
+          room: configs.logs.hipchat.room,
+          from: 'Email Server',
+          message: messageText,
+          color: 'yellow'
+        };
+
+      loggers.hipchatLog.postMessage(params, function(data) { });
+    }
+},
+```
 
 ## Special thanks
 

@@ -5,7 +5,8 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	configs = require('../configs/configs'),
 	logs_service = require('../services/service.logs'),
-	serviceAuthConfigs = require('../configs/servicesAuth'),
+	serviceAuthConfigs = require('../configs/configs.providers.auth'),
+	
 	app = express();
 
 var templates_controller = {

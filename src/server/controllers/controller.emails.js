@@ -6,10 +6,9 @@ var express = require('express'),
 	wellknown = require('nodemailer-wellknown'),
 	logs_service = require('../services/service.logs'),
 	configs = require('../configs/configs'),
-	serviceAuthConfigs = require('../configs/servicesAuth'),
+	serviceAuthConfigs = require('../configs/configs.providers.auth'),
 	templates_controller = require('../controllers/controller.templates'),
 	
-
 	app = express();
 
 var emails_controller = {
@@ -26,6 +25,7 @@ var emails_controller = {
 
 		// get post data
 		var data = req.body.data.variables || {},
+			// Get language used
 			local = req.body.data.locale || "en_US",
 			// render template with nunjucks
 			tplURL = req.body.data.collection + "/" + req.body.data.template + ".html",
@@ -36,7 +36,7 @@ var emails_controller = {
 	  		transporter = emails_controller.getTransporter(service),
 	  		// setup e-mail data
 	  		mailOptions = req.body.options || {};
-	  		
+
 	  	mailOptions.html = templateHtml;
 	  	mailOptions.failOver = req.body.service.failover;
 	  	// send mail with defined transport object
