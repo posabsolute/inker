@@ -38,7 +38,8 @@ var templates_controller = {
       		return nunjucks.render(template, data);
       	}catch(error){
       		logs_service.log(error.message, "crit");
-      		throw new Error(error);
+      		res.status(400);
+      		res.send(error);
       	}
 	}
 };
