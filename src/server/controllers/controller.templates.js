@@ -25,6 +25,12 @@ var templates_controller = {
       		locale = req.params.locale || "en_US",
       		tplURL = templates_controller.getTemplate(locale, req.params.folder, req.params.name),
       		templateHtml = templates_controller.renderTemplate(tplURL, data, res);
+      	
+      	// when there is an error we return an object
+	 	if(typeof templateHtml !== "string"){
+	 		// stop the call use the response set in controller.templates.js
+	 		return;
+	 	}
 
   	  	//res.render(templateHtml);
   	  	res.send(templateHtml);
@@ -44,8 +50,11 @@ var templates_controller = {
 		try{
       		return nunjucks.render(template, data);
       	}catch(error){
+      		
       		logs_service.log(error.message, "crit");
-      		res.status(400).json({"error": error.message});
+      		var errorJson = {"error": error.message};
+      		res.status(400).json(errorJson).end();
+      		return errorJson;
       	}
 	}
 };

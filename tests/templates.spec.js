@@ -33,7 +33,7 @@ describe('Template generation', function() {
     .expect(200, done);
   });
 
-  it('Expect french data to be used', function(done) {
+  it('Should use french data', function(done) {
     request(api)
     .get('/collections/data_example/templates/index/locale/fr_CA?name=Cedric&loop[]=1&loop[]=2&loop[]=3')
     .set('x-authorization-token', configs.authToken)
@@ -45,7 +45,7 @@ describe('Template generation', function() {
     .end(done);
   });
 
-  it('Expect data to be added to the template', function(done) {
+  it('Should have data added to the template', function(done) {
     request(api)
     .get('/collections/data_example/templates/index?name=Cedric')
     .set('x-authorization-token', configs.authToken)

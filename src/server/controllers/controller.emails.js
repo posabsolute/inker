@@ -37,6 +37,12 @@ var emails_controller = {
 	  		// setup e-mail data
 	  		mailOptions = req.body.options || {};
 
+	  	// when there is an error we return an object
+	 	if(typeof templateHtml !== "string"){
+	 		// stop the call use the response set in controller.templates.js
+	 		return;
+	 	}
+
 	  	mailOptions.sync = req.body.options.sync || configs.sync || false;
 	  	mailOptions.html = templateHtml;
 	  	mailOptions.failOver = req.body.service.failOver || configs.failOver || undefined;
@@ -45,13 +51,13 @@ var emails_controller = {
 	  	// send mail with defined transport object
 	  	emails_controller.sendEmail(mailOptions, transporter, undefined, res);
 
-	  	// You can choose to be sync but your response will be bound by your email service speed.
+	  	// You can choose to be sync but your response will be bound by your email provider speed.
 	  	if(!mailOptions.sync){
 	  		res.status(200).json({
 	  			"provider": service,
 	  			"async"  : true,
-	  			template : tplURL
-	  		});
+	  			"template" : tplURL
+	  		}).end();
 	  	}
 	  	
 	},
@@ -75,7 +81,8 @@ var emails_controller = {
 	      			var level = error.level || "crit";
 	      			logs_service.log(error, level);
 	      		}
-	      		// We can resend the email if we have a failover provider
+	      		// We can resend the email if we have a failover provider 
+	      		// if we are not already sending to failover
 	      		if(mailOptions.failOver && !failOver){
 	      			var transporter = emails_controller.getTransporter(mailOptions.failOver);
 	      			mailOptions.service = mailOptions.failOver;
@@ -92,7 +99,7 @@ var emails_controller = {
 			  			"async"  : false,
 			  			"template" : mailOptions.template,
 			  			"providerInfo" : error
-			  		});			  		
+			  		}).end();			  		
 			  	}	      		
 	      		
 	      	// success
@@ -105,7 +112,7 @@ var emails_controller = {
 			  			"async"  : false,
 			  			"template" : mailOptions.template,
 			  			"providerInfo" : info
-			  		});
+			  		}).end();
 			  	}	   
 	      		//console.log(info);
 	      	}

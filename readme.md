@@ -18,10 +18,11 @@ Coding
 * Auto deployment to any email address for testing
 
 REST API Email Delivery service
-* Generate Emails with custom data on the fly
-* Integrate all major email delivery providers
+* Asyncronous for a warp speed response (you can use it in sync mode too)
+* Generate emails with custom data on the fly
+* Integrate all major email delivery providers, just put you account infos
 * Failover, when one goes down we redirect the request to another provider
-* Logs, hipchat, slack, logtenries are all in but you can easily add your own too
+* Logs! hipchat, slack, logtenries, winston, push notifications with push bullet, are all in but you can easily add your own too
 
 
 ## Getting started
@@ -510,9 +511,9 @@ Example :
 // Post data
 {
   "data" : {
-    "collection": "data_example",
-    "template": "index",
-    "locale" : "en_US",
+    "collection": "data_example", // required, folder(s) in output
+    "template": "index", // required, template filename
+    "locale" : "en_US", // optional, default to en_US
     "variables": {
       "name":"Cedric",
       "loop": ["1","2","3"]      
@@ -524,6 +525,7 @@ Example :
     "subject": "hello",
     "text": "hello world!"
   },
+  // optional, default to 'service' set in config.js
   "service" : {
     "name":"MailGun"
   }
