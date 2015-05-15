@@ -1,0 +1,14 @@
+{% extends "/templates/transactional/_base-messages.html" %}
+{% block meta_title %}Action Email{% endblock %}
+{% block tableClass %}{% endblock %}
+{% block content %}
+
+	<p>{{ 'action_text_1' | trans }}</p>
+
+
+	<p>{{ 'action_text_2' | trans }}</p>
+
+	<p>{{ button('Confirm email address', '#', '') }}</p>
+
+{% endblock %}
+

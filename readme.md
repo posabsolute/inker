@@ -507,7 +507,7 @@ The api can send emails to a variety of SMTP services, MailGun, Mandrill, SendGr
 
 Example :
 ```javascript
-"POST /email/send"
+"POST /email"
 // Post data
 {
   "data" : {

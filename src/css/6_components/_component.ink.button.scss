@@ -1,10 +1,12 @@
+//generic layout
 table.button,
 table.tiny-button,
 table.small-button,
 table.medium-button,
 table.large-button {
-  width: 100%;
   overflow: hidden;
+  margin:0 0px 10px 0!important;
+
 }
 
 table.button td,
@@ -17,38 +19,41 @@ table.large-button td {
   text-align: center;
   transition: background-color 0.5s ease;
   background: #2ba6cb;
-  border: 1px solid #2284a1;
   color: #ffffff;
-  padding: 8px 0;
+  padding: 0px 0;
+  border-radius: 3px;
 }
 
-table.tiny-button td {
+table.button td a{
+  font-size: 16px; 
+  font-family: Helvetica, Arial, sans-serif; 
+  color: #ffffff; 
+  text-decoration: none;
+  border-radius: 3px; 
+  padding: 12px 18px; 
+  border: 1px solid #2178cf; 
+  display: inline-block;
+  border-radius: 3px;
+}
+
+
+table.tiny-button td a{
   padding: 5px 0 4px;
 }
 
-table.small-button td {
-  padding: 8px 0 7px;
+table.small-button td a{
+  padding: 8px 7px 7px 7px;
+  font-size: 14px;
 }
 
-table.medium-button td {
+table.medium-button td a{
   padding: 12px 0 10px;
 }
 
-table.large-button td {
+table.large-button td a{
   padding: 21px 0 18px;
 }
 
-table.button td a,
-table.tiny-button td a,
-table.small-button td a,
-table.medium-button td a,
-table.large-button td a {
-  font-weight: bold;
-  text-decoration: none;
-  font-family: Helvetica, Arial, sans-serif;
-  color: #ffffff;
-  font-size: 16px;
-}
 
 table.tiny-button td a {
   font-size: 12px;
@@ -56,7 +61,7 @@ table.tiny-button td a {
 }
 
 table.small-button td a {
-  font-size: 16px;
+ 
 }
 
 table.medium-button td a {
@@ -70,13 +75,13 @@ table.large-button td a {
 table.button:hover td,
 table.button:visited td,
 table.button:active td {
-  background: #2795b6 !important;
+  background: #2795b6;
 }
 
 table.button:hover td a,
 table.button:visited td a,
 table.button:active td a {
-  color: #fff !important;
+  color: #fff;
 }
 
 table.button:hover td,
@@ -84,23 +89,30 @@ table.tiny-button:hover td,
 table.small-button:hover td,
 table.medium-button:hover td,
 table.large-button:hover td {
-  background: #2795b6 !important;
+  background: #2795b6;
 }
 
 table.button:hover td a,
 table.button:active td a,
-table.button td a:visited,
-table.tiny-button:hover td a,
-table.tiny-button:active td a,
-table.tiny-button td a:visited,
-table.small-button:hover td a,
-table.small-button:active td a,
-table.small-button td a:visited,
-table.medium-button:hover td a,
-table.medium-button:active td a,
-table.medium-button td a:visited,
-table.large-button:hover td a,
-table.large-button:active td a,
-table.large-button td a:visited {
-  color: #ffffff !important; 
+table.button td a:visited{
+  color: #ffffff; 
+}
+
+
+//themes
+table.btn-blue td,
+table.btn-blue td a{
+  background:#2178cf;
+}
+
+
+table.btn-blue td:hover,
+table.btn-blue td a:hover{
+  background:#1a68b6;
+  color:#fff!important;
+}
+table.btn-blue td a:active{
+  background:#1a68b6;
+  color:#fff!important;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
 }

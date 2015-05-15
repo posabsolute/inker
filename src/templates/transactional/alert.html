@@ -1,0 +1,17 @@
+{% extends "/templates/transactional/_base-messages.html" %}
+{% block meta_title %}Alert{% endblock %}
+
+{% block alert %}
+	{{ alertHeader( "You have an alert", 'alert-container-warning') }}
+{% endblock %}
+
+{% block content %}
+
+	<p>{{ 'alert_text_1' | trans }}</p>
+
+	<p>{{ 'alert_text_2' | trans }}</p>
+
+	<p>{{ button('Upgrade my account', '#', '') }}</p>
+
+	<p>{{ 'alert_text_3' | trans }}</p>
+{% endblock %}

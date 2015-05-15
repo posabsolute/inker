@@ -1,13 +1,13 @@
-{% extends "/html-components/base.html" %}
+{% extends "/html-components/_base.html" %}
   {% block main_css %}<link href="../../../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
   {% block theme_css %}<link href="../../../css/sunday/sunday.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
 
   {% block responsive_css %}<link href="../../../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />{% endblock %}
   
-  {% block meta_title %}Sunday{% endblock %}
+  {% block meta_title %}Account Activation{% endblock %}
 
 {% block mainContent %}
 
-	{% block content %} {% include "/templates/sunday/_content.html" %} {% endblock %}
+	{% block content %} {% include "/templates/transactional/account_activation/_content.html" %} {% endblock %}
 
 {% endblock %}

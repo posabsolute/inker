@@ -1,0 +1,18 @@
+{% macro alertHeader(label='', class='', align='left') %}
+<table class="row alert-container {{ class }}">
+  <tbody><tr>
+    <td class=" last">
+        
+        <table class="twelve columns">
+          <tbody><tr>
+            <td class="alert-content">
+                {{label}}
+            </td>
+            <td class="expander"></td>
+          </tr>
+        </tbody></table>
+    </td>
+  </tr>
+</table>
+{% endmacro %}
+

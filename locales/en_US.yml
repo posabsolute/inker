@@ -1,2 +1,9 @@
+current_language: You are currently using en_US
 
-test_string: You are currently using en_US
+alert_text_1: You have <strong>1 free report</strong> remaining.
+alert_text_2: Add your credit card now to upgrade your account to a premium plan to ensure you don't miss out on any reports.
+alert_text_3: Thanks for choosing Acme Inc.
+
+
+action_text_1: Please confirm your email address by clicking the link below.
+action_text_2: We may need to send you critical information about our service and it is important that we have an accurate email address.

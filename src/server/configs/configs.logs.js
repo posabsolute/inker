@@ -17,6 +17,7 @@ module.exports = {
         var params = {
             room: configs.logs.hipchat.room,
             from: 'Email Server',
+            notification: true,
             message: messageText,
             color: 'yellow'
           };

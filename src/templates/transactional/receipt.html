@@ -1,0 +1,45 @@
+{% extends "/templates/transactional/_base-messages.html" %}
+ {% block meta_title %}Receipt{% endblock %}
+ {% block tableClass %}{% endblock %}
+
+{% block content %} 
+	<table class="main invoice-template" width="100%" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="content-wrap aligncenter">
+				<table width="100%" cellpadding="0" cellspacing="0">
+		
+				<h4 class="center-text">$33.98 Paid</h1>
+
+				<h5 class="center-text">Thanks for using Acme Inc.</h2>
+
+				<table class="invoice" width="100%" >
+					<tr>
+						<td>Lee Munroe<br>Invoice #12345<br>June 01 2014</td>
+					</tr>
+					<tr>
+						<td>
+							<table class="invoice-items" cellpadding="0" cellspacing="0" width="100%" >
+								<tr>
+									<td>Service 1</td>
+									<td class="alignright">$ 19.99</td>
+								</tr>
+								<tr>
+									<td>Service 2</td>
+									<td class="alignright">$ 9.99</td>
+								</tr>
+								<tr>
+									<td>Service 3</td>
+									<td class="alignright">$ 4.00</td>
+								</tr>
+								<tr class="total">
+									<td class="alignright" width="80%">Total</td>
+									<td class="alignright">$ 33.98</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+{% endblock %}

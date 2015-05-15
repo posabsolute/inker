@@ -18,6 +18,11 @@ body{
   padding:0;
 }
 
+.noreset {
+  float: none;
+  display: inline;
+}
+
 .ExternalClass { 
   width:100%;
 } 
@@ -48,7 +53,9 @@ img {
   clear: both; 
   display: block;
 }
-
+.center-text{
+  text-align:center;
+}
 center {
   width: 100%;
   min-width: 580px;

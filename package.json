@@ -30,7 +30,7 @@
     "grunt-mocha-test": "^0.12.7",
     "grunt-nodemailer": "^0.3.0",
     "grunt-nunjucks": "^0.1.4",
-    "grunt-nunjucks-2-html": "^0.2.3",
+    "grunt-nunjucks-2-html": "git+https://git@github.com/posabsolute/grunt-nunjucks-2-html.git",
     "grunt-premailer": "^0.2.11",
     "grunt-sass": "^0.18.0",
     "jasmine-node": "^1.14.5",

@@ -2,7 +2,7 @@
     <tr>
       <td>
 
-        {% block header %} {% include "/templates/sunday/_header.html" %} {% endblock %}
+        {% block header %} {% include "/templates/transactional/account_activation/_header.html" %} {% endblock %}
 
         <table class="row account-information">
           <tr>
@@ -25,9 +25,15 @@
                 <tr>
                   <td class="left-text-pad">
 
-                    <h4>two last step and you're done!</h4>
+                    <h4>{{ '{{ name }}' }} last step and you're done!</h4>
 
+                    <p>
+                      {{ '{% for item in loop %}' }}
+                      {{ '{{ item }}' }} &nbsp;
+                      {{ '{% endfor %}' }}
+                    </p>
                     <p>We need you to update your account information. If there is ever a problem with your account, this information will make it easier for you to log back in.</p>
+                    <p>{{ 'test_string' | trans }}</p>
                   </td>
                   <td class="expander"></td>
                 </tr>
@@ -52,7 +58,7 @@
           </tr>
         </table>
 
-        {% block footer %} {% include "/templates/sunday/_footer.html" %} {% endblock %}
+        {% block footer %} {% include "/templates/transactional/account_activation/_footer.html" %} {% endblock %}
 
     </td>
   </tr>

@@ -1,0 +1,59 @@
+{% extends "/html-components/_base.html" %}
+  {% block main_css %}<link href="../../../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
+  {% block theme_css %}<link href="../../../css/transactional/transactional.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
+
+  {% block responsive_css %}<link href="../../../css/responsive.css" media="all" data-ignore="ignore" rel="stylesheet" type="text/css" />{% endblock %}
+
+  {% block meta_title %}{% endblock %}
+
+{% block mainContent %}
+
+	{% block header %}
+    {% include "templates/transactional/base/_header.html" %}
+  {% endblock %}
+
+	<table class="row ">
+  	<tbody><tr>
+    	<td class="center" align="center">
+      	<center>
+
+
+        <table class="container">
+          <tbody><tr>
+            <td class="">
+          
+            {% block alert %}{% endblock %}  
+
+            <table class="row content-container {% block tableClass %}no-radius{% endblock %}">
+              <tbody><tr>
+                <td class="wrapper last  ">
+                    
+                  <table class="twelve columns">
+                    <tbody><tr>
+                      <td class="content-wrap">
+
+                      	{% block content %}
+                      		{% include "templates/transactional/base/_content.html" %}
+                      	{% endblock %}
+                        
+                      </td>
+                      <td class="expander"></td>
+                    </tr>
+                  </tbody></table>
+                </td>
+              </tr>
+            </table>
+
+            {% block footer %}
+              {% include "templates/transactional/base/_footer.html" %}
+            {% endblock %}   
+
+            </td>
+          </tr>
+        </table>
+      </center>
+    </td>
+  </tr>
+</table>   
+
+{% endblock %}
