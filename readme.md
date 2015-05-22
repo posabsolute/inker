@@ -1,5 +1,7 @@
 # Inker - transaction & marketing email development workflow
 
+[![Join the chat at https://gitter.im/posabsolute/inker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/posabsolute/inker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Basics
 
 Big tables mess no more. Inker provides all the mechanics for creating sane email templates and keeping a clean workflow.
