@@ -1,4 +1,4 @@
-{% extends "/html-components/_base.html" %}
+{% extends "html-components/base.html" %}
   {% block main_css %}<link href="../../../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
   {% block theme_css %}<link href="../../../css/sidebarhero/sidebarhero.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
 
@@ -8,7 +8,7 @@
 
 {% block mainContent %}
 
-	{% block header %} {% include "/templates/sidebar_hero/_header.html" %} {% endblock %}
-	{% block content %} {% include "/templates/sidebar_hero/_content.html" %} {% endblock %}
+	{% block header %} {% include "templates/sidebar_hero/_header.html" %} {% endblock %}
+	{% block content %} {% include "templates/sidebar_hero/_content.html" %} {% endblock %}
 
 {% endblock %}

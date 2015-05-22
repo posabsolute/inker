@@ -8,7 +8,7 @@
 	.steps{
 		padding-top:10px;
 		p{
-			color: #f3a389;
+			color: #080862;
 			font-size:20px;
 			text-align: left;
 			padding-top: 10px;
@@ -17,9 +17,13 @@
 }
 .update-button-ctn{
 	background:#ffffff;
-	td{padding:30px 0px;}
-	.button-update{
-		width:50%;
-		td a {font-size:18px;}
-	}
+	td{padding:15px 0px;}
+
+	.button-update{margin: 0 auto;}
 }
+
+
+@media only screen and (max-width: 600px) {
+	.header .content h3 {padding: 0;}
+}
+

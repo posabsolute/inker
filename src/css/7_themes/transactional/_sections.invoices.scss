@@ -4,12 +4,13 @@
     INVOICE
 ------------------------------------- */
 .invoice {
-  margin: 40px auto;
+  margin: 15px auto;
   text-align: left;
   width: 100%;
 }
 .invoice td {
   padding: 5px 0;
+  word-break: normal;
 }
 .invoice .invoice-items {
   width: 100%;

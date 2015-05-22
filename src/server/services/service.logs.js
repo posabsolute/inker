@@ -43,15 +43,15 @@ var logs_service = {
 					return new Error(e);
 				}
 			});
+			console.log({
+				"loggers" : configs.sendLogs,
+				"message" : messageTxt
+			});
+			return {
+				"loggers" : configs.sendLogs,
+				"message" : messageTxt
+			};
 		}
-		console.log({
-			"loggers" : configs.sendLogs,
-			"message" : messageTxt
-		});
-		return {
-			"loggers" : configs.sendLogs,
-			"message" : messageTxt
-		};
 	}
 };
 

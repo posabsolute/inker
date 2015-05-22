@@ -5,7 +5,7 @@ table.small-button,
 table.medium-button,
 table.large-button {
   overflow: hidden;
-  margin:0 0px 10px 0!important;
+  margin:0;
 
 }
 
@@ -15,7 +15,7 @@ table.small-button td,
 table.medium-button td,
 table.large-button td {
   display: block;
-  width: auto !important;
+  width: auto;
   text-align: center;
   transition: background-color 0.5s ease;
   background: #2ba6cb;

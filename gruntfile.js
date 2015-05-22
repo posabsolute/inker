@@ -28,9 +28,10 @@ module.exports = function(grunt) {
             options:{
                 paths : "src",
                 langs : ["en_US", "fr_CA"],
-                configureEnvironment : function(env, options){
+                configureEnvironment : function(env){
+                  var self = this;
                   env.addFilter('trans', function(str, obj) {
-                    var lang = options.lang || 'en_US';
+                    var lang = self.options.lang || 'en_US';
                     var locale = YAML.load('locales/'+lang+'.yml');
 
                     var string = locale[str],
@@ -166,8 +167,8 @@ module.exports = function(grunt) {
               files: [
                    {
                       expand: true,
-                      cwd: "src/templates",
-                      src: ["**/*.html","!**/_*.html"],
+                      cwd: "src",
+                      src: ["templates/**/*.html","!templates/**/_*.html"],
                       dest: "dist/templates/"+lang+"/",
                       ext: ".html"
                    }
