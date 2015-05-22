@@ -2,7 +2,6 @@ var configs = require('../configs/configs'),
 	loggers = require('../configs/configs.logs'),
 	logSystems = {};
 
-configs.
 var logs_service = {
 	/**
 	 * Setup log providers to be ready to be used

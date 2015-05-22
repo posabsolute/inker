@@ -6,7 +6,7 @@ module.exports = {
   // failover service when main service is down
   "failOver" : "SendGrid",
   // active logs
-  "sendLogs" : ['hipchat','logentries'],
+  "sendLogs" : ['logentries',"pushbullet"],
   // logs configs
   "logs" : {
     "hipchat":{
@@ -15,6 +15,21 @@ module.exports = {
     },
     "logentries" : {
       "token" : "304edc63-95d8-4540-b8ae-a6a67a78dfff"
+    },
+    "slack" : {
+      "hook_url" : "MY_HOOK",
+      "options" : {}
+    },
+    // Push notification with push bullet, 
+    // it's free however you need to create an accout & install the app
+    // https://www.pushbullet.com
+    "pushbullet" : {
+      // found in account settings
+      "token" : "lFj4OQPvPJlWRTYcIGPYUAP8vZIyesP5",
+      // Should be on the left on the website once you connected a device
+      // When you click on it get the id from URL
+      // You can have multiple devices 
+      "devicesID" : ["ujxidFX0QHksjAiVsKnSTs"]
     }
   }
   // nunjucks custom tags

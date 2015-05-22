@@ -25,23 +25,65 @@ module.exports = {
         loggers.hipchatLog.postMessage(params, function(data) { });
       }
 	},
-    "logentries": {
-      "level":1,
-      "module":"le_node",
+  "slack": {
+      // not currently used
+      "level":2,
+      // Module required for the log provider 
+      "module":"node-slack",
+      // Executed after the module is loaded in
+      // Generally used to instanciate the provider
       "afterRequire": function(loggers){
-        loggers.logentriesLog = loggers.logentries.logger({
-          token: configs.logs.logentries.token
-        });
-
-        loggers.logentriesLog.on('error',function(err){
-          console.log('hangs around.... In bars!? '+err );
-        });
-
+        loggers.slackLog = new loggers.slack(configs.logs.slack.hook_url, configs.logs.slack.options);
       },
+      // Actual log function
+      // loggers is passed back & contains all the logs providers.
       log : function(loggers, type, messageText, messageJson){
-        var data = messageJson || messageText;
+        var params = {
+            channel: configs.logs.hipchat.room,
+            username: 'Email Server',
+            text: messageText
+          };
 
-        loggers.logentriesLog.log(type, data);
+        loggers.slackLog.send(params, function(data) { });
       }
+  },
+  "pushbullet": {
+      // Module required for the log provider 
+      "module":"pushbullet",
+      // Executed after the module is loaded in
+      // Generally used to instanciate the provider
+      "afterRequire": function(loggers){
+        loggers.pushbulletLog = new loggers.pushbullet(configs.logs.pushbullet.token);
+      },
+      // Actual log function
+      // loggers is passed back & contains all the logs providers.
+      log : function(loggers, type, messageText, messageJson){
+        // for all device ID's
+        configs.logs.pushbullet.devicesID.forEach(function(device){
+          // push notification
+          loggers.pushbulletLog.note(device, "Email Server Error", messageText, function(error, response) {
+              // response is the JSON response from the API 
+          });
+        });
+      }
+  },
+  "logentries": {
+    "level":1,
+    "module":"le_node",
+    "afterRequire": function(loggers){
+      loggers.logentriesLog = loggers.logentries.logger({
+        token: configs.logs.logentries.token
+      });
+
+      loggers.logentriesLog.on('error',function(err){
+        console.log('hangs around.... In bars!? '+err );
+      });
+
+    },
+    log : function(loggers, type, messageText, messageJson){
+      var data = messageJson || messageText;
+
+      loggers.logentriesLog.log(type, data);
     }
+  }
 };
