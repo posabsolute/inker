@@ -6,7 +6,7 @@ module.exports = {
   // failover service when main service is down
   "failOver" : "SendGrid",
   // active logs
-  "sendLogs" : ['logentries',"pushbullet"],
+  "sendLogs" : ['logentries',"pushbullet", "slack"],
   // logs configs
   "logs" : {
     "hipchat":{
@@ -17,7 +17,7 @@ module.exports = {
       "token" : "304edc63-95d8-4540-b8ae-a6a67a78dfff"
     },
     "slack" : {
-      "hook_url" : "MY_HOOK",
+      "hook_url" : "https://hooks.slack.com/services/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",
       "options" : {}
     },
     // Push notification with push bullet, 

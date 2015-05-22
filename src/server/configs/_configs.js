@@ -7,7 +7,7 @@ module.exports = {
   "failOver" : "SendGrid",
 
   // active logs
-  /* "sendLogs" : ['hipchat','logentries'], */
+  /* "sendLogs" : ['hipchat','logentries', 'pushbullet', 'slack'], */
 
   // logs configs
   "logs" : {
@@ -20,6 +20,7 @@ module.exports = {
     },
     "slack" : {
       "hook_url" : "MY_HOOK",
+      //"channel" : "Channel Override"
       "options" : {}
     },
     // Push notification with push bullet, 

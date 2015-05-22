@@ -39,10 +39,13 @@ module.exports = {
       // loggers is passed back & contains all the logs providers.
       log : function(loggers, type, messageText, messageJson){
         var params = {
-            channel: configs.logs.hipchat.room,
             username: 'Email Server',
             text: messageText
           };
+        // Slack use a default channel by default
+        if(configs.logs.slack.channel){
+          params.channel = configs.logs.slack.channel;
+        }
 
         loggers.slackLog.send(params, function(data) { });
       }
