@@ -61,7 +61,7 @@ describe('Email Delivery Service', function() {
   });
 
   it('Should fail sending & use default failover, sync', function(done) {
-    this.timeout(3000);
+    this.timeout(6000);
     var data = {
       "data" : { "collection": "data_example", "template": "index",
         "variables": { "name":"Cedric", "loop": ["1","2","3"] }
@@ -74,7 +74,6 @@ describe('Email Delivery Service', function() {
     .set('x-authorization-token', configs.authToken)
     .send(data)
     .expect(function(res){
-      console.log(res.body);
       if(res.body.provider !== "SendGrid"){
         return "Should have used SendGrid";
       }

@@ -449,7 +449,7 @@ https://www.getpostman.com/collections/f37b94b5cf18a574e32a
 Install all dependencies
 ```javascript
 npm install
-cp src/server/configs/_serviceAuth.js src/server/configs/serviceAuth.js
+cp src/server/configs/_configs.providers.auth.js src/server/configs/configs.providers.auth.js
 cp src/server/configs/_configs.js src/server/configs/configs.js
 ```
 
