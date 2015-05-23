@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - '0.10'
 before_script:
+  - gem install premailer
   - npm install -g grunt-cli
   - grunt build
   - cp src/server/configs/_configs.js src/server/configs/configs.js
