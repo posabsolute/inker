@@ -192,6 +192,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-test');
 
     grunt.registerTask('default',['watch']);
+    grunt.registerTask('test',['mochaTest']);
     grunt.registerTask('css',['sass']);
     grunt.registerTask('html',['build-templates','premailer:inline']);
     grunt.registerTask('build',['sass','build-templates','premailer:inline']);
