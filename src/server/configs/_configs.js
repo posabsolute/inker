@@ -7,7 +7,7 @@ module.exports = {
   "failOver" : "SendGrid",
 
   // active logs
-  /* "sendLogs" : ['hipchat','logentries', 'pushbullet', 'slack'], */
+  "sendLogs" : ['hipchat','logentries', 'pushbullet', 'slack'],
 
   // logs configs
   "logs" : {
@@ -20,7 +20,7 @@ module.exports = {
     },
     "slack" : {
       "hook_url" : "MY_HOOK",
-      //"channel" : "Channel Override"
+   // "channel" : "Channel Override"
       "options" : {}
     },
     // Push notification with push bullet, 
@@ -32,7 +32,7 @@ module.exports = {
       // Should be on the left on the website once you connected a device
       // When you click on it get the id from URL
       // You can have multiple devices 
-      "devicesID" : []
+      "devicesID" : ["myid"]
     }
   }
   // nunjucks custom tags
