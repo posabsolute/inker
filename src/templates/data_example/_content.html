@@ -2,7 +2,7 @@
     <tr>
       <td>
 
-        {% block header %} {% include "transactional/account_activation/_header.html" %} {% endblock %}
+        {% block header %} {% include "data_example/_header.html" %} {% endblock %}
 
         <table class="row account-information">
           <tr>
@@ -34,6 +34,7 @@
                     </p>
                     <p>We need you to update your account information. If there is ever a problem with your account, this information will make it easier for you to log back in.</p>
                     <p>{{ 'test_string' | trans }}</p>
+                    
                   </td>
                   <td class="expander"></td>
                 </tr>
@@ -49,7 +50,7 @@
               <table class="twelve columns">
                 <tr>
                   <td align="center">
-                    {{ button('Update Account', '#', 'btn-blue button-update', 'center') }}
+                    {{ button('Update Account', '#', 'orange-button button-update', 'center') }}
                   </td>
                   <td class="expander"></td>
                 </tr>
@@ -58,7 +59,7 @@
           </tr>
         </table>
 
-        {% block footer %} {% include "transactional/account_activation/_footer.html" %} {% endblock %}
+        {% block footer %} {% include "data_example/_footer.html" %} {% endblock %}
 
     </td>
   </tr>

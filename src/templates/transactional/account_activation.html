@@ -1,4 +1,4 @@
-{% extends "html-components/base.html" %}
+{% extends "components/_base.html" %}
   {% block main_css %}<link href="../../../../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
   {% block theme_css %}<link href="../../../../css/sunday/sunday.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
 
@@ -8,6 +8,6 @@
 
 {% block mainContent %}
 
-	{% block content %} {% include "templates/transactional/account_activation/_content.html" %} {% endblock %}
+	{% block content %} {% include "transactional/account_activation/_content.html" %} {% endblock %}
 
 {% endblock %}

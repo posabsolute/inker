@@ -26,12 +26,9 @@ describe('Logs services', function() {
     .post('/emails')
     .set('x-authorization-token', configs.authToken)
     .send(data)
-
     .end(function(err, res){
-        logger.should.have.returned({ 
-        	loggers: [ 'hipchat', 'logentries' ],
-  			message: '"template not found: en_US/data_examples/index.html"' 
-  		});
+      console.log(logger + "ALERT");
+        logger.returned({message: 'template not found: en_US/data_examples/index.html'});
         done();
     });
   });
@@ -51,12 +48,8 @@ describe('Logs services', function() {
     .send(data)
 
     .end(function(err, res){
-        logger.should.have.returned({ 
-        	loggers: [ 'hipchat', 'logentries' ],
-  			message: '{"code":"EAUTH","response":"535 5.7.0 Mailgun is not loving your login or password","responseCode":535}'
-  		});
-
-        done();
+      logger.returned({message: '{"code":"EAUTH","response":"535 5.7.0 Mailgun is not loving your login or password","responseCode":535}'});
+      done();
     });
   });
 });

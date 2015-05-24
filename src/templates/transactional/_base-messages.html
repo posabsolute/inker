@@ -1,4 +1,4 @@
-{% extends "html-components/base.html" %}
+{% extends "components/_base.html" %}
   {% block main_css %}<link href="../../../../css/main.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
   {% block theme_css %}<link href="../../../../css/transactional/transactional.css" media="all" rel="stylesheet" type="text/css" />{% endblock %}
 
@@ -9,7 +9,7 @@
 {% block mainContent %}
 
 	{% block header %}
-    {% include "templates/transactional/base/_header.html" %}
+    {% include "transactional/base/_header.html" %}
   {% endblock %}
 
 	<table class="row ">
@@ -33,7 +33,7 @@
                       <td class="content-wrap">
 
                       	{% block content %}
-                      		{% include "templates/transactional/base/_content.html" %}
+                      		{% include "transactional/base/_content.html" %}
                       	{% endblock %}
                         
                       </td>
@@ -45,7 +45,7 @@
             </table>
 
             {% block footer %}
-              {% include "templates/transactional/base/_footer.html" %}
+              {% include "transactional/base/_footer.html" %}
             {% endblock %}   
 
             </td>

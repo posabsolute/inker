@@ -103,8 +103,8 @@ Inker as an html component stucture that uses nunjucks macros. Example of compon
 ```
 
 ```html
-// Import the component in the base.html file in html-components folder.
-{% from "/html-components/component.button.html" import button %}
+// Import the component in the base.html file in components folder.
+{% from "/components/component.button.html" import button %}
 ```
 
 
@@ -113,7 +113,7 @@ Usage in html template :
 {{ button('Go to google', 'http://www.google.com', 'button-green', 'left'); }}
 ```
 
-**When creating new components, remember to add them to the base.html file situated in _src/html-components_**
+**When creating new components, remember to add them to the base.html file situated in _src/components_**
 
 
 ### Creating new html templates
@@ -123,7 +123,7 @@ Open the template's folder, you should see a folder sidebar_hero, add your own f
 #### Example of base template
 
 ```html
-{% extends "/html-components/base.html" %}
+{% extends "/components/_base.html" %}
   {% block main_css %}
     <link href="../../css/main.css" media="all" rel="stylesheet" type="text/css" />
   {% endblock %}

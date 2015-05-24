@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 configureEnvironment : function(env){
                   var self = this;
                   env.addFilter('trans', function(str, obj) {
-                    var lang = self.options.lang || 'en_US';
+                    var lang = self.options().lang || 'en_US';
                     var locale = YAML.load('locales/'+lang+'.yml');
 
                     var string = locale[str],
@@ -162,13 +162,13 @@ module.exports = function(grunt) {
           nunjucks[lang] = {
               options:{
                 lang:lang,
-                paths : "src"
+                paths : "src/templates"
               },
               files: [
                    {
                       expand: true,
-                      cwd: "src",
-                      src: ["templates/**/*.html","!templates/**/_*.html"],
+                      cwd: "src/templates",
+                      src: ["**/*.html","!**/_*.html"],
                       dest: "dist/templates/"+lang+"/",
                       ext: ".html"
                    }
