@@ -53,9 +53,9 @@ You have now everything you need to use inker. Your first stop would be the exam
 
 ## CSS with Inker
 
-Inker use [Zurb Ink](http://zurb.com/ink/) responsive css framework, everything in Ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also uses the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files and folders' structure. Better explained by this image. The css can be found in **src/css**
+Inker use [Zurb Ink](http://zurb.com/ink/) responsive css framework, everything in Ink is available in inker, please refer to their [documentation](http://zurb.com/ink/docs.php). Inker also uses the meta framework [ITCSS](http://csswizardry.net/talks/2014/11/itcss-dafed.pdf) for the files and folders structure. The css can be found in **src/css**
 
-**base.scss** is your base CSS file importing all needed files for inker, if you add a css component you must import it in base.scss.
+**base.scss** is importing all needed files for inker, if you add a css component you must import it in base.scss.
 
 *It is important to note that since we inline style to html nodes it makes no sense to pick and choose components you want to use as it will make no differences on the file size in the end*
 
@@ -104,7 +104,7 @@ Inker as an html component stucture that uses nunjucks macros. Example of compon
 
 ```html
 // Import the component in the base.html file in components folder.
-{% from "/components/component.button.html" import button %}
+{% from "components/component.button.html" import button %}
 ```
 
 
@@ -113,17 +113,17 @@ Usage in html template :
 {{ button('Go to google', 'http://www.google.com', 'button-green', 'left'); }}
 ```
 
-**When creating new components, remember to add them to the base.html file situated in _src/components_**
+**When creating new components, remember to add them to the base.html file situated in _src/templates/components/components_**
 
 
 ### Creating new html templates
 
-Open the template's folder, you should see a folder sidebar_hero, add your own folder here. Please refer to  sidebar_hero for a complete example.
+Open the template's folder, you should see a folder sidebar_hero, add your own folder here. You can refer to  sidebar_hero for a complete example.
 
-#### Example of base template
+#### A base template example
 
 ```html
-{% extends "/components/_base.html" %}
+{% extends "components/_base.html" %}
   {% block main_css %}
     <link href="../../css/main.css" media="all" rel="stylesheet" type="text/css" />
   {% endblock %}
