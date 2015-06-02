@@ -7,3 +7,10 @@ alert_text_3: Thanks for choosing Acme Inc.
 
 action_text_1: Please confirm your email address by clicking the link below.
 action_text_2: We may need to send you critical information about our service and it is important that we have an accurate email address.
+
+
+
+invoice_total: Total
+invoice_paid: Paid
+invoice_welcome: Thank you for using Acme Inc
+invoice_invoice: Invoice

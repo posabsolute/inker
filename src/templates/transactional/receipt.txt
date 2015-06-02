@@ -1,0 +1,8 @@
+{{ 'invoice_welcome' | trans }}
+${{'{{ total }}'}} {{ 'invoice_paid' | trans }}
+
+{{ '{{ invoice_client_name }}' }}, Invoice # {{ '{{ invoice_number }}' }}, {{ '{{ invoice_date }}' }}
+
+{{ '{% for item in items %}' }}
+	* {{'{{ item.name }}'}}, ${{'{{ item.price }}'}}	                   
+{{ '{% endfor %}' }}

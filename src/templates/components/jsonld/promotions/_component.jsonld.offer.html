@@ -1,0 +1,24 @@
+<!-- 
+JSON-LD Offer
+https://developers.google.com/gmail/markup/reference/offer
+
+@gotoType {string} "ViewAction || TrackAction"
+@gotoTarget {string} "https://watch-movies.com/watch?movieId=abc123"
+@gotoName {string} "Watch the 'Avengers' movie online"
+
+* ---- *
+ 
+An offer represents a promotion for some items or services that can be accepted by the customer.
+
+Gmail grid view displays offers and other promotional mail in an alternative, more visual way in the Promotions tab. Gmail uses an algorithm that attempts to determine the most relevant image from a message to display. However, if you’re a sender of promotional email, you can use markup to specify the image or content to display to help your readers get the best experience.
+-->
+
+{% macro jsonldOffer() %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Offer",
+  "image": "http://www.example.com/product_image.jpg"
+}
+</script>
+{% endmacro %}

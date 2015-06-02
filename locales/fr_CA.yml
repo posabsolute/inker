@@ -1,2 +1,16 @@
 
 test_string: Vous utilisez fr_CA
+
+alert_text_1: Vous avez <strong>1 rapport gratuit</strong> restant.
+alert_text_2: Ajouter votre carte de credit, ne manquer pas vos rapports
+alert_text_3: Merci de choisir Acme Inc.
+
+
+action_text_1: SVP confirmer vogter addresse email ci-dessous
+action_text_2: Il est possible que nous vous envoyons des informations critiques sur nos services dans le futur.
+
+
+invoice_total: Total
+invoice_total: Payer
+invoice_welcome: Merci d'avoir utilisé Acme Inc.
+invoice_invoice: Facture

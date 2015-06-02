@@ -1,0 +1,8 @@
+{{ 'alert_text_1' | trans }}
+
+{{ 'alert_text_2' | trans }}
+
+{{ 'alert_text_3' | trans }}
+
+
+Upgrade your Account : 

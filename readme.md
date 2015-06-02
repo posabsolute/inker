@@ -362,6 +362,130 @@ nunjucks: {
 Follow the same conventions while creating your localization files, in this case, *locales/en_US.yml*.
 
 
+## JSON LD
+
+By adding schema.org markup to the emails you send your users, you can make that information available across their Google experience, and make it easy for users to take quick action. Inbox, Gmail, Google Calendar, Google Search, and Google Now all already use this structured data.
+
+Inker implement 2 types of the for available on gmail, being actions & promotions.
+
+JSON LD components are dynamic data, generally linked directly to the customer you are sending the email to. JSON-LD complete implementation is available using the Inker API or you can customize the components to use your own templating engine.
+
+
+### Example:
+
+JSON-LD content is a script tag embedded in the email body, this is already taken care of by Inker.
+
+Usage in the template :
+```javascript
+{% block jsonLD %} jsonldGoto(); {% endblock %}
+```
+
+Then when sending your email using Inker API you would add the customer data like this:
+
+```javascript
+"POST /email"
+// Post data
+{
+  "data" : {
+    "collection": "transactional", // required, folder(s) in output
+    "template": "alert", // required, template filename
+    "locale" : "en_US", // optional, default to en_US
+    "variables": {
+      "jsonLD" : {
+        "gotoType" : "ViewAction",
+        "gotoTarget" : "https://watch-movies.com/watch?movieId=abc123",
+        "gotoName" : "Watch the 'Avengers' movie online"
+      }    
+    }
+  },
+
+}
+```
+It's important to remember to put your JSON-LD content in variables -> jsonLD. As said before you can easily also modify the json-ld components to use your own templating engine. The components are in : *src/templates/components/jsonld*
+
+
+### Go to Action
+
+Go-To Actions take the user to your website where the action can be completed. Unlike One Click Actions, go-to actions can be interacted with multiple times.
+
+https://developers.google.com/gmail/markup/reference/go-to-action
+
+!(https://developers.google.com/gmail/markup/images/actions-go-to-action.png)
+
+Usage in the template :
+```javascript
+{% block jsonLD %} jsonldGoto(); {% endblock %}
+```
+
+*Options :*
+* gotoType {string} ViewAction || TrackAction
+* gotoTarget {string} https://watch-movies.com/watch?movieId=abc123
+* gotoName {string} Watch the 'Avengers' movie online
+
+### One Click Action
+
+You may add a one-click confirm button to emails requiring users to approve, confirm and acknowledge something. Once the user clicks on the button, an http request will be issued from Google to your service, recording the confirmation. ConfirmAction can only be interacted with once.
+
+https://developers.google.com/gmail/markup/reference/one-click-action
+
+Usage in the template :
+```javascript
+{% block jsonLD %} jsonldOneClick(); {% endblock %}
+```
+
+*Options :*
+
+* action.type {string} ConfirmAction || SaveAction
+* action.name {string} textshown in inbox
+* action.url  {string} Url action
+* description {string} Call description
+
+
+### Review Action
+
+Use to declare a review action. Gmail may show a review button next to the email, which will prompt the user for a numeric review value and / or a user comment.
+
+https://developers.google.com/gmail/markup/reference/review-action
+
+Usage in the template :
+```javascript
+{% block jsonLD %} jsonldReview(); {% endblock %}
+```
+
+*Options :*
+
+* reviewType {string} FoodEstablishment || Movie || Product
+* reviewName {string} Joe's Diner
+* reviewUrl  {string} Action Url
+* reviewDescription {string} Hope you enjoyed your meal with us, please review your experience
+
+
+
+### RSVP Action
+
+You may add a one-click confirm button to emails requiring users to approve, confirm and acknowledge something. Once the user clicks on the button, an http request will be issued from Google to your service, recording the confirmation. ConfirmAction can only be interacted with once.
+
+https://developers.google.com/gmail/markup/reference/rsvp-action
+
+Usage in the template :
+```javascript
+{% block jsonLD %} jsonldRSVP(); {% endblock %}
+```
+
+*Options :*
+
+* startDate {date} 2015-04-18T15:30:00Z
+* endDate {date} 2015-04-18T16:30:00Z
+* EventName {string} Google Party
+* addressStreet {string} 24 Willie Mays Plaza
+* addressLocality {string} San Francisco
+* addressRegion {string} CA
+* postalCode {string} 94107
+* addressCountry {string} USA
+* action.attendance http://schema.org/RsvpAttendance/Yes || http://schema.org/RsvpAttendance/No || http://mysite.com/rsvp?eventId=123&value=maybe
+
+
+
 ## Sending a test email to your inbox
 
 Inker uses [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send tests. By default, it sends a test for all files that are in the output folders, you can easily change that in **gruntfile.js**.
@@ -513,8 +637,8 @@ Example :
 // Post data
 {
   "data" : {
-    "collection": "data_example", // required, folder(s) in output
-    "template": "index", // required, template filename
+    "collection": "transactional", // required, folder(s) in output
+    "template": "alert", // required, template filename
     "locale" : "en_US", // optional, default to en_US
     "variables": {
       "name":"Cedric",
@@ -522,6 +646,8 @@ Example :
     }
   },
   "options" : {
+    // enable text version using a custom txt template.
+    "textVersion" : true,
     "from": "sender@address",
     "to": "cedric.dugas@gmail.com",
     "subject": "hello",
@@ -533,6 +659,33 @@ Example :
   }
 }
 ```
+
+### Sending a custom text version
+
+When enabling the text version option, the api will automatically fetch the .txt file at the same folder level as the html version.
+
+If the html template is in: *output.en_US/transactional/alert.html*
+The txt version should be here: *output.en_US/transactional/alert.txt*
+
+### Generate text version
+
+You can also automatically the text version from the html version on the fly,
+
+Example :
+```javascript
+  "options" : {
+    // Enable text version using a custom txt template.
+    "textVersion" : true,
+    // Generate text version from html template
+    "textVersionFromHTML" : true,
+    "from": "sender@address",
+    "to": "cedric.dugas@gmail.com",
+    "subject": "hello",
+    "text": "hello world!"
+  },
+
+```
+
 
 ### Email delivery service Authentication
 

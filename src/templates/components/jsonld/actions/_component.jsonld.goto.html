@@ -1,0 +1,29 @@
+<!-- 
+JSON-LD 
+Go-To Actions
+https://developers.google.com/gmail/markup/reference/go-to-action
+
+@gotoType {string} "ViewAction || TrackAction"
+@gotoTarget {string} "https://watch-movies.com/watch?movieId=abc123"
+@gotoName {string} "Watch the 'Avengers' movie online"
+
+* ---- *
+ 
+Go-To Actions take the user to your website where the action can be completed. Unlike One Click Actions, go-to actions can be interacted with multiple times.
+
+-->
+
+{% macro jsonldGoto() %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "EmailMessage",
+  "potentialAction": {
+    "@type": "{{ '{{ jsonLD.gotoType }}' }}",
+    "target": "{{ '{{ jsonLD.gotoTarget }}' }}",
+    "name": "{{ '{{ jsonLD.gotoName }}' }}"
+  },
+  "description": ""
+}
+</script>
+{% endmacro %}

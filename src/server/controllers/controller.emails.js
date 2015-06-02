@@ -4,6 +4,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	nodemailer = require('nodemailer'),
 	wellknown = require('nodemailer-wellknown'),
+	htmlToText = require('html-to-text'),
 	logs_service = require('../services/service.logs'),
 	configs = require('../configs/configs'),
 	serviceAuthConfigs = require('../configs/configs.providers.auth'),
@@ -29,9 +30,11 @@ var emails_controller = {
 			locale = req.body.data.locale || "en_US",
 			// render template with nunjucks
 			tplURL =  templates_controller.getTemplate(locale, req.body.data.collection, req.body.data.template),
-			templateHtml = templates_controller.renderTemplate(tplURL, data, res),
+			tplURLText =  templates_controller.getTemplate(locale, req.body.data.collection, req.body.data.template, "txt"),
+			//templateHtml = templates_controller.renderTemplate(tplURL, data, res),
+			templateTxt = "",
 			// get service from post data
-	  		service = req.body.service.name || configs.service  || 'smtp',
+	  		service = req.body.service && req.body.service.name || configs.service  || 'smtp',
 	  		// get email service provider
 	  		transporter = emails_controller.getTransporter(service),
 	  		// setup e-mail data
@@ -43,11 +46,24 @@ var emails_controller = {
 	 		return;
 	 	}
 
+	 	// generate text version
+	 	// using custom txt template
+	  	if(req.body.options.textVersion && !req.body.options.textVersionFromHTML){
+	  		templateTxt = templates_controller.renderTemplate(tplURLText, data, res);
+	  	// generating text version from html template
+	  	}else if(req.body.options.textVersion && req.body.options.textVersionFromHTML){
+	  		console.log("fuck");
+	  		templateTxt = htmlToText.fromString(templateHtml);
+	  	}
+	  	console.log(templateTxt);
+
 	  	mailOptions.sync = req.body.options.sync || configs.sync || false;
 	  	mailOptions.html = templateHtml;
-	  	mailOptions.failOver = req.body.service.failOver || configs.failOver || undefined;
+	  	mailOptions.text = templateTxt;
+	  	mailOptions.failOver = req.body.service && req.body.service.failOver || configs.failOver || undefined;
 	  	mailOptions.service = service;
 	  	mailOptions.template = tplURL;
+
 	  	// send mail with defined transport object
 	  	emails_controller.sendEmail(mailOptions, transporter, undefined, res);
 

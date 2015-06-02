@@ -20,10 +20,12 @@ var templates_controller = {
 		if(req.headers["x-authorization-token"] !== configs.authToken){
 			return res.sendStatus(401);
 		}
+
 		// get post data
       	var data = req.query || {},
       		locale = req.params.locale || "en_US",
-      		tplURL = templates_controller.getTemplate(locale, req.params.folder, req.params.name),
+      		type = req.query.type || "html",
+      		tplURL = templates_controller.getTemplate(locale, req.params.folder, req.params.name, type),
       		templateHtml = templates_controller.renderTemplate(tplURL, data, res);
       	
       	// when there is an error we return an object
@@ -39,8 +41,9 @@ var templates_controller = {
 	 * Find template path
 	 * @return {string} return template url
 	 */
-	getTemplate : function(locale, folder, name){
-		return locale + '/' + folder + '/' + name + '.html';
+	getTemplate : function(locale, folder, name, type){
+		type = type || "html";
+		return locale + '/' + folder + '/' + name + '.'  + type;
 	},
 	/**
 	 * Render template with custom data using nunjucks

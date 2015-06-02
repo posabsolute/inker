@@ -1,0 +1,56 @@
+<!-- 
+JSON-LD Review
+https://developers.google.com/gmail/markup/reference/review-action
+
+@reviewType {string} "FoodEstablishment || Movie || Product"
+@reviewName {string} "Joe's Diner"
+@reviewUrl  {string} "Action Url"
+@reviewDescription {string} "Hope you enjoyed your meal with us, please review your experience"
+
+
+Note: review.reviewBody can be optional, but review.reviewRating.ratingValue must be declared as a requiredProperty.
+
+* ---- *
+ 
+
+Use to declare a review action. Gmail may show a review button next to the email, which will prompt the user for a numeric review value and / or a user comment.
+
+-->
+
+{% macro jsonldReview() %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "EmailMessage",
+  "potentialAction": {
+    "@type": "ReviewAction",
+    "review": {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "{{ '{{ reviewType }}' }}",
+        "name": "{{ '{{ reviewName }}' }}"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    },
+    "handler": {
+      "@type": "HttpActionHandler",
+      "url": "{{ reviewUrl }}' }}",
+      "requiredProperty": {
+        "@type": "Property",
+        "name": "review.reviewRating.ratingValue"
+      },
+      "optionalProperty": {
+        "@type": "Property",
+        "name": "review.reviewBody"
+      },
+      "method": "http://schema.org/HttpRequestMethod/POST"
+    }
+  },
+  "description": "{{ '{{ reviewDescription }}' }}"
+}
+</script>
+{% endmacro %}

@@ -27,6 +27,7 @@ module.exports = function(grunt) {
         nunjucks: {
             options:{
                 paths : "src",
+                
                 langs : ["en_US", "fr_CA"],
                 configureEnvironment : function(env){
                   var self = this;
@@ -180,6 +181,30 @@ module.exports = function(grunt) {
         grunt.task.run('nunjucks');
     });
 
+    grunt.registerTask("build-templates-text", "Build emails text", function(test) {
+        var nunjucks = grunt.config.get('nunjucks') || {};
+        var langs = nunjucks.options.langs;
+        langs.forEach(function(lang){
+          nunjucks[lang] = {
+              options:{
+                lang:lang,
+                paths : "src/templates"
+              },
+              files: [
+                   {
+                      expand: true,
+                      cwd: "src/templates",
+                      src: ["**/*.txt","!**/_*.txt"],
+                      dest: "dist/output/"+lang+"/",
+                      ext: ".txt"
+                   }
+              ]
+          };
+        });
+
+        grunt.config.set('nunjucks', nunjucks);
+        grunt.task.run('nunjucks');
+    });
 
 
     grunt.loadNpmTasks('grunt-sass');
@@ -194,8 +219,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default',['watch']);
     grunt.registerTask('test',['mochaTest']);
     grunt.registerTask('css',['sass']);
-    grunt.registerTask('html',['build-templates','premailer:inline']);
-    grunt.registerTask('build',['sass','build-templates','premailer:inline']);
+    grunt.registerTask('html',['build-templates', 'build-templates-text','premailer:inline']);
+    grunt.registerTask('build',['sass','build-templates', 'build-templates-text','premailer:inline']);
     grunt.registerTask('email',['nodemailer']);
 
 };

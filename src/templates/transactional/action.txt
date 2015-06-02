@@ -1,0 +1,6 @@
+{{ 'action_text_1' | trans }}
+
+
+{{ 'action_text_2' | trans }}
+
+Confirm email address:

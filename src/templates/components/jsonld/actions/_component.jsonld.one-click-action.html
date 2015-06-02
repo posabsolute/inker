@@ -1,0 +1,40 @@
+<!-- 
+JSON-LD One Click Action
+https://developers.google.com/gmail/markup/reference/one-click-action
+@action.type {string} ConfirmAction || SaveAction
+@action.name {string} textshown in inbox
+@action.url  {string}  Url action
+@description {string} Call description
+
+* ---- *
+ 
+One Click actions currently supported in Gmail and Inbox are:
+
+* ConfirmAction
+* SaveAction
+
+You may add a one-click confirm button to emails requiring users to approve, confirm and acknowledge something. Once the user clicks on the button, an http request will be issued from Google to your service, recording the confirmation. ConfirmAction can only be interacted with once.
+
+SaveAction can be used to describe interactions like saving a coupon or adding songs to the listen queue. SaveAction can only be interacted with once.
+
+-->
+
+
+
+{% macro jsonldOneClick() %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "EmailMessage",
+  "action": {
+    "@type": "{{'{{type }} '}}",
+    "name": "{{'{{ name }}'}}",
+    "handler": {
+      "@type": "HttpActionHandler",
+      "url": "{{'{{handlerUrl }}'}}"
+    }
+  },
+  "description": "{{'{{description }}'}}"
+}
+</script>
+{% endmacro %}

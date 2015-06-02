@@ -13,8 +13,16 @@
   {% from "components/_component.video.html" import video %}
   {% from "components/_component.panel.html" import panel %}
   {% from "components/_component.alertHeader.html" import alertHeader %}
+  
+  <!-- JSONLD -->
+  {% from "components/jsonld/actions/_component.jsonld.goto.html" import jsonldGoto %}
+  {% from "components/jsonld/actions/_component.jsonld.one-click-action.html" import jsonldOneClick %}
+  {% from "components/jsonld/actions/_component.jsonld.review.html" import jsonldReview %}
+  {% from "components/jsonld/actions/_component.jsonld.rsvp.html" import jsonldRSVP %}
+  {% from "components/jsonld/promotions/_component.jsonld.offer.html" import jsonldOffer %}
 </head>
 <body>
+  {% block jsonLD %}{% endblock %}
   <table class="body">
     <tr>
       <td class="center" align="center" valign="top">
