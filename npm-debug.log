@@ -1,0 +1,83 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'nokogiri', '--save' ]
+2 info using npm@2.7.5
+3 info using node@v0.12.2
+4 warn package.json domain@0.0.1 domain is also the name of a node core module.
+5 silly cache add args [ 'nokogiri', null ]
+6 verbose cache add spec nokogiri
+7 silly cache add parsed spec { raw: 'nokogiri',
+7 silly cache add   scope: null,
+7 silly cache add   name: 'nokogiri',
+7 silly cache add   rawSpec: '',
+7 silly cache add   spec: '*',
+7 silly cache add   type: 'range' }
+8 verbose addNamed nokogiri@*
+9 silly addNamed semver.valid null
+10 silly addNamed semver.validRange *
+11 silly addNameRange { name: 'nokogiri', range: '*', hasData: false }
+12 silly mapToRegistry name nokogiri
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/nokogiri
+16 verbose addNameRange registry:https://registry.npmjs.org/nokogiri not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/nokogiri
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 10:05:08 PM
+20 verbose request id e01e329ca98297e5
+21 http request GET https://registry.npmjs.org/nokogiri
+22 http 404 https://registry.npmjs.org/nokogiri
+23 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+23 verbose headers   'content-type': 'application/json',
+23 verbose headers   'cache-control': 'max-age=0',
+23 verbose headers   'content-length': '51',
+23 verbose headers   'accept-ranges': 'bytes',
+23 verbose headers   date: 'Thu, 04 Jun 2015 01:58:13 GMT',
+23 verbose headers   via: '1.1 varnish',
+23 verbose headers   age: '0',
+23 verbose headers   connection: 'keep-alive',
+23 verbose headers   'x-served-by': 'cache-iad2138-IAD',
+23 verbose headers   'x-cache': 'MISS',
+23 verbose headers   'x-cache-hits': '0',
+23 verbose headers   'x-timer': 'S1433383093.453406,VS0,VE372' }
+24 silly get cb [ 404,
+24 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+24 silly get     'content-type': 'application/json',
+24 silly get     'cache-control': 'max-age=0',
+24 silly get     'content-length': '51',
+24 silly get     'accept-ranges': 'bytes',
+24 silly get     date: 'Thu, 04 Jun 2015 01:58:13 GMT',
+24 silly get     via: '1.1 varnish',
+24 silly get     age: '0',
+24 silly get     connection: 'keep-alive',
+24 silly get     'x-served-by': 'cache-iad2138-IAD',
+24 silly get     'x-cache': 'MISS',
+24 silly get     'x-cache-hits': '0',
+24 silly get     'x-timer': 'S1433383093.453406,VS0,VE372' } ]
+25 verbose stack Error: 404 Not Found: nokogiri
+25 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:245:14)
+25 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+25 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:360:22)
+25 verbose stack     at Request.emit (events.js:110:17)
+25 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1202:14)
+25 verbose stack     at Request.emit (events.js:129:20)
+25 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1150:12)
+25 verbose stack     at IncomingMessage.emit (events.js:129:20)
+25 verbose stack     at _stream_readable.js:908:16
+25 verbose stack     at process._tickCallback (node.js:355:11)
+26 verbose statusCode 404
+27 verbose pkgid nokogiri
+28 verbose cwd /Users/cedricdugas/Documents/work2014/inker
+29 error Darwin 14.1.0
+30 error argv "node" "/usr/local/bin/npm" "install" "nokogiri" "--save"
+31 error node v0.12.2
+32 error npm  v2.7.5
+33 error code E404
+34 error 404 Not Found: nokogiri
+34 error 404
+34 error 404 'nokogiri' is not in the npm registry.
+34 error 404 You should bug the author to publish it (or use the name yourself!)
+34 error 404 It was specified as a dependency of 'inker'
+34 error 404
+34 error 404 Note that you can also install from a
+34 error 404 tarball, folder, http url, or git url.
+35 verbose exit [ 1, true ]
