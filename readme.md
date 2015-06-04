@@ -362,14 +362,15 @@ nunjucks: {
 Follow the same conventions while creating your localization files, in this case, *locales/en_US.yml*.
 
 
-## JSON LD
+## schema.org, Email Augmented Experience
 
 By adding schema.org markup to the emails you send your users, you can make that information available across their Google experience, and make it easy for users to take quick action. Inbox, Gmail, Google Calendar, Google Search, and Google Now all already use this structured data.
 
-Inker implement 2 types of the for available on gmail, being actions & promotions.
+Inker currently only implement actions. 
 
-JSON LD components are dynamic data, generally linked directly to the customer you are sending the email to. JSON-LD complete implementation is available using the Inker API or you can customize the components to use your own templating engine.
+JSON LD components use dynamic data generally linked directly to the customer you are sending the email. JSON-LD complete implementation is available using the Inker API or you can customize the components to use your own templating engine.
 
+**DKIM/SPF signature is required when using schema.org markup**
 
 ### Example:
 
@@ -443,7 +444,7 @@ Usage in the template :
 
 ### Review Action
 
-Use to declare a review action. Gmail may show a review button next to the email, which will prompt the user for a numeric review value and / or a user comment.
+Use to declare a review action. Gmail may show a review button next to the email, which will prompt the user for a numeric review value and or a user comment.
 
 https://developers.google.com/gmail/markup/reference/review-action
 
@@ -482,7 +483,7 @@ Usage in the template :
 * addressRegion {string} CA
 * postalCode {string} 94107
 * addressCountry {string} USA
-* action.attendance http://schema.org/RsvpAttendance/Yes || http://schema.org/RsvpAttendance/No || http://mysite.com/rsvp?eventId=123&value=maybe
+* attendance http://schema.org/RsvpAttendance/Yes || http://schema.org/RsvpAttendance/No || http://mysite.com/rsvp?eventId=123&value=maybe
 
 
 

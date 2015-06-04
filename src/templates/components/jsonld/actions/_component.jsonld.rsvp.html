@@ -27,28 +27,28 @@ SaveAction can be used to describe interactions like saving a coupon or adding s
 {
   "@context": "http://schema.org",
   "@type": "Event",
-  "name": "{{'{{ name }}'}}",
-  "startDate": "{{'{{ startdate }}'}}",
-  "endDate": "{{'{{ enddate }}'}}",
+  "name": "{{'{{ jsonLD.name }}'}}",
+  "startDate": "{{'{{ jsonLD.startdate }}'}}",
+  "endDate": "{{'{{ jsonLD.enddate }}'}}",
   "location": {
     "@type": "Place",
     "address": {
       "@type": "PostalAddress",
-      "name": "{{'{{ addressName }}'}}Google",
-      "streetAddress": "{{'{{ addressStress }}'}}",
-      "addressLocality": "{{'{{ addressCity }}'}}",
-      "addressRegion": "{{'{{ addressRegion }}'}}",
-      "postalCode": "{{'{{ adressPostal }}'}}",
-      "addressCountry": "{{'{{ addressCountry }}'}}"
+      "name": "{{'{{ jsonLD.addressName }}'}}",
+      "streetAddress": "{{'{{ jsonLD.addressStress }}'}}",
+      "addressLocality": "{{'{{ jsonLD.addressCity }}'}}",
+      "addressRegion": "{{'{{ jsonLD.addressRegion }}'}}",
+      "postalCode": "{{'{{ jsonLD.adressPostal }}'}}",
+      "addressCountry": "{{'{{ jsonLD.addressCountry }}'}}"
     }
   },
   "action": [
-    {{ '{% for action in actions %}' }}
+    {{ '{% for action in jsonLD.actions %}' }}
       {
       "@type": "RsvpAction",
       "handler": {
         "@type": "HttpActionHandler",
-        "url": "{{'{{ action.utl }}'}}"
+        "url": "{{'{{ action.url }}'}}"
       },
       "attendance": "{{'{{ action.attendance }}'}}"
       },

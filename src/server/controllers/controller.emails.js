@@ -23,7 +23,7 @@ var emails_controller = {
 		if(req.headers["x-authorization-token"] !== configs.authToken){
 			return res.sendStatus(401);
 		}
-
+	  		console.log("fuck");
 		// get post data
 		var data = req.body.data.variables || {},
 			// Get language used
@@ -31,7 +31,7 @@ var emails_controller = {
 			// render template with nunjucks
 			tplURL =  templates_controller.getTemplate(locale, req.body.data.collection, req.body.data.template),
 			tplURLText =  templates_controller.getTemplate(locale, req.body.data.collection, req.body.data.template, "txt"),
-			//templateHtml = templates_controller.renderTemplate(tplURL, data, res),
+			templateHtml = templates_controller.renderTemplate(tplURL, data, res),
 			templateTxt = "",
 			// get service from post data
 	  		service = req.body.service && req.body.service.name || configs.service  || 'smtp',
@@ -45,14 +45,13 @@ var emails_controller = {
 	 		// stop the call use the response set in controller.templates.js
 	 		return;
 	 	}
-
+	  		console.log("fuck2");
 	 	// generate text version
 	 	// using custom txt template
 	  	if(req.body.options.textVersion && !req.body.options.textVersionFromHTML){
 	  		templateTxt = templates_controller.renderTemplate(tplURLText, data, res);
 	  	// generating text version from html template
 	  	}else if(req.body.options.textVersion && req.body.options.textVersionFromHTML){
-	  		console.log("fuck");
 	  		templateTxt = htmlToText.fromString(templateHtml);
 	  	}
 	  	console.log(templateTxt);

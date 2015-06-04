@@ -27,8 +27,8 @@ Use to declare a review action. Gmail may show a review button next to the email
     "review": {
       "@type": "Review",
       "itemReviewed": {
-        "@type": "{{ '{{ reviewType }}' }}",
-        "name": "{{ '{{ reviewName }}' }}"
+        "@type": "{{ '{{ jsonLD.reviewType }}' }}",
+        "name": "{{ '{{ jsonLD.reviewName }}' }}"
       },
       "reviewRating": {
         "@type": "Rating",
@@ -38,7 +38,7 @@ Use to declare a review action. Gmail may show a review button next to the email
     },
     "handler": {
       "@type": "HttpActionHandler",
-      "url": "{{ reviewUrl }}' }}",
+      "url": "{{ jsonLD.reviewUrl }}' }}",
       "requiredProperty": {
         "@type": "Property",
         "name": "review.reviewRating.ratingValue"
@@ -50,7 +50,7 @@ Use to declare a review action. Gmail may show a review button next to the email
       "method": "http://schema.org/HttpRequestMethod/POST"
     }
   },
-  "description": "{{ '{{ reviewDescription }}' }}"
+  "description": "{{ '{{ jsonLD.reviewDescription }}' }}"
 }
 </script>
 {% endmacro %}
