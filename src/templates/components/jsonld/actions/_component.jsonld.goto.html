@@ -6,6 +6,7 @@ https://developers.google.com/gmail/markup/reference/go-to-action
 @gotoType {string} "ViewAction || TrackAction"
 @gotoTarget {string} "https://watch-movies.com/watch?movieId=abc123"
 @gotoName {string} "Watch the 'Avengers' movie online"
+@description {string} "Call description"
 
 * ---- *
  
@@ -23,7 +24,7 @@ Go-To Actions take the user to your website where the action can be completed. U
     "target": "{{ '{{ jsonLD.gotoTarget }}' }}",
     "name": "{{ '{{ jsonLD.gotoName }}' }}"
   },
-  "description": ""
+  "description": "{{'{{ jsonLD.description }}'}}"
 }
 </script>
 {% endmacro %}

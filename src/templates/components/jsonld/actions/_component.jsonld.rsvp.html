@@ -4,15 +4,20 @@ https://developers.google.com/gmail/markup/reference/rsvp-action
 
 @startDate {date} "2015-04-18T15:30:00Z"
 @endDate {date} "2015-04-18T16:30:00Z"
-@address.name {string} "Address name"
-@address.streetAddress {string} "24 Willie Mays Plaza"
-@address.addressLocality {string} "San Francisco"
-@address.addressRegion {string} "CA"
-@address.postalCode {string} "94107"
-@address.addressCountry {string} "USA"
+@name {string} "Address name"
+@streetAddress {string} "24 Willie Mays Plaza"
+@addressLocality {string} "San Francisco"
+@addressRegion {string} "CA"
+@postalCode {string} "94107"
+@addressCountry {string} "USA"
+@actions {array} Array of actions object
+Ex:
+"actions" : [{
+  "url" : "http://www.google.com",
+  "attendance" : "http://schema.org/RsvpAttendance/Yes"
+}]
 
-
-@action.attendance http://schema.org/RsvpAttendance/Yes || http://schema.org/RsvpAttendance/No || http://mysite.com/rsvp?eventId=123&value=maybe
+@action.attendance http://schema.org/RsvpAttendance/Yes || http://schema.org/RsvpAttendance/No ||  http://schema.org/RsvpAttendance/maybe
 
 * ---- *
 
