@@ -569,8 +569,8 @@ litmus: {
 
 Inker comes with a nodejs rest api that can handle rendering templates with custom variables and send emails through SMTP to any email provider.
 
-There is a public [Postman collection](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) for your convenience for testing the api locally.
-https://www.getpostman.com/collections/f37b94b5cf18a574e32a
+There is a public [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) collection for your convenience for testing the api locally.
+https://www.getpostman.com/collections/47367188a40bdd43de8d
 
 ### Starting the server
 Install all dependencies
