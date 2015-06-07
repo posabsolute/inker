@@ -10,6 +10,7 @@ Documentation [http://posabsolute.github.io/inker/](http://posabsolute.github.io
 Inker is :
 
 Coding
+
 * Built on top of Zurb Ink
 * Sane CSS components structure with [sass](http://sass-lang.com/)
 * Sane HTML components structure with [nunjucks](http://mozilla.github.io/nunjucks)
@@ -18,7 +19,8 @@ Coding
 * Auto deployment on [litmus](https://litmus.com/) for testing
 * Auto deployment to any email address for testing
 
-REST API Email Deliveryß
+REST API Email Delivery
+
 * Asynchronous for a warp speed response (you can use it in sync mode too)
 * Generate emails with custom data on the fly
 * Integrate all major email delivery providers, just put you account informations
