@@ -6,3 +6,4 @@
 exclude_paths:
  - "src/server/configs/_configs.providers.auth.js"
  - "src/server/configs/_configs.js"
+ - "gruntfile.js"
