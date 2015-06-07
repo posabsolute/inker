@@ -1,6 +1,5 @@
 # Inker - email development & transactional delivery workflow
 
-[![Build Status](https://travis-ci.org/posabsolute/inker.png?branch=master)](https://travis-ci.org/posabsolute/inker) [![Code Climate](https://codeclimate.com/github/posabsolute/inker/badges/gpa.svg)](https://codeclimate.com/github/posabsolute/inker) [![Join the chat at https://gitter.im/posabsolute/inker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/posabsolute/inker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Basics
 
@@ -647,7 +646,6 @@ Example :
     }
   },
   "options" : {
-    // enable text version using a custom txt template.
     "textVersion" : true,
     "from": "sender@address",
     "to": "cedric.dugas@gmail.com",
@@ -666,6 +664,7 @@ Example :
 When enabling the text version option, the api will automatically fetch the .txt file at the same folder level as the html version.
 
 If the html template is in: *output.en_US/transactional/alert.html*
+
 The txt version should be here: *output.en_US/transactional/alert.txt*
 
 ### Generate text version

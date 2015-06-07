@@ -23,7 +23,6 @@ var emails_controller = {
 		if(req.headers["x-authorization-token"] !== configs.authToken){
 			return res.sendStatus(401);
 		}
-	  		console.log("fuck");
 		// get post data
 		var data = req.body.data.variables || {},
 			// Get language used
@@ -45,7 +44,6 @@ var emails_controller = {
 	 		// stop the call use the response set in controller.templates.js
 	 		return;
 	 	}
-	  		console.log("fuck2");
 	 	// generate text version
 	 	// using custom txt template
 	  	if(req.body.options.textVersion && !req.body.options.textVersionFromHTML){
@@ -54,7 +52,6 @@ var emails_controller = {
 	  	}else if(req.body.options.textVersion && req.body.options.textVersionFromHTML){
 	  		templateTxt = htmlToText.fromString(templateHtml);
 	  	}
-	  	console.log(templateTxt);
 
 	  	mailOptions.sync = req.body.options.sync || configs.sync || false;
 	  	mailOptions.html = templateHtml;
