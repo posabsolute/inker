@@ -1,5 +1,6 @@
 # Inker - email development & transactional delivery workflow
 
+[![Build Status](https://travis-ci.org/posabsolute/inker.png?branch=master)](https://travis-ci.org/posabsolute/inker) [![Code Climate](https://codeclimate.com/github/posabsolute/inker/badges/gpa.svg)](https://codeclimate.com/github/posabsolute/inker) [![Join the chat at https://gitter.im/posabsolute/inker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/posabsolute/inker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Basics
 
