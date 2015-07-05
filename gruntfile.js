@@ -102,25 +102,34 @@ module.exports = function(grunt) {
             }
         },
         nodemailer: {
+          email : {
             options: {
               transport: {
-                type: 'SMTP',
-                options: {
-                  service: 'Gmail',
-                  auth: {
-                    user: 'email@gmail.com',
-                    pass: 'test12'
-                  }
-                }
+                type: 'Sendmail'
               },
               recipients: [
                 {
-                  email: 'email@gmail.com',
+                  email: 'your.email@gmail.com',
                   name: 'Jane Doe'
                 }
               ]
             },
-            src: ['dist/*.html','dist/**/*.html']
+            src: ['dist/output/en_US/transactional/alert.html']
+          },
+          emailonacid :{
+             options: {
+              transport: {
+                type: 'Sendmail'
+              },
+              recipients: [
+                {
+                  email: 'username@emailonacid.com',
+                  name: 'Email on Acid'
+                }
+              ]
+            },
+            src: ['dist/output/en_US/transactional/alert.html']           
+          }
         },
         connect: {
           server: {
@@ -221,6 +230,7 @@ module.exports = function(grunt) {
     grunt.registerTask('css',['sass']);
     grunt.registerTask('html',['build-templates', 'build-templates-text','premailer:inline']);
     grunt.registerTask('build',['sass','build-templates', 'build-templates-text','premailer:inline']);
-    grunt.registerTask('email',['nodemailer']);
+    grunt.registerTask('email',['nodemailer:email']);
+    grunt.registerTask('eoa',['nodemailer:emailonacid']);
 
 };

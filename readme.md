@@ -17,7 +17,7 @@ Coding
 * Sane HTML components structure with [nunjucks](http://mozilla.github.io/nunjucks)
 * Localization
 * Auto generate template to HTML documents with inlined CSS
-* Auto deployment on [litmus](https://litmus.com/) for testing
+* Auto deployment on [litmus](https://litmus.com/) ans [Email on Acid](https://www.emailonacid.com) for testing
 * Auto deployment to any email address for testing
 
 REST API Email Delivery
@@ -51,7 +51,7 @@ You have now everything you need to use inker. Your first stop would be the exam
 * grunt connect *- test emails in your browser from the root folder (http://0.0.0.0:8555/)*
 * grunt email *- Send a test email to any email inbox*
 * grunt litmus *- Send a test email to litmus*
-
+* grunt eoa *- Send a test email to Email on Acid*
 
 ## CSS with Inker
 
@@ -491,28 +491,24 @@ Usage in the template :
 
 ## Sending a test email to your inbox
 
-Inker uses [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send tests. By default, it sends a test for all files that are in the output folder, you can easily change that in **gruntfile.js**.
+Inker uses [grunt-nodemailer](https://github.com/dwightjack/grunt-nodemailer) to send tests.
+
+You can easily change what email templates is being sent in the **gruntfile.js**.
 
 However a better way to use it would be to change the path directly from the grunt command. This makes it possible to send tests really fast with different templates.
 
 ```bash
 // Override default src provided in gruntfile
-grunt email --fileSrc=dist/output/example.html
+grunt email --fileSrc=dist/output/en_US/transactional/alert.html
 ```
 
 Config example :
 ```javascript
 nodemailer: {
+  email: {
     options: {
       transport: {
-        type: 'SMTP',
-        options: {
-          service: 'Gmail',
-          auth: {
-            user: 'your.email@gmail.com',
-            pass: 'BLAH'
-          }
-        }
+        type: 'Sendmail',
       },
       recipients: [
         {
@@ -522,10 +518,41 @@ nodemailer: {
       ]
     },
     src: ['dist/output/*.html']
-},
+  }
+}
 ```
 
-## Using litmus
+## Testing with Email on Acid
+
+Grunt litmus [documentation](https://github.com/jeremypeter/grunt-litmus).
+
+### Email on acid configuration
+
+You must set the testing email provided by Email on Acid in the gruntfile.
+
+```
+emailonacid :{
+   options: {
+    transport: {
+      type: 'Sendmail'
+    },
+    recipients: [
+      {
+        email: 'username@emailonacid.com',
+        name: 'Email on Acid'
+      }
+    ]
+  },
+  src: ['dist/output/fr_CA/transactional/alert.html']           
+}
+```
+
+### Overriding default files sent to litmus
+
+grunt eoa --fileSrc=dist/output/fr_CA/transactional/alert.html
+
+
+## Testing with litmus
 
 Grunt litmus [documentation](https://github.com/jeremypeter/grunt-litmus).
 
@@ -564,13 +591,15 @@ litmus: {
     }
   }
 },
+
+
 ```
 ## Email REST API
 
 Inker comes with a nodejs rest api that can handle rendering templates with custom variables and send emails through SMTP to any email provider.
 
 There is a public [Postman collection](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) for your convenience for testing the api locally.
-https://www.getpostman.com/collections/f37b94b5cf18a574e32a
+https://www.getpostman.com/collections/47367188a40bdd43de8d
 
 ### Starting the server
 Install all dependencies
@@ -731,7 +760,7 @@ Log services are defined in */src/server/configs.js*
 
 #### Adding a log provider
 
-You can add a log prodider in */src/server/configs.logs.js*. Implementation example:
+You can add a log provider in */src/server/configs.logs.js*. Implementation example:
 
 ```javascript
 "hipchat": {
@@ -758,9 +787,10 @@ You can add a log prodider in */src/server/configs.logs.js*. Implementation exam
 },
 ```
 
-## Special thanks
+## Sponsored by
+A big thank you for supporting Inker.
 
-Thanks to [Litmus](http://www.litmus.com) for providing free email client testing for this project.
+[Email on Acid](https://www.emailonacid.com) - Tools that simplify email testing and analytics.
 
 
 ## Contributions
