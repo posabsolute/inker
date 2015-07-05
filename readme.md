@@ -17,7 +17,7 @@ Coding
 * Sane HTML components structure with [nunjucks](http://mozilla.github.io/nunjucks)
 * Localization
 * Auto generate template to HTML documents with inlined CSS
-* Auto deployment on [litmus](https://litmus.com/) ans [Email on Acid](https://www.emailonacid.com) for testing
+* Auto deployment on [litmus](https://litmus.com/) and [Email on Acid](https://www.emailonacid.com) for testing
 * Auto deployment to any email address for testing
 
 REST API Email Delivery
@@ -598,7 +598,7 @@ litmus: {
 
 Inker comes with a nodejs rest api that can handle rendering templates with custom variables and send emails through SMTP to any email provider.
 
-There is a public [Postman collection](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) for your convenience for testing the api locally.
+There is a public [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) collection for your convenience for testing the api locally.
 https://www.getpostman.com/collections/47367188a40bdd43de8d
 
 ### Starting the server
