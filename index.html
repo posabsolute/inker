@@ -1,67 +1,921 @@
-<!doctype html>
-<!--
 
-  Instructions:
+<!DOCTYPE html><html><head><meta charset="utf-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"ef188e7deb","applicationID":"9142077","transactionName":"e1ZWQ0UOXl9QQRxHVEhWS15DDkBaUEAcRllXTg==","queueTime":1,"applicationTime":14,"agent":"js-agent.newrelic.com/nr-632.min.js"}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o?o:n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({QJf3ax:[function(e,n){function t(e){function n(n,t,a){e&&e(n,t,a),a||(a={});for(var u=c(n),f=u.length,s=i(a,o,r),p=0;f>p;p++)u[p].apply(s,t);return s}function a(e,n){f[e]=c(e).concat(n)}function c(e){return f[e]||[]}function u(){return t(n)}var f={};return{on:a,emit:n,create:u,listeners:c,_events:f}}function r(){return{}}var o="nr@context",i=e("gos");n.exports=t()},{gos:"7eSDFh"}],ee:[function(e,n){n.exports=e("QJf3ax")},{}],3:[function(e,n){function t(e){return function(){r(e,[(new Date).getTime()].concat(i(arguments)))}}var r=e("handle"),o=e(1),i=e(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(e,n){window.NREUM[n]=t("api-"+n)}),n.exports=window.NREUM},{1:12,2:13,handle:"D5DuLP"}],"7eSDFh":[function(e,n){function t(e,n,t){if(r.call(e,n))return e[n];var o=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return e[n]=o,o}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],gos:[function(e,n){n.exports=e("7eSDFh")},{}],handle:[function(e,n){n.exports=e("D5DuLP")},{}],D5DuLP:[function(e,n){function t(e,n,t){return r.listeners(e).length?r.emit(e,n,t):(o[e]||(o[e]=[]),void o[e].push(n))}var r=e("ee").create(),o={};n.exports=t,t.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(e,n){n.exports=e("XL7HBI")},{}],XL7HBI:[function(e,n){function t(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:i(e,o,function(){return r++})}var r=1,o="nr@id",i=e("gos");n.exports=t},{gos:"7eSDFh"}],G9z0Bl:[function(e,n){function t(){var e=d.info=NREUM.info,n=f.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&n){c(p,function(n,t){n in e||(e[n]=t)});var t="https"===s.split(":")[0]||e.sslForHttp;d.proto=t?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=d.proto+e.agent,n.parentNode.insertBefore(r,n)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=e("handle"),c=e(1),u=(e(2),window),f=u.document,s=(""+location).split("?")[0],p={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},d=n.exports={offset:i(),origin:s,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),u.addEventListener("load",t,!1)):(f.attachEvent("onreadystatechange",r),u.attachEvent("onload",t)),a("mark",["firstbyte",i()])},{1:12,2:3,handle:"D5DuLP"}],loader:[function(e,n){n.exports=e("G9z0Bl")},{}],12:[function(e,n){function t(e,n){var t=[],o="",i=0;for(o in e)r.call(e,o)&&(t[i]=n(o,e[o]),i+=1);return t}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],13:[function(e,n){function t(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(0>o?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=t},{}]},{},["G9z0Bl"]);</script><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><title>posabsolute/inker</title><link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Alegreya:400italic,700italic,400,700" rel="stylesheet" type="text/css" /><link href="http://documentup.com/assets/themes/v1-635df22a91707d5dc45a0e22be89e67ab6f9844da883fb4a723153a2c90b18d3.css" media="all" rel="stylesheet" type="text/css" /><meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="YFFnF4Vv7Nkrqi9MHpio6HcFW6I5i1cZgLV0tL50qoL+uZobxq4p8WpM7hiHNseFymu7e9AwOAu99wezBKxCLw==" /></head><body class="no-literate"><div id="container"><div id="nav"><div id="header"><a href="#" id="logo">inker</a></div><div class="section" id="sections"><ul class="section-nav">
+<li class="h2"><a href="#basics">Basics</a></li>
+<li class="h2"><a href="#getting-started">Getting started</a></li>
+<li class="h2"><a href="#available-grunt-commands">Available grunt commands</a></li>
+<li class="h2"><a href="#css-with-inker">CSS with Inker</a></li>
+<li class="h3"><a href="#responsive">Responsive</a></li>
+<li class="h3"><a href="#ignore-css-inlining">Ignore css inlining</a></li>
+<li class="h3"><a href="#adding-new-themes">Adding new themes</a></li>
+<li class="h2"><a href="#html-with-inker">HTML with inker</a></li>
+<li class="h3"><a href="#creating-new-html-templates">Creating new html templates</a></li>
+<li class="h3"><a href="#inker-with-your-back-end-templating-engine--application">Inker with your back-end templating engine & application</a></li>
+<li class="h3"><a href="#inker-with-dynamic-custom-data">Inker with dynamic custom data</a></li>
+<li class="h2"><a href="#included-components">Included components</a></li>
+<li class="h3"><a href="#buttons">Buttons</a></li>
+<li class="h3"><a href="#progress-bar">Progress Bar</a></li>
+<li class="h3"><a href="#video">Video</a></li>
+<li class="h3"><a href="#image-caption">Image Caption</a></li>
+<li class="h3"><a href="#panel">Panel</a></li>
+<li class="h2"><a href="#localization">Localization</a></li>
+<li class="h2"><a href="#schemaorg-email-augmented-experience">schema.org, Email Augmented Experience</a></li>
+<li class="h3"><a href="#example">Example:</a></li>
+<li class="h3"><a href="#go-to-action">Go to Action</a></li>
+<li class="h3"><a href="#one-click-action">One Click Action</a></li>
+<li class="h3"><a href="#review-action">Review Action</a></li>
+<li class="h3"><a href="#rsvp-action">RSVP Action</a></li>
+<li class="h2"><a href="#sending-a-test-email-to-your-inbox">Sending a test email to your inbox</a></li>
+<li class="h2"><a href="#testing-with-email-on-acid">Testing with Email on Acid</a></li>
+<li class="h3"><a href="#email-on-acid-configuration">Email on acid configuration</a></li>
+<li class="h3"><a href="#overriding-default-files-sent-to-litmus">Overriding default files sent to litmus</a></li>
+<li class="h2"><a href="#testing-with-litmus">Testing with litmus</a></li>
+<li class="h3"><a href="#overriding-default-files-sent-to-litmus-1">Overriding default files sent to litmus</a></li>
+<li class="h3"><a href="#default-config">Default config</a></li>
+<li class="h2"><a href="#email-rest-api">Email REST API</a></li>
+<li class="h3"><a href="#starting-the-server">Starting the server</a></li>
+<li class="h3"><a href="#authentication">Authentication</a></li>
+<li class="h3"><a href="#configs">Configs</a></li>
+<li class="h3"><a href="#api-templates-rendering">API Templates rendering</a></li>
+<li class="h3"><a href="#api-email-sending">API Email sending</a></li>
+<li class="h3"><a href="#sending-a-custom-text-version">Sending a custom text version</a></li>
+<li class="h3"><a href="#generate-text-version">Generate text version</a></li>
+<li class="h3"><a href="#email-delivery-service-authentication">Email delivery service Authentication</a></li>
+<li class="h3"><a href="#failover-email-delivery-provider">Failover Email Delivery Provider</a></li>
+<li class="h3"><a href="#logs">Logs</a></li>
+<li class="h2"><a href="#sponsored-by">Sponsored by</a></li>
+<li class="h2"><a href="#contributions">Contributions</a></li>
+<li class="h2"><a href="#licence">Licence</a></li>
+</ul></div><div class="extra section" id="github"><a href="https://github.com/posabsolute/inker">Source on Github</a></div><div class="extra section" id="github-issues"><a href="https://github.com/posabsolute/inker/issues">Issues</a></div></div><div id="content"><a href="https://github.com/posabsolute/inker" id="github-ribbon"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" /></a><h1>Inker - email development &amp; transactional delivery workflow</h1>
 
-  - Save this file.
-  - Replace "USER" with your GitHub username.
-  - Replace "REPO" with your GitHub repo name.
-  - Replace "Your Project" with your project name.
-  - Upload this file (or commit to GitHub Pages).
+<p><a href="https://travis-ci.org/posabsolute/inker"><img src="https://travis-ci.org/posabsolute/inker.png?branch=master" alt="Build Status" style="max-width:100%;"></a> <a href="https://codeclimate.com/github/posabsolute/inker"><img src="https://codeclimate.com/github/posabsolute/inker/badges/gpa.svg" alt="Code Climate" style="max-width:100%;"></a> <a href="https://gitter.im/posabsolute/inker?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/posabsolute/inker" style="max-width:100%;"></a></p>
 
-  Customize as you see fit!
+<h2>
+<a id="basics" class="anchor" href="#basics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basics</h2>
 
--->
-<html>
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width">
+<p>Big mess of tables no more. Inker provides all the mechanics for creating sane email templates and keeping a clean codebase.</p>
 
-  <title>Your Project</title>
+<p>Documentation <a href="http://posabsolute.github.io/inker/">http://posabsolute.github.io/inker/</a></p>
 
-  <!-- Flatdoc -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/legacy.js'></script>
-  <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/flatdoc.js'></script>
+<p>Inker is :</p>
 
-  <!-- Flatdoc theme -->
-  <link  href='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/style.css' rel='stylesheet'>
-  <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/theme-white/script.js'></script>
+<p>Coding</p>
 
-  <!-- Meta -->
-  <meta content="Your Project" property="og:title">
-  <meta content="Your Project description goes here." name="description">
+<ul>
+<li>Built on top of Zurb Ink</li>
+<li>Sane CSS components structure with <a href="http://sass-lang.com/">sass</a>
+</li>
+<li>Sane HTML components structure with <a href="http://mozilla.github.io/nunjucks">nunjucks</a>
+</li>
+<li>Localization</li>
+<li>Auto generate template to HTML documents with inlined CSS</li>
+<li>Auto deployment on <a href="https://litmus.com/">litmus</a> and <a href="https://www.emailonacid.com">Email on Acid</a> for testing</li>
+<li>Auto deployment to any email address for testing</li>
+</ul>
 
-  <!-- Initializer -->
-  <script>
-    Flatdoc.run({
-      fetcher: Flatdoc.github('posabsolute/inker')
-    });
-  </script>
-</head>
-<body role='flatdoc'>
+<p>REST API Email Delivery</p>
 
-  <div class='header'>
-    <div class='left'>
-      <h1>Your Project</h1>
-      <ul>
-        <li><a href='https://github.com/posabsolute/inker'>View on GitHub</a></li>
-        <li><a href='https://github.com/posabsolute/inker/issues'>Issues</a></li>
-      </ul>
-    </div>
-    <div class='right'>
-      <!-- GitHub buttons: see http://ghbtns.com -->
-      <iframe src="http://ghbtns.com/github-btn.html?user=posabsolute&amp;repo=inker&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-    </div>
-  </div>
+<ul>
+<li>Asynchronous for a warp speed response (you can use it in sync mode too)</li>
+<li>Generate emails with custom data on the fly</li>
+<li>Integrate all major email delivery providers, just put you account informations</li>
+<li>Failover, when one goes down we redirect the request to another provider</li>
+<li>Logs! hipchat, slack, logtenries, push notifications with push bullet are all integrated but you can easily add your own too</li>
+</ul>
 
-  <div class='content-root'>
-    <div class='menubar'>
-      <div class='menu section' role='flatdoc-menu'></div>
-    </div>
-    <div role='flatdoc-content' class='content'></div>
-  </div>
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h2>
 
-</body>
-</html>
+<p>Inker requires <strong>npm</strong> &amp; <strong>grunt</strong> to be already installed.</p>
+
+<div class="highlight highlight-bash"><pre>git clone https://github.com/posabsolute/inker.git
+gem install premailer
+<span class="nb">cd </span>inker <span class="o">&amp;&amp;</span> npm install
+</pre></div>
+
+<p>You have now everything you need to use inker. Your first stop would be the examples folder in src/templates to help you get started.</p>
+
+<h2>
+<a id="available-grunt-commands" class="anchor" href="#available-grunt-commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available grunt commands</h2>
+
+<ul>
+<li>grunt watch <em>- Watch source folder for changes &amp; generate dist files</em>
+</li>
+<li>grunt css <em>- Build CSS</em>
+</li>
+<li>grunt html <em>- Build HTML templates</em>
+</li>
+<li>grunt build <em>- Build css, html &amp; text version</em>
+</li>
+<li>grunt connect <em>- test emails in your browser from the root folder (<a href="http://0.0.0.0:8555/">http://0.0.0.0:8555/</a>)</em>
+</li>
+<li>grunt email <em>- Send a test email to any email inbox</em>
+</li>
+<li>grunt litmus <em>- Send a test email to litmus</em>
+</li>
+<li>grunt eoa <em>- Send a test email to Email on Acid</em>
+</li>
+</ul>
+
+<h2>
+<a id="css-with-inker" class="anchor" href="#css-with-inker" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS with Inker</h2>
+
+<p>Inker use <a href="http://zurb.com/ink/">Zurb Ink</a> responsive css framework, everything in Ink is available in inker, please refer to their <a href="http://zurb.com/ink/docs.php">documentation</a>. Inker also uses the meta framework <a href="http://csswizardry.net/talks/2014/11/itcss-dafed.pdf">ITCSS</a> for the files and folders structure. The css can be found in <strong>src/css</strong></p>
+
+<p><strong>base.scss</strong> is importing all needed files for inker, if you add a css component you must import it in base.scss.</p>
+
+<p><em>It is important to note that since we inline style to html nodes it makes no sense to pick and choose css components as it will makes no difference on the file size in the end</em></p>
+
+<h3>
+<a id="responsive" class="anchor" href="#responsive" aria-hidden="true"><span class="octicon octicon-link"></span></a>Responsive</h3>
+
+<p>Responsive rules are in the folder <strong>8_trumps</strong>, please note that these rules are added to the document's head instead of inlined using data-ignore="ignore" in the html templates.</p>
+
+<h3>
+<a id="ignore-css-inlining" class="anchor" href="#ignore-css-inlining" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ignore css inlining</h3>
+
+<div class="highlight highlight-html"><pre><span class="c">&lt;!-- external styles --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">data-ignore=</span><span class="s">"ignore"</span>  <span class="na">href=</span><span class="s">"../css/style.css"</span> <span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- embedded styles --&gt;</span>
+<span class="nt">&lt;style </span><span class="na">data-ignore=</span><span class="s">"ignore"</span><span class="nt">&gt;</span>
+ <span class="c">/* styles here will not be inlined */</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+
+<h3>
+<a id="adding-new-themes" class="anchor" href="#adding-new-themes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding new themes</h3>
+
+<p>Open 7_themes, you will see there is already a folder called sidebarhero used for the sidebar hero template. Add a new folder in 7_themes for your template, your main css file will be automatically generated in dist/css/[your folder].</p>
+
+<p>Then in your html, use:</p>
+
+<div class="highlight highlight-html"><pre>  {% block theme_css %}<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"../../css/sidebarhero/sidebarhero.css"</span> <span class="na">media=</span><span class="s">"all"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>{% endblock %}
+</pre></div>
+
+<h2>
+<a id="html-with-inker" class="anchor" href="#html-with-inker" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML with inker</h2>
+
+<p>Inker uses <a href="http://mozilla.github.io/nunjucks/">Mozilla Nunjucks</a> to build html templates, please see nunjucks' <a href="http://mozilla.github.io/nunjucks/templating.html">documentation</a> for more information on how you can take inker even further.</p>
+
+<p>Inker as an html component structure that uses nunjucks macros. Example of component:</p>
+
+<div class="highlight highlight-html"><pre>{% macro button(label='default', link='#', class='', align='left') %}
+  <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"button {{class}}"</span> <span class="na">align=</span><span class="s">"{{align}}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{link}}"</span><span class="nt">&gt;</span>{{label}}<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+{% endmacro %}
+</pre></div>
+
+<div class="highlight highlight-html"><pre>// Import the component in the base.html file in components folder.
+{% from "components/component.button.html" import button %}
+</pre></div>
+
+<p>Usage in html template :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{{</span> <span class="nx">button</span><span class="p">(</span><span class="s1">'Go to google'</span><span class="p">,</span> <span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="s1">'button-green'</span><span class="p">,</span> <span class="s1">'left'</span><span class="p">);</span> <span class="p">}}</span>
+</pre></div>
+
+<p><strong>When creating new components, remember to add them to the base.html file situated in <em>src/templates/components/components</em></strong></p>
+
+<h3>
+<a id="creating-new-html-templates" class="anchor" href="#creating-new-html-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating new html templates</h3>
+
+<p>Open the template's folder, you should see a folder transactional, You can add your own folder here.</p>
+
+<h4>A base template example</h4>
+
+<div class="highlight highlight-html"><pre>{% extends "components/_base.html" %}
+  {% block main_css %}
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"../../css/main.css"</span> <span class="na">media=</span><span class="s">"all"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
+  {% endblock %}
+  {% block theme_css %}
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"../../css/sidebarhero/sidebarhero.css"</span> <span class="na">media=</span><span class="s">"all"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
+  {% endblock %}
+
+  {% block responsive_css %}
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"../../css/responsive.css"</span> <span class="na">media=</span><span class="s">"all"</span> <span class="na">data-ignore=</span><span class="s">"ignore"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
+  {% endblock %}
+
+  {% block meta_title %}
+    Email title in document head
+  {% endblock %}
+
+{% block mainContent %}
+  {% block header %}
+    {% include "/templates/sidebar_hero/header.html" %}
+  {% endblock %}
+  {% block content %}
+    {% include "/templates/sidebar_hero/content.html" %}
+  {% endblock %}
+{% endblock %}
+</pre></div>
+
+<h3>
+<a id="inker-with-your-back-end-templating-engine--application" class="anchor" href="#inker-with-your-back-end-templating-engine--application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inker with your back-end templating engine &amp; application</h3>
+
+<p>There is a bit of a duality with Inker, it uses a templating engine to generate templates but must not use it to render personalized data on first render so that it can be generated by another templating engine or by the server.</p>
+
+<h4>Passing data and custom template logic by string</h4>
+
+<p>If you have a conflict with nunjucks template syntax, you can add your variables and custom logics as strings likewise :</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;h4&gt;</span>{{ '{{ name }}' }} last step and you're done!<span class="nt">&lt;/h4&gt;</span>
+
+  <span class="nt">&lt;p&gt;</span>
+    {{ '{% for item in loop %}' }}
+    {{ '{{ item }}' }} <span class="ni">&amp;nbsp;</span>
+    {{ '{% endfor %}' }}
+  <span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<p>In the final email template, this will look like :</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;h4&gt;</span>{{ name }} last step and you're done!<span class="nt">&lt;/h4&gt;</span>
+
+  <span class="nt">&lt;p&gt;</span>
+    {% for item in loop %}
+      {{ item }}
+    {% endfor %}
+  <span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<h4>Using a custom syntax</h4>
+
+<p>Inker enables you to use a custom syntax so that it does not interfere with your templating engine of choice. If you do use a custom syntax, you will have to replace the current implementation with the new syntax.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">nunjucks</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">tags</span> <span class="o">:</span> <span class="p">{</span>
+      <span class="nx">blockStart</span><span class="o">:</span> <span class="s1">'&lt;%'</span><span class="p">,</span>
+      <span class="nx">blockEnd</span><span class="o">:</span> <span class="s1">'%&gt;'</span><span class="p">,</span>
+      <span class="nx">variableStart</span><span class="o">:</span> <span class="s1">'&lt;$'</span><span class="p">,</span>
+      <span class="nx">variableEnd</span><span class="o">:</span> <span class="s1">'$&gt;'</span><span class="p">,</span>
+      <span class="nx">commentStart</span><span class="o">:</span> <span class="s1">'&lt;#'</span><span class="p">,</span>
+      <span class="nx">commentEnd</span><span class="o">:</span> <span class="s1">'#&gt;'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a id="inker-with-dynamic-custom-data" class="anchor" href="#inker-with-dynamic-custom-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inker with dynamic custom data</h3>
+
+<p>Inker can use json files as a source of dynamic data. Please note that you can also use the provided rest api to test custom data.</p>
+
+<p>This is a built-in feature of <a href="https://www.npmjs.com/package/grunt-nunjucks-2-html">grunt-nunjucks-2-html</a>.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">nunjucks</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">readJSON</span><span class="p">(</span><span class="s1">'data.json'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a id="included-components" class="anchor" href="#included-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Included components</h2>
+
+<p>Current list of implemented components. (I am always looking to add more components to inker.)</p>
+
+<h3>
+<a id="buttons" class="anchor" href="#buttons" aria-hidden="true"><span class="octicon octicon-link"></span></a>Buttons</h3>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>Label</li>
+<li>Link</li>
+<li>Class to add</li>
+<li>Alignment</li>
+</ul>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">button</span><span class="p">(</span><span class="s1">'Go to google'</span><span class="p">,</span> <span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="s1">'button-green'</span><span class="p">,</span> <span class="s1">'left'</span><span class="p">);</span>
+</pre></div>
+
+<p>Render :</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"button button-green"</span> <span class="na">align=</span><span class="s">"left"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span><span class="nt">&gt;</span>Go to google<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+</pre></div>
+
+<h3>
+<a id="progress-bar" class="anchor" href="#progress-bar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Progress Bar</h3>
+
+<p><em>Options:</em></p>
+
+<ul>
+<li>width of bars</li>
+<li>progress</li>
+<li>label</li>
+<li>Class to add</li>
+</ul>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">progressbar</span><span class="p">(</span><span class="s1">'100%'</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="s1">'Your progress so far'</span><span class="p">,</span> <span class="s1">'progressbar-green'</span><span class="p">);</span>
+</pre></div>
+
+<p>Render :</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">'progressbar progressbar-green'</span> <span class="na">cellpadding=</span><span class="s">"0"</span> <span class="na">cellspacing=</span><span class="s">"0"</span> <span class="na">width=</span><span class="s">"100%"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">'foreground'</span> <span class="na">style=</span><span class="s">''</span> <span class="na">width=</span><span class="s">"70%"</span><span class="nt">&gt;</span>
+              Your progress so far
+          <span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"background"</span> <span class="na">width=</span><span class="s">"30%"</span><span class="nt">&gt;</span>
+              <span class="ni">&amp;nbsp;</span>
+          <span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+</pre></div>
+
+<h3>
+<a id="video" class="anchor" href="#video" aria-hidden="true"><span class="octicon octicon-link"></span></a>Video</h3>
+
+<p>Please refer to campaign monitor chart to see which email client supports video, fallback to an image.</p>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>width</li>
+<li>height</li>
+<li>video_src</li>
+<li>video_link</li>
+<li>video_image_placeholder</li>
+<li>class</li>
+</ul>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">video</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="s1">'video-big'</span><span class="p">);</span>
+</pre></div>
+
+<p>Render :</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"video_holder video-big"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;video</span> <span class="na">width=</span><span class="s">"320"</span> <span class="na">height=</span><span class="s">"176"</span> <span class="na">controls</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"{{video_src}}.mp4"</span> <span class="na">type=</span><span class="s">"video/mp4"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"{{video_src}}.ogg"</span> <span class="na">type=</span><span class="s">"video/ogg"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{video_link}}"</span> <span class="nt">&gt;&lt;img</span> <span class="na">height=</span><span class="s">"176"</span>
+              <span class="na">src=</span><span class="s">"{{video_image_placeholder}}"</span> <span class="na">width=</span><span class="s">"320"</span> <span class="nt">/&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/video&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<h3>
+<a id="image-caption" class="anchor" href="#image-caption" aria-hidden="true"><span class="octicon octicon-link"></span></a>Image Caption</h3>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>Label</li>
+<li>Width</li>
+<li>Class</li>
+<li>Align</li>
+</ul>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">caption</span><span class="p">(</span><span class="s1">'This is a cat'</span><span class="p">,</span> <span class="s1">'320px'</span><span class="p">,</span> <span class="s1">'caption-red'</span><span class="p">,</span> <span class="s1">'left'</span><span class="p">);</span>
+</pre></div>
+
+<p>Render :</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"caption caption-red"</span> <span class="na">cellpadding=</span><span class="s">"0"</span> <span class="na">cellspacing=</span><span class="s">"0"</span> <span class="na">width=</span><span class="s">"320px"</span> <span class="na">border=</span><span class="s">"0"</span><span class="err">,</span> <span class="na">align=</span><span class="s">'left'</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://placekitten.com/g/300/300"</span> <span class="na">alt=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+              <span class="nt">&lt;div&gt;</span>This is a cat<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+</pre></div>
+
+<h3>
+<a id="panel" class="anchor" href="#panel" aria-hidden="true"><span class="octicon octicon-link"></span></a>Panel</h3>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>Label</li>
+<li>size (default: twelve)</li>
+<li>Class</li>
+</ul>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">panel</span><span class="p">(</span><span class="s1">'This is a panel'</span><span class="p">,</span> <span class="s1">'twelve'</span><span class="p">,</span> <span class="s1">'panel-red'</span><span class="p">);</span>
+</pre></div>
+
+<p>Render :</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"twelve panel-red columns"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"panel"</span><span class="nt">&gt;</span>
+
+        This is a panel
+
+      <span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"expander"</span><span class="nt">&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+</pre></div>
+
+<h2>
+<a id="localization" class="anchor" href="#localization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Localization</h2>
+
+<p>Inker can generate the same template in multiple languages. Strings are defined in the folder <em>locales</em> in the yaml format. Don't forget that inker pre-generate templates, strings are not generated on the fly.</p>
+
+<p>You can set default rendering languages in the gruntfile.js in the nunjucks section.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">nunjucks</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">options</span><span class="o">:</span><span class="p">{</span>
+    <span class="nx">langs</span> <span class="o">:</span> <span class="p">[</span><span class="s2">"en_US"</span><span class="p">],</span>
+</pre></div>
+
+<p>Follow the same conventions while creating your localization files, in this case it would be <em>locales/en_US.yml</em>.</p>
+
+<h2>
+<a id="schemaorg-email-augmented-experience" class="anchor" href="#schemaorg-email-augmented-experience" aria-hidden="true"><span class="octicon octicon-link"></span></a>schema.org, Email Augmented Experience</h2>
+
+<p>By adding schema.org markup to the emails you send your users, you can make that information available across their Google experience, and make it easy for users to take quick action. Inbox, Gmail, Google Calendar, Google Search, and Google Now all already use this structured data.</p>
+
+<p>Inker currently only implement actions. </p>
+
+<p>JSON LD components use dynamic data generally linked directly to the customer you are sending the email. JSON-LD complete implementation is available using the Inker API or you can customize the components to use your own templating engine.</p>
+
+<p><strong>DKIM/SPF signature for email clients is required when using schema.org markup</strong></p>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example:</h3>
+
+<p>JSON-LD content is a script tag embedded in the email body, this is already taken care of by Inker.</p>
+
+<p>Usage in the template :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">jsonLD</span> <span class="o">%</span><span class="p">}</span> <span class="nx">jsonldGoto</span><span class="p">();</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+<p>Then when sending your email using Inker API you would add the customer data like this:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"POST /email"</span>
+<span class="c1">// Post data</span>
+<span class="p">{</span>
+  <span class="s2">"data"</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"collection"</span><span class="o">:</span> <span class="s2">"transactional"</span><span class="p">,</span> <span class="c1">// required, folder(s) in output</span>
+    <span class="s2">"template"</span><span class="o">:</span> <span class="s2">"alert"</span><span class="p">,</span> <span class="c1">// required, template filename</span>
+    <span class="s2">"locale"</span> <span class="o">:</span> <span class="s2">"en_US"</span><span class="p">,</span> <span class="c1">// optional, default to en_US</span>
+    <span class="s2">"variables"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"jsonLD"</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"gotoType"</span> <span class="o">:</span> <span class="s2">"ViewAction"</span><span class="p">,</span>
+        <span class="s2">"gotoTarget"</span> <span class="o">:</span> <span class="s2">"https://watch-movies.com/watch?movieId=abc123"</span><span class="p">,</span>
+        <span class="s2">"gotoName"</span> <span class="o">:</span> <span class="s2">"Watch the 'Avengers' movie online"</span>
+      <span class="p">}</span>    
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+<span class="p">}</span>
+</pre></div>
+
+<p>It's important to remember to put your JSON-LD content in variables -&gt; jsonLD. As said before you can also modify the json-ld components to use your own templating engine. The components are in : <em>src/templates/components/jsonld</em></p>
+
+<h3>
+<a id="go-to-action" class="anchor" href="#go-to-action" aria-hidden="true"><span class="octicon octicon-link"></span></a>Go to Action</h3>
+
+<p>Go-To Actions take the user to your website where the action can be completed. Unlike One Click Actions, go-to actions can be interacted with multiple times.</p>
+
+<p><a href="https://developers.google.com/gmail/markup/reference/go-to-action">https://developers.google.com/gmail/markup/reference/go-to-action</a></p>
+
+<p>!(<a href="https://developers.google.com/gmail/markup/images/actions-go-to-action.png">https://developers.google.com/gmail/markup/images/actions-go-to-action.png</a>)</p>
+
+<p>Usage in the template :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">jsonLD</span> <span class="o">%</span><span class="p">}</span> <span class="nx">jsonldGoto</span><span class="p">();</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>gotoType {string} ViewAction || TrackAction</li>
+<li>gotoTarget {string} <a href="https://watch-movies.com/watch?movieId=abc123">https://watch-movies.com/watch?movieId=abc123</a>
+</li>
+<li>gotoName {string} Watch the 'Avengers' movie online</li>
+</ul>
+
+<h3>
+<a id="one-click-action" class="anchor" href="#one-click-action" aria-hidden="true"><span class="octicon octicon-link"></span></a>One Click Action</h3>
+
+<p>You may add a one-click confirm button to emails requiring users to approve, confirm and acknowledge something. Once the user clicks on the button, an http request will be issued from Google to your service, recording the confirmation. ConfirmAction can only be interacted with once.</p>
+
+<p><a href="https://developers.google.com/gmail/markup/reference/one-click-action">https://developers.google.com/gmail/markup/reference/one-click-action</a></p>
+
+<p>Usage in the template :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">jsonLD</span> <span class="o">%</span><span class="p">}</span> <span class="nx">jsonldOneClick</span><span class="p">();</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>action.type {string} ConfirmAction || SaveAction</li>
+<li>action.name {string} textshown in inbox</li>
+<li>action.url  {string} Url action</li>
+<li>description {string} Call description</li>
+</ul>
+
+<h3>
+<a id="review-action" class="anchor" href="#review-action" aria-hidden="true"><span class="octicon octicon-link"></span></a>Review Action</h3>
+
+<p>Use to declare a review action. Gmail may show a review button next to the email, which will prompt the user for a numeric review value and or a user comment.</p>
+
+<p><a href="https://developers.google.com/gmail/markup/reference/review-action">https://developers.google.com/gmail/markup/reference/review-action</a></p>
+
+<p>Usage in the template :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">jsonLD</span> <span class="o">%</span><span class="p">}</span> <span class="nx">jsonldReview</span><span class="p">();</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>reviewType {string} FoodEstablishment || Movie || Product</li>
+<li>reviewName {string} Joe's Diner</li>
+<li>reviewUrl  {string} Action Url</li>
+<li>reviewDescription {string} Hope you enjoyed your meal with us, please review your experience</li>
+</ul>
+
+<h3>
+<a id="rsvp-action" class="anchor" href="#rsvp-action" aria-hidden="true"><span class="octicon octicon-link"></span></a>RSVP Action</h3>
+
+<p>You may add a one-click confirm button to emails requiring users to approve, confirm and acknowledge something. Once the user clicks on the button, an http request will be issued from Google to your service, recording the confirmation. ConfirmAction can only be interacted with once.</p>
+
+<p><a href="https://developers.google.com/gmail/markup/reference/rsvp-action">https://developers.google.com/gmail/markup/reference/rsvp-action</a></p>
+
+<p>Usage in the template :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span><span class="o">%</span> <span class="nx">block</span> <span class="nx">jsonLD</span> <span class="o">%</span><span class="p">}</span> <span class="nx">jsonldRSVP</span><span class="p">();</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+
+<p><em>Options :</em></p>
+
+<ul>
+<li>startDate {date} 2015-04-18T15:30:00Z</li>
+<li>endDate {date} 2015-04-18T16:30:00Z</li>
+<li>EventName {string} Google Party</li>
+<li>addressStreet {string} 24 Willie Mays Plaza</li>
+<li>addressLocality {string} San Francisco</li>
+<li>addressRegion {string} CA</li>
+<li>postalCode {string} 94107</li>
+<li>addressCountry {string} USA</li>
+<li>attendance <a href="http://schema.org/RsvpAttendance/Yes">http://schema.org/RsvpAttendance/Yes</a> || <a href="http://schema.org/RsvpAttendance/No">http://schema.org/RsvpAttendance/No</a> || <a href="http://mysite.com/rsvp?eventId=123&amp;value=maybe">http://mysite.com/rsvp?eventId=123&amp;value=maybe</a>
+</li>
+</ul>
+
+<h2>
+<a id="sending-a-test-email-to-your-inbox" class="anchor" href="#sending-a-test-email-to-your-inbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sending a test email to your inbox</h2>
+
+<p>Inker uses <a href="https://github.com/dwightjack/grunt-nodemailer">grunt-nodemailer</a> to send tests.</p>
+
+<p>You can easily change what email templates is being sent in the <strong>gruntfile.js</strong>.</p>
+
+<p>However a better way to use it would be to change the path directly from the grunt command. This makes it possible to send tests really fast with different templates.</p>
+
+<div class="highlight highlight-bash"><pre>// Override default src provided in gruntfile
+grunt email --fileSrc<span class="o">=</span>dist/output/en_US/transactional/alert.html
+</pre></div>
+
+<p>Config example :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">nodemailer</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">email</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">transport</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="s1">'Sendmail'</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="nx">recipients</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nx">email</span><span class="o">:</span> <span class="s1">'your.email@gmail.com'</span><span class="p">,</span>
+          <span class="nx">name</span><span class="o">:</span> <span class="s1">'Jane Doe'</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="s1">'dist/output/*.html'</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a id="testing-with-email-on-acid" class="anchor" href="#testing-with-email-on-acid" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing with Email on Acid</h2>
+
+<p>Grunt litmus <a href="https://github.com/jeremypeter/grunt-litmus">documentation</a>.</p>
+
+<h3>
+<a id="email-on-acid-configuration" class="anchor" href="#email-on-acid-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Email on acid configuration</h3>
+
+<p>You must set the testing email provided by Email on Acid in the gruntfile.</p>
+
+<pre><code>emailonacid :{
+   options: {
+    transport: {
+      type: 'Sendmail'
+    },
+    recipients: [
+      {
+        email: 'username@emailonacid.com',
+        name: 'Email on Acid'
+      }
+    ]
+  },
+  src: ['dist/output/fr_CA/transactional/alert.html']           
+}
+</code></pre>
+
+<h3>
+<a id="overriding-default-files-sent-to-litmus" class="anchor" href="#overriding-default-files-sent-to-litmus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overriding default files sent to litmus</h3>
+
+<p>grunt eoa --fileSrc=dist/output/fr_CA/transactional/alert.html</p>
+
+<h2>
+<a id="testing-with-litmus" class="anchor" href="#testing-with-litmus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing with litmus</h2>
+
+<p>Grunt litmus <a href="https://github.com/jeremypeter/grunt-litmus">documentation</a>.</p>
+
+<h3>
+<a id="overriding-default-files-sent-to-litmus-1" class="anchor" href="#overriding-default-files-sent-to-litmus-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overriding default files sent to litmus</h3>
+
+<p>grunt litmus:dist/output/sidebar_hero/index.html</p>
+
+<h3>
+<a id="default-config" class="anchor" href="#default-config" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default config</h3>
+
+<p>The most used email clients are already set in the gruntfile.</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">litmus</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="s1">'email.html'</span><span class="p">],</span>
+    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">username</span><span class="o">:</span> <span class="s1">'username'</span><span class="p">,</span>
+      <span class="nx">password</span><span class="o">:</span> <span class="s1">'password'</span><span class="p">,</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">'https://yourcompany.litmus.com'</span><span class="p">,</span>
+      <span class="nx">clients</span><span class="o">:</span> <span class="p">[</span>
+        <span class="c1">//gmail</span>
+        <span class="s1">'gmailnew'</span><span class="p">,</span> <span class="s1">'ffgmailnew'</span><span class="p">,</span> <span class="s1">'chromegmailnew'</span><span class="p">,</span>
+        <span class="c1">// outlook</span>
+        <span class="s1">'ol2002'</span><span class="p">,</span> <span class="s1">'ol2003'</span><span class="p">,</span> <span class="s1">'ol2007'</span><span class="p">,</span> <span class="s1">'ol2010'</span><span class="p">,</span> <span class="s1">'ol2011'</span><span class="p">,</span> <span class="s1">'ol2013'</span><span class="p">,</span>
+        <span class="c1">// hotmail</span>
+        <span class="s1">'outlookcom'</span><span class="p">,</span> <span class="s1">'ffoutlookcom'</span><span class="p">,</span> <span class="s1">'chromeoutlookcom'</span><span class="p">,</span>
+        <span class="c1">//Yahoo</span>
+        <span class="s1">'chromeyahoo'</span><span class="p">,</span>
+        <span class="c1">//applemail</span>
+        <span class="s1">'appmail6'</span><span class="p">,</span>
+        <span class="c1">//mobile</span>
+        <span class="s1">'iphone6plus'</span><span class="p">,</span> <span class="s1">'iphone6'</span><span class="p">,</span> <span class="s1">'iphone5s'</span><span class="p">,</span> <span class="s1">'androidgmailapp'</span><span class="p">,</span> <span class="s1">'android4'</span><span class="p">,</span> <span class="s1">'ipad'</span><span class="p">,</span>
+        <span class="c1">// spam check</span>
+        <span class="s1">'messagelabs'</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+
+<h2>
+<a id="email-rest-api" class="anchor" href="#email-rest-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Email REST API</h2>
+
+<p>Inker comes with a nodejs rest api that can handle rendering templates with custom variables and send emails through SMTP to any email provider.</p>
+
+<p>There is a public <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop">Postman</a> collection for your convenience for testing the api locally.<br>
+<a href="https://www.getpostman.com/collections/47367188a40bdd43de8d">https://www.getpostman.com/collections/47367188a40bdd43de8d</a></p>
+
+<h3>
+<a id="starting-the-server" class="anchor" href="#starting-the-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>Starting the server</h3>
+
+<p>Install all dependencies</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">npm</span> <span class="nx">install</span>
+<span class="nx">cp</span> <span class="nx">src</span><span class="o">/</span><span class="nx">server</span><span class="o">/</span><span class="nx">configs</span><span class="o">/</span><span class="nx">_configs</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">js</span> <span class="nx">src</span><span class="o">/</span><span class="nx">server</span><span class="o">/</span><span class="nx">configs</span><span class="o">/</span><span class="nx">configs</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">js</span>
+<span class="nx">cp</span> <span class="nx">src</span><span class="o">/</span><span class="nx">server</span><span class="o">/</span><span class="nx">configs</span><span class="o">/</span><span class="nx">_configs</span><span class="p">.</span><span class="nx">js</span> <span class="nx">src</span><span class="o">/</span><span class="nx">server</span><span class="o">/</span><span class="nx">configs</span><span class="o">/</span><span class="nx">configs</span><span class="p">.</span><span class="nx">js</span>
+</pre></div>
+
+<p>Start the server</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">node</span> <span class="nx">src</span><span class="o">/</span><span class="nx">server</span><span class="o">/</span><span class="nx">server</span><span class="p">.</span><span class="nx">js</span>
+</pre></div>
+
+<h3>
+<a id="authentication" class="anchor" href="#authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authentication</h3>
+
+<p>The server has a basic auth system. It expects a token for each request. This token is set in <em>/src/server/config.js</em></p>
+
+<p>Default :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">X</span><span class="o">-</span><span class="nx">Authorization</span><span class="o">-</span><span class="nx">Token</span> <span class="o">:</span> <span class="nx">asd98a7s9898asdaSDA</span><span class="p">(</span><span class="nx">asd987asda</span><span class="o">*</span><span class="p">(</span><span class="o">&amp;*&amp;%</span><span class="p">))</span>
+</pre></div>
+
+<h3>
+<a id="configs" class="anchor" href="#configs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configs</h3>
+
+<h3>
+<a id="api-templates-rendering" class="anchor" href="#api-templates-rendering" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Templates rendering</h3>
+
+<p>The API also uses nunjucks to render custom variables. Remember that since we use the same rendering engine (nunjucks) for both front-end &amp; server side, you must use strings in your template to add variables and custom template logics.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-html"><pre>  <span class="nt">&lt;h4&gt;</span>{{ '{{ name }}' }} last step and you're done!<span class="nt">&lt;/h4&gt;</span>
+
+  <span class="nt">&lt;p&gt;</span>
+    {{ '{% for item in loop %}' }}
+    {{ '{{ item }}' }} <span class="ni">&amp;nbsp;</span>
+    {{ '{% endfor %}' }}
+  <span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<p>You can configure the template syntax in <em>/src/server/config.js</em>.</p>
+
+<p>"GET /templates/folder/template"</p>
+
+<p>Base path is dist/output</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"GET /collections/:folders/templates/:filename?name=Cedric&amp;loop[]=1&amp;loop[]=2&amp;loop[]=3"</span>
+<span class="c1">// with localization</span>
+<span class="c1">// Example with french</span>
+<span class="s2">"GET /collections/:folders/templates/:filename/locale/fr_CA?name=Cedric&amp;loop[]=1&amp;loop[]=2&amp;loop[]=3"</span>
+</pre></div>
+
+<h3>
+<a id="api-email-sending" class="anchor" href="#api-email-sending" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Email sending</h3>
+
+<p>The api can send emails to a variety of SMTP services, MailGun, Mandrill, SendGrig, Gmail, etc. You can see the full list in <em>/src/server/serviceAuth.js</em></p>
+
+<p>Example :</p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"POST /email"</span>
+<span class="c1">// Post data</span>
+<span class="p">{</span>
+  <span class="s2">"data"</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"collection"</span><span class="o">:</span> <span class="s2">"transactional"</span><span class="p">,</span> <span class="c1">// required, folder(s) in output</span>
+    <span class="s2">"template"</span><span class="o">:</span> <span class="s2">"alert"</span><span class="p">,</span> <span class="c1">// required, template filename</span>
+    <span class="s2">"locale"</span> <span class="o">:</span> <span class="s2">"en_US"</span><span class="p">,</span> <span class="c1">// optional, default to en_US</span>
+    <span class="s2">"variables"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="o">:</span><span class="s2">"Cedric"</span><span class="p">,</span>
+      <span class="s2">"loop"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"2"</span><span class="p">,</span><span class="s2">"3"</span><span class="p">]</span>      
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"options"</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"textVersion"</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"from"</span><span class="o">:</span> <span class="s2">"sender@address"</span><span class="p">,</span>
+    <span class="s2">"to"</span><span class="o">:</span> <span class="s2">"cedric.dugas@gmail.com"</span><span class="p">,</span>
+    <span class="s2">"subject"</span><span class="o">:</span> <span class="s2">"hello"</span><span class="p">,</span>
+    <span class="s2">"text"</span><span class="o">:</span> <span class="s2">"hello world!"</span>
+  <span class="p">},</span>
+  <span class="c1">// optional, default to 'service' set in config.js</span>
+  <span class="s2">"service"</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="o">:</span><span class="s2">"MailGun"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a id="sending-a-custom-text-version" class="anchor" href="#sending-a-custom-text-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sending a custom text version</h3>
+
+<p>When enabling the text version option, the api will automatically fetch the .txt file at the same folder level as the html version.</p>
+
+<p>If the html template is in: <em>output.en_US/transactional/alert.html</em></p>
+
+<p>The txt version should be here: <em>output.en_US/transactional/alert.txt</em></p>
+
+<h3>
+<a id="generate-text-version" class="anchor" href="#generate-text-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generate text version</h3>
+
+<p>You can also Generate automatically the text version from your html template on the fly,</p>
+
+<p>Example :</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="s2">"options"</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="c1">// Enable text version using a custom txt template.</span>
+    <span class="s2">"textVersion"</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">// Generate text version from html template</span>
+    <span class="s2">"textVersionFromHTML"</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"from"</span><span class="o">:</span> <span class="s2">"sender@address"</span><span class="p">,</span>
+    <span class="s2">"to"</span><span class="o">:</span> <span class="s2">"cedric.dugas@gmail.com"</span><span class="p">,</span>
+    <span class="s2">"subject"</span><span class="o">:</span> <span class="s2">"hello"</span><span class="p">,</span>
+    <span class="s2">"text"</span><span class="o">:</span> <span class="s2">"hello world!"</span>
+  <span class="p">},</span>
+</pre></div>
+
+<h3>
+<a id="email-delivery-service-authentication" class="anchor" href="#email-delivery-service-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Email delivery service Authentication</h3>
+
+<p>You must add your credentials in <em>/src/server/configs.providers.auth.js</em></p>
+
+<h3>
+<a id="failover-email-delivery-provider" class="anchor" href="#failover-email-delivery-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Failover Email Delivery Provider</h3>
+
+<p>You can set a default failover service provider in <em>/src/server/configs.js</em></p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// main mailing service used to send email</span>
+<span class="s2">"service"</span> <span class="o">:</span> <span class="s2">"MailGun"</span><span class="p">,</span>
+<span class="c1">// failover service when main service is down</span>
+<span class="s2">"failOver"</span> <span class="o">:</span> <span class="s2">"SendGrid"</span><span class="p">,</span>
+</pre></div>
+
+<h3>
+<a id="logs" class="anchor" href="#logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logs</h3>
+
+<p>Inker can log errors &amp; alert you when one your main email sending provider is down, when an application request an inexistent template or when there is an error in a template.</p>
+
+<p>Log services are defined in <em>/src/server/configs.js</em></p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// active logs</span>
+<span class="s2">"sendLogs"</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'hipchat'</span><span class="p">,</span><span class="s1">'logentries'</span><span class="p">],</span>
+<span class="c1">// logs configs</span>
+<span class="s2">"logs"</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="s2">"hipchat"</span><span class="o">:</span><span class="p">{</span>
+    <span class="s2">"room"</span> <span class="o">:</span> <span class="s2">"HIPCHAT_ROOM_ID"</span><span class="p">,</span>
+    <span class="s2">"token"</span> <span class="o">:</span> <span class="s2">"MY_TOKEN"</span>
+  <span class="p">},</span>
+  <span class="s2">"logentries"</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"token"</span> <span class="o">:</span> <span class="s2">"MY_TOKEN"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>Adding a log provider</h4>
+
+<p>You can add a log provider in <em>/src/server/configs.logs.js</em>. Implementation example:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"hipchat"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"level"</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span>
+    <span class="c1">// Module required for the log provider </span>
+    <span class="s2">"module"</span><span class="o">:</span><span class="s2">"node-hipchat"</span><span class="p">,</span>
+    <span class="c1">// Executed after the module is loaded in</span>
+    <span class="c1">// Generally used to instanciate the provider</span>
+    <span class="s2">"afterRequire"</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">loggers</span><span class="p">){</span>
+      <span class="nx">loggers</span><span class="p">.</span><span class="nx">hipchatLog</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">loggers</span><span class="p">.</span><span class="nx">hipchat</span><span class="p">(</span><span class="nx">configs</span><span class="p">.</span><span class="nx">logs</span><span class="p">.</span><span class="nx">hipchat</span><span class="p">.</span><span class="nx">token</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="c1">// Actual log function</span>
+    <span class="c1">// loggers is passed bavk &amp; contains all the logs providers.</span>
+    <span class="nx">log</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">loggers</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">messageText</span><span class="p">,</span> <span class="nx">messageJson</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="nx">room</span><span class="o">:</span> <span class="nx">configs</span><span class="p">.</span><span class="nx">logs</span><span class="p">.</span><span class="nx">hipchat</span><span class="p">.</span><span class="nx">room</span><span class="p">,</span>
+          <span class="nx">from</span><span class="o">:</span> <span class="s1">'Email Server'</span><span class="p">,</span>
+          <span class="nx">message</span><span class="o">:</span> <span class="nx">messageText</span><span class="p">,</span>
+          <span class="nx">color</span><span class="o">:</span> <span class="s1">'yellow'</span>
+        <span class="p">};</span>
+
+      <span class="nx">loggers</span><span class="p">.</span><span class="nx">hipchatLog</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+
+<h2>
+<a id="sponsored-by" class="anchor" href="#sponsored-by" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sponsored by</h2>
+
+<p>A big thank you for supporting Inker.</p>
+
+<p><a href="https://www.emailonacid.com">Email on Acid</a> - Tools that simplify email testing and analytics.</p>
+
+<h2>
+<a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributions</h2>
+
+<p>I'm always happy to accept contributions, I'm currently looking for more components and examples, but please follow ITCSS guidelines, and please test your new components in the most used email clients.</p>
+
+<h2>
+<a id="licence" class="anchor" href="#licence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licence</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2014 Cedric Dugas <a href="http://www.position-absolute.com">http://www.position-absolute.com</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy<br>
+of this software and associated documentation files (the "Software"), to deal<br>
+in the Software without restriction, including without limitation the rights<br>
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br>
+copies of the Software, and to permit persons to whom the Software is<br>
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in<br>
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br>
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br>
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br>
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br>
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br>
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<br>
+THE SOFTWARE.</p></div></div></body></html>
