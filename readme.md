@@ -530,7 +530,7 @@ Grunt litmus [documentation](https://github.com/jeremypeter/grunt-litmus).
 
 You must set the testing email provided by Email on Acid in the gruntfile.
 
-```
+```javascript
 emailonacid :{
    options: {
     transport: {
@@ -789,6 +789,8 @@ You can add a log provider in */src/server/configs.logs.js*. Implementation exam
 
 ## Sponsored by
 A big thank you for supporting Inker.
+
+![Email on Acid](http://inker.position-absolute.com/eoa.png)
 
 [Email on Acid](https://www.emailonacid.com) - Tools that simplify email testing and analytics.
 
